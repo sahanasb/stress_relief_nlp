@@ -1,0 +1,7 @@
+transformers
+torch
+openai
+python-dotenv
+sounddevice
+scipy
+numpy

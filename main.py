@@ -14,6 +14,15 @@ from voice.text_to_speech import speak
 # Short-term memory
 # -------------------------
 conversation_history = []
+# Agent introduction
+intro = (
+    "Hi, I'm SerenAI, your stress support assistant. "
+    "I'm here to listen and help you work through everyday stress. "
+    "How are you feeling today?"
+)
+
+print(f"\nSerenAI: {intro}")
+speak(intro)
 
 
 while True:

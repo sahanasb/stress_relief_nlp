@@ -1,0 +1,211 @@
+id,text,emotion_true,difficulty,subcategory
+E001,I'm furious about the exam.,anger,easy,direct_expression
+E002,The presentation makes me really angry.,anger,easy,direct_expression
+E003,I'm so irritated by the deadline.,anger,medium,direct_expression
+E004,I'm mad that the manager happened.,anger,medium,direct_expression
+E005,I feel angry every time I think about the rent.,anger,hard,direct_expression
+E006,I'm boiling over because of the family dinner.,anger,hard,direct_expression
+E007,I keep replaying the deadline and clenching my jaw.,anger,easy,indirect_expression
+E008,"Every time the manager comes up, I want to snap at someone.",anger,easy,indirect_expression
+E009,I can't stop stewing over the rent.,anger,medium,indirect_expression
+E010,I feel my patience disappear when I think about the family dinner.,anger,medium,indirect_expression
+E011,The argument with my partner has me pacing around the room.,anger,hard,indirect_expression
+E012,I'm trying not to lash out over the doctor appointment.,anger,hard,indirect_expression
+E013,I'm not scared about the rent; I'm angry about how it was handled.,anger,easy,negation_contrast
+E014,"I'm not sad about the family dinner, I'm irritated.",anger,easy,negation_contrast
+E015,"The argument with my partner doesn't make me anxious, it makes me furious.",anger,medium,negation_contrast
+E016,I'm not disappointed so much as angry about the doctor appointment.,anger,medium,negation_contrast
+E017,"I'm calm about the outcome, but angry about the group project itself.",anger,hard,negation_contrast
+E018,I'm not upset in a vague way; I'm specifically mad about the job interview.,anger,hard,negation_contrast
+E019,"I'm relieved it's over, but I'm still angry about the argument with my partner.",anger,easy,mixed_emotion
+E020,"Part of me is sad, but mostly I'm angry about the doctor appointment.",anger,easy,mixed_emotion
+E021,"I'm nervous too, yet the strongest feeling is anger about the group project.",anger,medium,mixed_emotion
+E022,"I can see the funny side, but the job interview still makes me furious.",anger,medium,mixed_emotion
+E023,"I'm disappointed and angry, with anger winning out over the unexpected bill.",anger,hard,mixed_emotion
+E024,"I'm tired, but mostly irritated by the weekend plan.",anger,hard,mixed_emotion
+E025,They changed the group project at the last minute after promising they wouldn't.,anger,easy,situational_inference
+E026,Someone ignored what we agreed on about the job interview and acted like it was nothing.,anger,easy,situational_inference
+E027,I was blamed for the unexpected bill even though I had warned everyone in advance.,anger,medium,situational_inference
+E028,They took credit for my work on the weekend plan and never acknowledged me.,anger,medium,situational_inference
+E029,The rules for the exam were suddenly changed only after I finished.,anger,hard,situational_inference
+E030,I was treated unfairly during the presentation and I can't let it go.,anger,hard,situational_inference
+E031,The exam is disgusting to me.,disgust,easy,direct_expression
+E032,I feel disgusted by what happened with the presentation.,disgust,easy,direct_expression
+E033,The whole deadline situation makes me feel sick.,disgust,medium,direct_expression
+E034,I find the manager revolting.,disgust,medium,direct_expression
+E035,Thinking about the rent grosses me out.,disgust,hard,direct_expression
+E036,I feel repulsed by the family dinner.,disgust,hard,direct_expression
+E037,Just thinking about the deadline turns my stomach.,disgust,easy,indirect_expression
+E038,I want to get away from the manager as soon as it comes up.,disgust,easy,indirect_expression
+E039,The rent leaves a bad taste in my mouth.,disgust,medium,indirect_expression
+E040,I cringe whenever I remember the family dinner.,disgust,medium,indirect_expression
+E041,I feel physically put off by the argument with my partner.,disgust,hard,indirect_expression
+E042,I don't even want to be near anything connected to the doctor appointment.,disgust,hard,indirect_expression
+E043,I'm not afraid of the rent; I find it disgusting.,disgust,easy,negation_contrast
+E044,"The family dinner doesn't make me sad, it makes me feel repulsed.",disgust,easy,negation_contrast
+E045,I'm not angry so much as grossed out by the argument with my partner.,disgust,medium,negation_contrast
+E046,I can handle the doctor appointment; I just find it deeply unpleasant.,disgust,medium,negation_contrast
+E047,"The group project isn't scary to me, just revolting.",disgust,hard,negation_contrast
+E048,"I'm not shocked anymore, only disgusted by the job interview.",disgust,hard,negation_contrast
+E049,"I'm angry too, but mostly disgusted by the argument with my partner.",disgust,easy,mixed_emotion
+E050,"The doctor appointment is surprising, but what I really feel is disgust.",disgust,easy,mixed_emotion
+E051,"I'm upset and disgusted, with disgust being stronger about the group project.",disgust,medium,mixed_emotion
+E052,"I feel disappointed, but the job interview mostly turns my stomach.",disgust,medium,mixed_emotion
+E053,"I'm relieved it's over, yet still repulsed by the unexpected bill.",disgust,hard,mixed_emotion
+E054,"I'm uneasy and disgusted by the weekend plan, especially disgusted.",disgust,hard,mixed_emotion
+E055,I found spoiled food left around after the group project and nearly gagged.,disgust,easy,situational_inference
+E056,Someone bragged about cheating during the job interview and I wanted nothing to do with it.,disgust,easy,situational_inference
+E057,The unexpected bill involved behavior I find morally repulsive.,disgust,medium,situational_inference
+E058,I saw something unhygienic during the weekend plan and had to look away.,disgust,medium,situational_inference
+E059,The way people acted during the exam made me want to leave immediately.,disgust,hard,situational_inference
+E060,I learned a gross detail about the presentation and can't stop cringing.,disgust,hard,situational_inference
+E061,I'm scared about the exam.,fear,easy,direct_expression
+E062,The presentation terrifies me.,fear,easy,direct_expression
+E063,I'm afraid of what might happen with the deadline.,fear,medium,direct_expression
+E064,I feel really fearful about the manager.,fear,medium,direct_expression
+E065,I'm frightened by the thought of the rent.,fear,hard,direct_expression
+E066,I'm nervous because the family dinner feels threatening.,fear,hard,direct_expression
+E067,I keep imagining everything going wrong with the deadline.,fear,easy,indirect_expression
+E068,My stomach drops whenever I think about the manager.,fear,easy,indirect_expression
+E069,I can't settle down because of what could happen with the rent.,fear,medium,indirect_expression
+E070,I keep checking for bad news about the family dinner.,fear,medium,indirect_expression
+E071,My mind keeps jumping to worst-case scenarios about the argument with my partner.,fear,hard,indirect_expression
+E072,I feel on edge every time the doctor appointment comes to mind.,fear,hard,indirect_expression
+E073,I'm not angry about the rent; I'm scared.,fear,easy,negation_contrast
+E074,The family dinner doesn't make me sad as much as afraid.,fear,easy,negation_contrast
+E075,"I'm not excited about the argument with my partner, I'm genuinely frightened.",fear,medium,negation_contrast
+E076,I'm not irritated by the doctor appointment; I'm worried something bad will happen.,fear,medium,negation_contrast
+E077,"I don't feel disgusted by the group project, just scared of the outcome.",fear,hard,negation_contrast
+E078,I'm not surprised anymore; now I'm afraid of what the job interview could lead to.,fear,hard,negation_contrast
+E079,"I'm excited too, but mostly scared about the argument with my partner.",fear,easy,mixed_emotion
+E080,"I'm sad and afraid, with fear being stronger around the doctor appointment.",fear,easy,mixed_emotion
+E081,"Part of me is hopeful, but I'm still terrified about the group project.",fear,medium,mixed_emotion
+E082,"I'm frustrated, yet what dominates is fear about the job interview.",fear,medium,mixed_emotion
+E083,"I'm curious and scared at the same time, mostly scared about the unexpected bill.",fear,hard,mixed_emotion
+E084,"I'm relieved I have a plan, but still afraid of the weekend plan.",fear,hard,mixed_emotion
+E085,I have to face the group project tomorrow and I keep thinking I might freeze.,fear,easy,situational_inference
+E086,There is a real chance the job interview could go badly and I can't stop anticipating it.,fear,easy,situational_inference
+E087,I woke up twice thinking about what could happen during the unexpected bill.,fear,medium,situational_inference
+E088,I keep rehearsing escape plans in case the weekend plan goes wrong.,fear,medium,situational_inference
+E089,My heart starts racing when I picture the exam happening.,fear,hard,situational_inference
+E090,I keep delaying sleep because tomorrow's presentation feels threatening.,fear,hard,situational_inference
+E091,I'm really happy about the exam.,joy,easy,direct_expression
+E092,The presentation makes me feel joyful.,joy,easy,direct_expression
+E093,I'm delighted with how the deadline turned out.,joy,medium,direct_expression
+E094,I feel genuinely happy because of the manager.,joy,medium,direct_expression
+E095,I'm thrilled about the rent.,joy,hard,direct_expression
+E096,The family dinner put me in a great mood.,joy,hard,direct_expression
+E097,I can't stop smiling when I think about the deadline.,joy,easy,indirect_expression
+E098,I keep telling people how well the manager went.,joy,easy,indirect_expression
+E099,I feel lighter every time the rent comes to mind.,joy,medium,indirect_expression
+E100,I caught myself grinning about the family dinner all day.,joy,medium,indirect_expression
+E101,I have so much positive energy after the argument with my partner.,joy,hard,indirect_expression
+E102,I keep replaying the best parts of the doctor appointment in my head.,joy,hard,indirect_expression
+E103,I'm not nervous about the rent; I'm excited and happy.,joy,easy,negation_contrast
+E104,"The family dinner doesn't make me sad at all, it makes me joyful.",joy,easy,negation_contrast
+E105,I'm not angry about the argument with my partner; I'm actually delighted.,joy,medium,negation_contrast
+E106,"I expected to be worried, but the doctor appointment makes me happy.",joy,medium,negation_contrast
+E107,"I'm not surprised anymore, just really pleased about the group project.",joy,hard,negation_contrast
+E108,I'm not pretending to be okay; I'm genuinely happy about the job interview.,joy,hard,negation_contrast
+E109,"I'm tired, but mostly happy about the argument with my partner.",joy,easy,mixed_emotion
+E110,"I'm a little nervous, yet I'm much more excited and joyful about the doctor appointment.",joy,easy,mixed_emotion
+E111,"I'm surprised and happy, with happiness stronger after the group project.",joy,medium,mixed_emotion
+E112,I feel relieved and joyful about the job interview.,joy,medium,mixed_emotion
+E113,"I'm emotional, but in a happy way because of the unexpected bill.",joy,hard,mixed_emotion
+E114,"I'm slightly overwhelmed, though overall the weekend plan makes me very happy.",joy,hard,mixed_emotion
+E115,The group project went better than I hoped and I celebrated afterward.,joy,easy,situational_inference
+E116,I got good news about the job interview and immediately called someone to share it.,joy,easy,situational_inference
+E117,Everything finally worked out with the unexpected bill and I spent the evening smiling.,joy,medium,situational_inference
+E118,I received praise for the weekend plan and felt proud all day.,joy,medium,situational_inference
+E119,The exam ended with exactly the outcome I wanted.,joy,hard,situational_inference
+E120,"After weeks of effort, the presentation finally paid off and I felt fantastic.",joy,hard,situational_inference
+E121,I feel pretty neutral about the exam.,neutral,easy,direct_expression
+E122,I don't have a strong feeling about the presentation.,neutral,easy,direct_expression
+E123,The deadline seems fine to me.,neutral,medium,direct_expression
+E124,I'm neither happy nor upset about the manager.,neutral,medium,direct_expression
+E125,I feel calm and neutral about the rent.,neutral,hard,direct_expression
+E126,The family dinner doesn't really affect my mood.,neutral,hard,direct_expression
+E127,"The deadline happened, and I just moved on with my day.",neutral,easy,indirect_expression
+E128,I noted the manager and didn't think much more about it.,neutral,easy,indirect_expression
+E129,The rent is something I can deal with without much emotion.,neutral,medium,indirect_expression
+E130,I don't keep thinking about the family dinner; it's just another task.,neutral,medium,indirect_expression
+E131,"The argument with my partner came up, but it didn't change how I felt.",neutral,hard,indirect_expression
+E132,I can take or leave the doctor appointment; it doesn't matter much to me.,neutral,hard,indirect_expression
+E133,I'm not worried or excited about the rent.,neutral,easy,negation_contrast
+E134,"The family dinner doesn't make me angry, sad, or especially happy.",neutral,easy,negation_contrast
+E135,I'm not afraid of the argument with my partner; I just see it as routine.,neutral,medium,negation_contrast
+E136,I'm neither surprised nor disappointed by the doctor appointment.,neutral,medium,negation_contrast
+E137,"The group project isn't bothering me, but it isn't exciting either.",neutral,hard,negation_contrast
+E138,I'm not emotional about the job interview; I'm simply dealing with it.,neutral,hard,negation_contrast
+E139,"There are good and bad parts to the argument with my partner, but overall I feel neutral.",neutral,easy,mixed_emotion
+E140,"I was briefly surprised by the doctor appointment, but now I feel normal about it.",neutral,easy,mixed_emotion
+E141,"I had some nerves earlier, though the group project feels routine now.",neutral,medium,mixed_emotion
+E142,"I can see why others care about the job interview, but I feel indifferent.",neutral,medium,mixed_emotion
+E143,"The unexpected bill was mildly annoying and mildly interesting, so it balances out.",neutral,hard,mixed_emotion
+E144,"I felt something at first, but now the weekend plan leaves me mostly neutral.",neutral,hard,mixed_emotion
+E145,"The group project is scheduled for next week, and I wrote it on my calendar.",neutral,easy,situational_inference
+E146,I finished the job interview and then went back to my usual routine.,neutral,easy,situational_inference
+E147,"Someone mentioned the unexpected bill, and I acknowledged it without much reaction.",neutral,medium,situational_inference
+E148,"The weekend plan changed time, so I updated my schedule and carried on.",neutral,medium,situational_inference
+E149,I received the details for the exam and filed them away.,neutral,hard,situational_inference
+E150,"The presentation is one item on my list, no more important than the others.",neutral,hard,situational_inference
+E151,I'm sad about the exam.,sadness,easy,direct_expression
+E152,The presentation makes me feel really down.,sadness,easy,direct_expression
+E153,I feel heartbroken about the deadline.,sadness,medium,direct_expression
+E154,I'm deeply disappointed and sad about the manager.,sadness,medium,direct_expression
+E155,The rent has left me feeling low.,sadness,hard,direct_expression
+E156,I feel miserable when I think about the family dinner.,sadness,hard,direct_expression
+E157,I keep tearing up when I think about the deadline.,sadness,easy,indirect_expression
+E158,I haven't felt like doing much since the manager.,sadness,easy,indirect_expression
+E159,The rent keeps weighing on me.,sadness,medium,indirect_expression
+E160,I feel a heaviness whenever the family dinner comes to mind.,sadness,medium,indirect_expression
+E161,I've been quiet and withdrawn since the argument with my partner.,sadness,hard,indirect_expression
+E162,I keep wishing the doctor appointment had turned out differently.,sadness,hard,indirect_expression
+E163,I'm not angry about the rent; I'm sad.,sadness,easy,negation_contrast
+E164,"The family dinner doesn't scare me, it just makes me feel low.",sadness,easy,negation_contrast
+E165,I'm not disgusted by the argument with my partner; I'm hurt and sad.,sadness,medium,negation_contrast
+E166,"I'm not surprised anymore, only saddened by the doctor appointment.",sadness,medium,negation_contrast
+E167,"The group project isn't making me anxious, just deeply disappointed.",sadness,hard,negation_contrast
+E168,I'm not irritated so much as heartbroken about the job interview.,sadness,hard,negation_contrast
+E169,"I'm angry too, but mostly sad about the argument with my partner.",sadness,easy,mixed_emotion
+E170,"I'm relieved it's over, yet still sad about the doctor appointment.",sadness,easy,mixed_emotion
+E171,"I'm worried and sad, with sadness being stronger around the group project.",sadness,medium,mixed_emotion
+E172,"I can smile about parts of it, but the job interview still makes me sad overall.",sadness,medium,mixed_emotion
+E173,"I'm disappointed and frustrated, though mostly just sad about the unexpected bill.",sadness,hard,mixed_emotion
+E174,"I'm surprised by the weekend plan, but the sadness is what stays with me.",sadness,hard,mixed_emotion
+E175,The group project didn't work out after I had hoped for it for weeks.,sadness,easy,situational_inference
+E176,I got bad news about the job interview and spent the evening alone.,sadness,easy,situational_inference
+E177,"The unexpected bill ended, and I keep thinking about what I lost.",sadness,medium,situational_inference
+E178,Someone important to me won't be part of the weekend plan anymore.,sadness,medium,situational_inference
+E179,"I tried hard for the exam, but the outcome left me feeling empty.",sadness,hard,situational_inference
+E180,The presentation reminded me of something I miss and I couldn't shake the feeling.,sadness,hard,situational_inference
+E181,I'm really surprised by the exam.,surprise,easy,direct_expression
+E182,The presentation completely shocked me.,surprise,easy,direct_expression
+E183,I didn't expect the deadline at all.,surprise,medium,direct_expression
+E184,I'm astonished by what happened with the manager.,surprise,medium,direct_expression
+E185,The rent caught me totally off guard.,surprise,hard,direct_expression
+E186,I'm still surprised about the family dinner.,surprise,hard,direct_expression
+E187,I had to read the message about the deadline twice.,surprise,easy,indirect_expression
+E188,I just stared for a moment when I heard about the manager.,surprise,easy,indirect_expression
+E189,The rent was the last thing I expected today.,surprise,medium,indirect_expression
+E190,"I keep saying, 'Wait, really?' about the family dinner.",surprise,medium,indirect_expression
+E191,It took me a minute to process the argument with my partner.,surprise,hard,indirect_expression
+E192,I did a double take when the doctor appointment happened.,surprise,hard,indirect_expression
+E193,I'm not angry about the rent; I'm mostly shocked.,surprise,easy,negation_contrast
+E194,"The family dinner isn't frightening me, it just surprised me.",surprise,easy,negation_contrast
+E195,I'm not sad about the argument with my partner; I simply didn't see it coming.,surprise,medium,negation_contrast
+E196,"The doctor appointment doesn't disgust me, but it absolutely caught me off guard.",surprise,medium,negation_contrast
+E197,I'm not excited or upset yet; I'm still processing the surprise of the group project.,surprise,hard,negation_contrast
+E198,I'm not worried about the job interview; I'm just amazed it happened.,surprise,hard,negation_contrast
+E199,"I'm happy and surprised about the argument with my partner, but surprise hit first.",surprise,easy,mixed_emotion
+E200,"I'm nervous too, yet mostly shocked by the doctor appointment.",surprise,easy,mixed_emotion
+E201,"I'm a little disappointed, but what stands out is how unexpected the group project was.",surprise,medium,mixed_emotion
+E202,I'm amused and surprised by the job interview.,surprise,medium,mixed_emotion
+E203,"I'm relieved, but still stunned by the unexpected bill.",surprise,hard,mixed_emotion
+E204,"I'm confused and surprised, with surprise being the strongest feeling about the weekend plan.",surprise,hard,mixed_emotion
+E205,The group project changed without warning and I had no idea it was coming.,surprise,easy,situational_inference
+E206,I opened the message about the job interview and just stared at the screen.,surprise,easy,situational_inference
+E207,Someone announced the unexpected bill out of nowhere during the meeting.,surprise,medium,situational_inference
+E208,The weekend plan happened months earlier than anyone predicted.,surprise,medium,situational_inference
+E209,I walked in expecting one thing and found the exam completely different.,surprise,hard,situational_inference
+E210,"No one had hinted at the presentation, so the news stopped me in my tracks.",surprise,hard,situational_inference

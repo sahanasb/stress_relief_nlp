@@ -1,0 +1,70 @@
+{
+  "n_examples": 210,
+  "accuracy": 0.7904761904761904,
+  "macro_precision": 0.8252385002850842,
+  "macro_recall": 0.7904761904761904,
+  "macro_f1": 0.7914196188266059,
+  "weighted_precision": 0.825238500285084,
+  "weighted_recall": 0.7904761904761904,
+  "weighted_f1": 0.7914196188266059,
+  "mean_latency_seconds": 1.0321847610238062,
+  "median_latency_seconds": 0.99064103649971,
+  "p95_latency_seconds": 1.2664059489497956,
+  "classification_report": {
+    "academic": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9,
+      "f1-score": 0.9310344827586207,
+      "support": 30.0
+    },
+    "work or career": {
+      "precision": 0.56,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.7,
+      "support": 30.0
+    },
+    "relationships": {
+      "precision": 0.8695652173913043,
+      "recall": 0.6666666666666666,
+      "f1-score": 0.7547169811320755,
+      "support": 30.0
+    },
+    "family": {
+      "precision": 0.8181818181818182,
+      "recall": 0.9,
+      "f1-score": 0.8571428571428571,
+      "support": 30.0
+    },
+    "financial": {
+      "precision": 0.8125,
+      "recall": 0.8666666666666667,
+      "f1-score": 0.8387096774193549,
+      "support": 30.0
+    },
+    "health or wellness": {
+      "precision": 0.9444444444444444,
+      "recall": 0.5666666666666667,
+      "f1-score": 0.7083333333333334,
+      "support": 30.0
+    },
+    "general": {
+      "precision": 0.8076923076923077,
+      "recall": 0.7,
+      "f1-score": 0.75,
+      "support": 30.0
+    },
+    "accuracy": 0.7904761904761904,
+    "macro avg": {
+      "precision": 0.8252385002850842,
+      "recall": 0.7904761904761904,
+      "f1-score": 0.7914196188266059,
+      "support": 210.0
+    },
+    "weighted avg": {
+      "precision": 0.825238500285084,
+      "recall": 0.7904761904761904,
+      "f1-score": 0.7914196188266059,
+      "support": 210.0
+    }
+  }
+}

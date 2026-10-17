@@ -1,0 +1,6 @@
+subcategory,n_examples,accuracy
+direct_topic,42,0.9523809523809523
+indirect_context,42,0.8571428571428571
+multi_topic_primary,42,0.5714285714285714
+ambiguous_boundary,42,0.7380952380952381
+short_or_context_light,42,0.8333333333333334

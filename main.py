@@ -302,6 +302,13 @@ def process_message(
         "topic": topic,
         "topic_score": topic_score,
         "should_close": False,
+        # Full score distributions (used by the web UI dashboard)
+        "emotion_all": emotion_results,
+        "stress_all": stress_results,
+        "topic_all": [
+            {"label": l, "score": sc}
+            for l, sc in zip(topic_result["labels"], topic_result["scores"])
+        ],
     }
 
 

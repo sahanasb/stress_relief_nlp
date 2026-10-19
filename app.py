@@ -10,14 +10,14 @@ import uuid
 
 from flask import Flask, jsonify, request, send_from_directory
 
-DEMO = os.getenv("WE_DEMO") == "1"
+DEMO = os.getenv("SerenAI_DEMO") == "1"
 
 TOPICS = ["academic", "work or career", "relationships", "family",
           "financial", "health or wellness", "general"]
 
 if DEMO:
     INTRO = (
-        "Hi, I'm WE, your stress support assistant. "
+        "Hi, I'm SerenAI, your stress support assistant. "
         "I'm here to listen and help you work through everyday stress. "
         "Before we get started, what should I call you?"
     )

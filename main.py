@@ -1,11 +1,14 @@
+import re
+
 from nlp.emotion_detector import detect_emotion
 from nlp.stress_classifier import detect_stress
 from nlp.topic_classifier import detect_topic
+
 from agent.safety import check_safety
 from agent.stress_agent import generate_response
 from agent.conversation_state import detect_conversation_state
-from agent.safety import check_safety
 from agent.safety_agent import generate_safety_response
+
 from voice.speech_to_text import listen
 from voice.text_to_speech import speak
 
@@ -14,106 +17,215 @@ from voice.text_to_speech import speak
 # Short-term memory
 # -------------------------
 conversation_history = []
+
+
+# -------------------------
 # Agent introduction
-intro = (
+# -------------------------
+INTRO = (
     "Hi, I'm SerenAI, your stress support assistant. "
     "I'm here to listen and help you work through everyday stress. "
-    "How are you feeling today?"
+    "Before we get started, what should I call you?"
 )
 
-print(f"\nSerenAI: {intro}")
-speak(intro)
+
+# -------------------------
+# Name extraction
+# -------------------------
+def extract_name(text):
+    """Extract a user's preferred name from natural spoken introductions."""
+
+    if not text:
+        return None
+
+    text = text.strip()
+
+    patterns = [
+        r"\bmy name is\s*,?\s*(.+)",
+        r"\byou can call me\s*,?\s*(.+)",
+        r"\bcall me\s*,?\s*(.+)",
+        r"\bi am\s*,?\s*(.+)",
+        r"\bi'm\s*,?\s*(.+)",
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+
+        if match:
+            name = match.group(1)
+
+            # Remove common speech fillers from the beginning
+            name = re.sub(
+                r"^(uh|um|umm|erm|hmm)[,\s]+",
+                "",
+                name,
+                flags=re.IGNORECASE
+            )
+
+            # Clean punctuation
+            name = name.strip().strip(".,!?")
+
+            if name:
+                return name.title()
+
+    # User may have simply said their name
+    name = text.strip().strip(".,!?")
+
+    # Remove greetings/fillers from the beginning
+    name = re.sub(
+        r"^(hi|hello|hey|uh|um|umm)[,\s]+",
+        "",
+        name,
+        flags=re.IGNORECASE
+    )
+
+    return name.strip().title() if name.strip() else None
 
 
-while True:
+# -------------------------
+# Core NLP / agent pipeline
+# -------------------------
+def process_message(
+    text,
+    user_name=None,
+    history=None
+):
+    """
+    Process one user message through SerenAI's pipeline.
 
-    text = listen()
-    # text = input("\nYou: ")
-    print(f"\nYou: {text}")
+    This reusable application logic can later be called
+    from the voice application or another interface,
+    such as Gradio.
+    """
 
-    if not text.strip():
-        print("I didn't catch that. Please try again.")
-        continue
+    if history is None:
+        history = conversation_history
+
+    text = text.strip()
+
+    if not text:
+        return {
+            "response": "I didn't catch that. Please try again.",
+            "safety_state": None,
+            "conversation_state": None,
+            "emotion": None,
+            "emotion_score": None,
+            "stress_label": None,
+            "stress_score": None,
+            "topic": None,
+            "topic_score": None,
+            "should_close": False,
+        }
 
     # -------------------------
-    # Exit manually
-    # -------------------------
-    if text.lower() == "quit":
-        print("\nStress Relief Agent: Take care. Goodbye!")
-        break
-
-    # -------------------------
-    # Safety check
+    # 1. Safety check
     # -------------------------
     safety_state = check_safety(
         user_message=text,
-        conversation_history=conversation_history
+        conversation_history=history,
     )
-    print(f"\nSafety State: {safety_state}")
 
     # -------------------------
-    # Handle safety concerns
+    # 2. Handle safety concerns
     # -------------------------
-    if safety_state in ["concern", "immediate_risk"]:
+    if safety_state in [
+        "concern",
+        "immediate_risk"
+    ]:
 
         response = generate_safety_response(
             user_message=text,
             safety_state=safety_state,
-            conversation_history=conversation_history
+            user_name=user_name,
+            conversation_history=history,
         )
 
-        print("\nSafety Support Agent:")
-        print(response)
-        speak(response)
-
-        # Save this interaction to conversation memory
-        conversation_history.append(
+        # Save safety interaction
+        history.append(
             {
                 "role": "user",
                 "content": text
             }
         )
 
-        conversation_history.append(
+        history.append(
             {
                 "role": "assistant",
                 "content": response
             }
         )
 
-        # Skip the normal stress-relief pipeline
-        continue
+        return {
+            "response": response,
+            "safety_state": safety_state,
+            "conversation_state": None,
+            "emotion": None,
+            "emotion_score": None,
+            "stress_label": None,
+            "stress_score": None,
+            "topic": None,
+            "topic_score": None,
+            "should_close": False,
+        }
 
     # -------------------------
-    # 1. Detect conversation state
+    # 3. Detect conversation state
     # -------------------------
     conversation_state = detect_conversation_state(
         user_message=text,
-        conversation_history=conversation_history
+        conversation_history=history,
     )
 
-    print(f"\nConversation State: {conversation_state}")
-
-
     # -------------------------
-    # 2. Close conversation
+    # 4. Close conversation
     # -------------------------
     if conversation_state == "close":
 
-        closing_message = (
-            "I'm glad we could talk. Take care of yourself, "
-            "and you're welcome to come back whenever you'd like."
+        if user_name:
+            closing_message = (
+                f"I'm glad we could talk, {user_name}. "
+                "Take care of yourself, and you're welcome "
+                "to come back whenever you'd like."
+            )
+
+        else:
+            closing_message = (
+                "I'm glad we could talk. "
+                "Take care of yourself, and you're welcome "
+                "to come back whenever you'd like."
+            )
+
+        # Save final user message
+        history.append(
+            {
+                "role": "user",
+                "content": text
+            }
         )
 
-        print(f"\nStress Relief Agent: {closing_message}")
+        # Save SerenAI's closing response
+        history.append(
+            {
+                "role": "assistant",
+                "content": closing_message
+            }
+        )
 
-        speak(closing_message)
-
-        break
-
+        return {
+            "response": closing_message,
+            "safety_state": safety_state,
+            "conversation_state": conversation_state,
+            "emotion": None,
+            "emotion_score": None,
+            "stress_label": None,
+            "stress_score": None,
+            "topic": None,
+            "topic_score": None,
+            "should_close": True,
+        }
 
     # -------------------------
-    # 3. Emotion detection
+    # 5. Emotion detection
     # -------------------------
     emotion_results = detect_emotion(text)
 
@@ -125,9 +237,8 @@ while True:
     emotion = top_emotion["label"]
     emotion_score = top_emotion["score"]
 
-
     # -------------------------
-    # 4. Stress detection
+    # 6. Stress detection
     # -------------------------
     stress_results = detect_stress(text)
 
@@ -139,27 +250,16 @@ while True:
     stress_label = top_stress["label"]
     stress_score = top_stress["score"]
 
-
     # -------------------------
-    # 5. Topic detection
+    # 7. Topic detection
     # -------------------------
     topic_result = detect_topic(text)
 
     topic = topic_result["labels"][0]
     topic_score = topic_result["scores"][0]
 
-
     # -------------------------
-    # 6. Show NLP analysis
-    # -------------------------
-    print("\n--- NLP Analysis ---")
-    print(f"Emotion: {emotion} ({emotion_score:.2%})")
-    print(f"Stress: {stress_label} ({stress_score:.2%})")
-    print(f"Topic: {topic} ({topic_score:.2%})")
-
-
-    # -------------------------
-    # 7. Generate AI response
+    # 8. Generate AI response
     # -------------------------
     response = generate_response(
         user_message=text,
@@ -169,27 +269,215 @@ while True:
         stress_score=stress_score,
         topic=topic,
         topic_score=topic_score,
-        conversation_history=conversation_history,
-        conversation_state=conversation_state
+        user_name=user_name,
+        conversation_history=history,
+        conversation_state=conversation_state,
     )
 
-    print("\nStress Relief Agent:")
-    print(response)
-    speak(response)
-
     # -------------------------
-    # 8. Save this turn to memory
+    # 9. Save to short-term memory
     # -------------------------
-    conversation_history.append(
+    history.append(
         {
             "role": "user",
             "content": text
         }
     )
 
-    conversation_history.append(
+    history.append(
         {
             "role": "assistant",
             "content": response
         }
     )
+
+    return {
+        "response": response,
+        "safety_state": safety_state,
+        "conversation_state": conversation_state,
+        "emotion": emotion,
+        "emotion_score": emotion_score,
+        "stress_label": stress_label,
+        "stress_score": stress_score,
+        "topic": topic,
+        "topic_score": topic_score,
+        "should_close": False,
+    }
+
+
+# -------------------------
+# Current voice / terminal app
+# -------------------------
+def run_voice_app():
+    """
+    Run SerenAI using the microphone
+    and text-to-speech flow.
+    """
+
+    # -------------------------
+    # Introduction
+    # -------------------------
+    print(f"\nSerenAI: {INTRO}")
+    speak(INTRO)
+
+    # -------------------------
+    # Ask for user's name
+    # -------------------------
+    name_input = listen()
+
+    print(f"\nYou: {name_input}")
+
+    # Extract only the actual name
+    user_name = extract_name(name_input)
+
+    if user_name:
+
+        greeting = (
+            f"Nice to meet you, {user_name}. "
+            "How are you feeling today?"
+        )
+
+    else:
+
+        greeting = (
+            "That's okay. "
+            "How are you feeling today?"
+        )
+
+    print(f"\nSerenAI: {greeting}")
+    speak(greeting)
+
+    # -------------------------
+    # Main conversation loop
+    # -------------------------
+    while True:
+
+        text = listen()
+
+        # For keyboard testing, replace:
+        #
+        # text = listen()
+        #
+        # with:
+        #
+        # text = input("\nYou: ")
+
+        print(f"\nYou: {text}")
+
+        # -------------------------
+        # Empty input
+        # -------------------------
+        if not text or not text.strip():
+
+            message = (
+                "I didn't catch that. "
+                "Please try again."
+            )
+
+            print(f"\nSerenAI: {message}")
+            speak(message)
+
+            continue
+
+        # -------------------------
+        # Manual quit option
+        # -------------------------
+        if text.strip().lower() == "quit":
+
+            if user_name:
+                goodbye = (
+                    f"Take care, {user_name}. Goodbye!"
+                )
+
+            else:
+                goodbye = "Take care. Goodbye!"
+
+            print(f"\nSerenAI: {goodbye}")
+            speak(goodbye)
+
+            break
+
+        # -------------------------
+        # Process user message
+        # -------------------------
+        result = process_message(
+            text=text,
+            user_name=user_name,
+        )
+
+        # -------------------------
+        # Display safety state
+        # -------------------------
+        print(
+            f"\nSafety State: "
+            f"{result['safety_state']}"
+        )
+
+        # -------------------------
+        # Display conversation state
+        # -------------------------
+        if result["conversation_state"] is not None:
+
+            print(
+                f"Conversation State: "
+                f"{result['conversation_state']}"
+            )
+
+        # -------------------------
+        # Display NLP analysis
+        # -------------------------
+        if result["emotion"] is not None:
+
+            print("\n--- NLP Analysis ---")
+
+            print(
+                f"Emotion: "
+                f"{result['emotion']} "
+                f"({result['emotion_score']:.2%})"
+            )
+
+            print(
+                f"Stress: "
+                f"{result['stress_label']} "
+                f"({result['stress_score']:.2%})"
+            )
+
+            print(
+                f"Topic: "
+                f"{result['topic']} "
+                f"({result['topic_score']:.2%})"
+            )
+
+        # -------------------------
+        # Display response
+        # -------------------------
+        if result["safety_state"] in [
+            "concern",
+            "immediate_risk"
+        ]:
+
+            print("\nSafety Support Agent:")
+
+        else:
+
+            print("\nSerenAI:")
+
+        print(result["response"])
+
+        # -------------------------
+        # Speak response
+        # -------------------------
+        speak(result["response"])
+
+        # -------------------------
+        # End conversation
+        # -------------------------
+        if result["should_close"]:
+            break
+
+
+# -------------------------
+# Start application
+# -------------------------
+if __name__ == "__main__":
+    run_voice_app()

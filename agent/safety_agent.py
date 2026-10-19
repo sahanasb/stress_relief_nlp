@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 
+# Load environment variables from .env
 load_dotenv()
 
 client = OpenAI(
@@ -43,21 +44,45 @@ If safety_state is "immediate_risk":
 
 Do not diagnose mental-health conditions.
 Do not shame, threaten, or judge the user.
+
+Personalization:
+- The user's preferred name is {user_name}.
+- Use the user's name naturally and sparingly.
+- Do not include their name in every sentence.
+- It may be appropriate to use their name when acknowledging distress,
+  providing reassurance, or emphasizing immediate safety.
 """
 
 
 def generate_safety_response(
     user_message,
     safety_state,
+    user_name=None,
     conversation_history=None
 ):
+    """
+    Generate a safety-aware response using:
+    - the user's current message
+    - safety classification
+    - the user's preferred name
+    - previous conversation history
+    """
+
     if conversation_history is None:
         conversation_history = []
+
+    # Use a fallback if no name is available
+    display_name = user_name if user_name else "the user"
+
+    # Insert the user's name into the safety prompt
+    personalized_safety_prompt = SAFETY_PROMPT.format(
+        user_name=display_name
+    )
 
     messages = [
         {
             "role": "system",
-            "content": SAFETY_PROMPT
+            "content": personalized_safety_prompt
         }
     ]
 

@@ -1,0 +1,161 @@
+id,text,stress_true,difficulty,subcategory,stress_pred_raw,stress_pred,openai_emotion,openai_stress,openai_topic,latency_seconds,error,correct
+S001,I'm really stressed about my exam tomorrow.,stress,easy,direct_state,stress,stress,fear,stress,academic,0.7513227749986982,,True
+S002,I feel overwhelmed by everything I have to do this week.,stress,easy,direct_state,stress,stress,fear,stress,general,1.335692635999294,,True
+S003,I'm under a lot of pressure at work right now.,stress,easy,direct_state,stress,stress,fear,stress,work or career,0.7862977260010666,,True
+S004,I'm struggling to cope with all these deadlines.,stress,easy,direct_state,stress,stress,fear,stress,academic,1.1400817350004218,,True
+S005,I feel tense and stressed about money.,stress,easy,direct_state,stress,stress,fear,stress,financial,1.138358698997763,,True
+S006,This week has been exhausting and stressful.,stress,medium,direct_state,stress,stress,sadness,stress,general,0.9954244430009567,,True
+S007,I can't relax because I have too much on my plate.,stress,medium,direct_state,stress,stress,fear,stress,general,1.5507170079981734,,True
+S008,I feel like I'm being pulled in five directions at once.,stress,medium,direct_state,stress,stress,mixed,stress,general,1.0083012989998679,,True
+S009,I'm worried I won't keep up with everything.,stress,medium,direct_state,stress,stress,fear,stress,general,0.7275413520001166,,True
+S010,I feel overloaded by school and work together.,stress,medium,direct_state,stress,stress,sadness,stress,academic,0.7930085480002163,,True
+S011,I have too many responsibilities and it's getting to me.,stress,medium,direct_state,stress,stress,sadness,stress,general,1.0383781310010818,,True
+S012,I feel constantly pressured by what needs to be done.,stress,hard,direct_state,stress,stress,fear,stress,general,1.4011316920004901,,True
+S013,I'm having a hard time keeping up with my commitments.,stress,hard,direct_state,stress,stress,sadness,stress,general,0.847838943998795,,True
+S014,I feel mentally stretched thin today.,stress,hard,direct_state,stress,stress,sadness,stress,health or wellness,1.1692058779990475,,True
+S015,Everything feels like too much right now.,stress,hard,direct_state,stress,stress,sadness,stress,general,1.0200442949972057,,True
+S016,I'm tense because several important things are happening at once.,stress,hard,direct_state,stress,stress,fear,stress,general,1.0027184470018256,,True
+S017,"I have two exams, a project, and a work shift before Friday.",stress,easy,workload_pressure,stress,stress,fear,stress,academic,0.8637955209997017,,True
+S018,Three deadlines landed on the same day and I don't know where to start.,stress,easy,workload_pressure,stress,stress,fear,stress,work or career,0.8345485640020343,,True
+S019,My manager added another task even though I'm already behind.,stress,easy,workload_pressure,stress,stress,anger,stress,work or career,0.86311607099924,,True
+S020,I studied all weekend but still have chapters left to cover.,stress,easy,workload_pressure,stress,stress,sadness,stress,academic,0.7439567750006972,,True
+S021,I need to finish a report tonight and prepare for a presentation tomorrow.,stress,easy,workload_pressure,stress,stress,uncertain,stress,work or career,1.1483052149997093,,True
+S022,My calendar is packed from morning to night for the next four days.,stress,medium,workload_pressure,stress,stress,fear,stress,work or career,0.8029033730017545,,True
+S023,"Every time I finish one assignment, two more are waiting.",stress,medium,workload_pressure,stress,stress,sadness,stress,academic,2.539826134998293,,True
+S024,I'm covering for a coworker while trying to meet my own deadlines.,stress,medium,workload_pressure,stress,stress,mixed,stress,work or career,0.8171331910016306,,True
+S025,I have to choose between sleeping enough and finishing everything on time.,stress,medium,workload_pressure,stress,stress,fear,stress,work or career,0.9545703879994107,,True
+S026,I keep moving tasks to tomorrow because today is already full.,stress,medium,workload_pressure,stress,stress,uncertain,stress,work or career,1.2229751160011801,,True
+S027,I'm preparing for finals while also applying for internships.,stress,medium,workload_pressure,stress,stress,neutral,stress,academic,0.9586275760011631,,True
+S028,The group project is behind schedule and I'm the one trying to fix it.,stress,hard,workload_pressure,stress,stress,fear,stress,academic,0.839163433000067,,True
+S029,I have bills due while my work hours were cut this month.,stress,hard,workload_pressure,stress,stress,fear,stress,financial,1.026999691999663,,True
+S030,My family needs help at the same time my coursework is piling up.,stress,hard,workload_pressure,stress,stress,mixed,stress,family,0.9678314230004617,,True
+S031,I'm trying to meet multiple people’s expectations at once.,stress,hard,workload_pressure,stress,stress,mixed,stress,relationships,1.0071321349969367,,True
+S032,I have no open space in my schedule and another obligation just came up.,stress,hard,workload_pressure,stress,stress,fear,stress,general,1.03351630600082,,True
+S033,My shoulders stay tight whenever I think about tomorrow's exam.,stress,easy,physiological_cognitive,stress,stress,fear,stress,academic,0.9555856240003777,,True
+S034,I keep waking up at night thinking about everything I forgot to finish.,stress,easy,physiological_cognitive,stress,stress,fear,stress,health or wellness,1.279543938999268,,True
+S035,My mind races through my to-do list even when I'm trying to rest.,stress,easy,physiological_cognitive,stress,stress,fear,stress,work or career,0.7311612570010766,,True
+S036,I can't focus because I'm thinking about all the deadlines ahead.,stress,easy,physiological_cognitive,stress,stress,fear,stress,academic,1.1934499489980226,,True
+S037,My stomach feels knotted whenever I open my school portal.,stress,easy,physiological_cognitive,stress,stress,fear,stress,academic,0.854362541998853,,True
+S038,I keep checking the clock because I feel like I'm running out of time.,stress,medium,physiological_cognitive,stress,stress,fear,stress,general,0.7700349709994043,,True
+S039,I reread the same paragraph because my mind won't settle down.,stress,medium,physiological_cognitive,stress,stress,uncertain,stress,academic,1.2363292230002116,,True
+S040,I feel restless and can't stop thinking about what could go wrong.,stress,medium,physiological_cognitive,stress,stress,fear,stress,general,0.9210299440019298,,True
+S041,I've been getting headaches on days when my workload is highest.,stress,medium,physiological_cognitive,stress,stress,uncertain,stress,health or wellness,1.457976953999605,,True
+S042,I keep mentally rehearsing tomorrow's presentation instead of sleeping.,stress,medium,physiological_cognitive,stress,stress,fear,stress,work or career,0.9421546250014217,,True
+S043,I feel wired even though I'm physically tired.,stress,medium,physiological_cognitive,stress,stress,uncertain,stress,health or wellness,1.2304562870012887,,True
+S044,I can't enjoy my break because my mind keeps returning to unfinished work.,stress,hard,physiological_cognitive,stress,stress,sadness,stress,work or career,0.945443267999508,,True
+S045,I keep forgetting small things because I'm juggling too much.,stress,hard,physiological_cognitive,stress,stress,sadness,stress,health or wellness,1.0658628160017543,,True
+S046,My breathing gets shallow when I look at everything due this week.,stress,hard,physiological_cognitive,stress,stress,fear,stress,work or career,1.04829376500129,,True
+S047,I feel mentally crowded by tasks I haven't completed.,stress,hard,physiological_cognitive,stress,stress,anger,stress,general,1.0397649460028333,,True
+S048,I keep switching between assignments because I can't decide what is most urgent.,stress,hard,physiological_cognitive,stress,stress,uncertain,stress,academic,1.11527670400028,,True
+S049,"I'm not in a crisis, but I am definitely stressed about this week.",stress,easy,negation_recovery,stress,stress,fear,stress,general,1.2971002819977002,,True
+S050,"I'm calmer than yesterday, but I still feel pressure about the deadline.",stress,easy,negation_recovery,stress,stress,mixed,stress,work or career,1.0514009059988894,,True
+S051,"I'm not panicking, though I am carrying a lot of stress right now.",stress,easy,negation_recovery,stress,stress,neutral,stress,general,1.1974092309974367,,True
+S052,"I slept better last night, but the workload is still stressing me out.",stress,easy,negation_recovery,stress,stress,mixed,stress,work or career,0.8832279189991823,,True
+S053,"I'm not overwhelmed every minute, but the exam is still weighing on me.",stress,easy,negation_recovery,stress,stress,fear,stress,academic,1.0677456830017036,,True
+S054,"I have a plan now, though I still feel stressed about finishing in time.",stress,medium,negation_recovery,stress,stress,mixed,stress,work or career,1.0671993469986774,,True
+S055,"I'm not falling apart, but I can tell the pressure is affecting me.",stress,medium,negation_recovery,stress,stress,sadness,stress,general,1.081351230997825,,True
+S056,"I'm handling it, but I still feel tense about the situation.",stress,medium,negation_recovery,stress,stress,fear,stress,general,0.9776087469981576,,True
+S057,"I'm less anxious than before, yet the deadlines still feel heavy.",stress,medium,negation_recovery,stress,stress,mixed,stress,work or career,0.8324005160029628,,True
+S058,"I'm not scared exactly, but I am stressed by how much is happening.",stress,medium,negation_recovery,stress,stress,uncertain,stress,general,1.109310921998258,,True
+S059,"I'm functioning okay, though I keep feeling pressure in the background.",stress,medium,negation_recovery,stress,stress,uncertain,stress,general,1.0723142019996885,,True
+S060,"I'm not upset with anyone, but the amount of work is stressing me.",stress,hard,negation_recovery,stress,stress,neutral,stress,work or career,1.1598506189984619,,True
+S061,"I know it will probably be fine, but I still feel overloaded right now.",stress,hard,negation_recovery,stress,stress,fear,stress,general,0.787289955002052,,True
+S062,"I'm taking breaks, yet I can't fully switch off from the pressure.",stress,hard,negation_recovery,stress,stress,fear,stress,general,0.9839511339996534,,True
+S063,"I'm more organized now, but the situation still feels stressful.",stress,hard,negation_recovery,stress,stress,mixed,stress,general,0.8910072069993475,,True
+S064,"I'm not spiraling, but I do feel consistently tense about what I need to do.",stress,hard,negation_recovery,stress,stress,fear,stress,general,0.8782521149987588,,True
+S065,"I'm excited for the opportunity, but preparing for it is wearing me out.",stress,easy,ambiguous_mixed,stress,stress,mixed,stress,work or career,0.7310140790032165,,True
+S066,"The project is interesting, yet the deadline pressure is intense.",stress,easy,ambiguous_mixed,stress,stress,mixed,stress,work or career,1.2718875749997096,,True
+S067,"I'm proud of how much I'm doing, but I barely have time to recover.",stress,easy,ambiguous_mixed,stress,stress,mixed,stress,work or career,1.0159457590016245,,True
+S068,"I know this is temporary, though it still feels like a lot to manage.",stress,easy,ambiguous_mixed,stress,stress,mixed,stress,general,0.801041830000031,,True
+S069,"I'm motivated to finish, but the amount of work is starting to overwhelm me.",stress,easy,ambiguous_mixed,stress,stress,mixed,stress,work or career,1.1426393510009802,,True
+S070,"Part of me likes being busy, but I haven't had a real break in days.",stress,medium,ambiguous_mixed,stress,stress,mixed,stress,work or career,0.7976366840011906,,True
+S071,"I'm grateful for the chance, but I'm worried I can't keep up with the pace.",stress,medium,ambiguous_mixed,stress,stress,mixed,stress,work or career,1.1944876369998383,,True
+S072,"Things are going well overall, but I'm constantly thinking about what comes next.",stress,medium,ambiguous_mixed,stress,stress,uncertain,stress,general,1.066272039002797,,True
+S073,"I feel capable, yet my schedule is so full that I can't relax.",stress,medium,ambiguous_mixed,stress,stress,mixed,stress,work or career,1.1195044740015874,,True
+S074,"I'm making progress, but every unfinished task is still on my mind.",stress,medium,ambiguous_mixed,stress,stress,mixed,stress,work or career,1.0010595060011838,,True
+S075,"I enjoy the class, but the exam schedule is making me tense.",stress,medium,ambiguous_mixed,stress,stress,mixed,stress,academic,0.9755447860006825,,True
+S076,"The new job is exciting, though learning everything at once is exhausting.",stress,hard,ambiguous_mixed,stress,stress,mixed,stress,work or career,0.7371661590004805,,True
+S077,"I'm happy to help my family, but balancing it with school is draining me.",stress,hard,ambiguous_mixed,stress,stress,sadness,stress,family,0.9093425940009183,,True
+S078,"I want to do well, but that expectation is creating a lot of pressure.",stress,hard,ambiguous_mixed,stress,stress,mixed,stress,general,0.9179497020013514,,True
+S079,"I'm optimistic, yet the uncertainty is keeping me on edge.",stress,hard,ambiguous_mixed,stress,stress,mixed,stress,general,1.067591003000416,,True
+S080,"I think I can handle it, but right now my body still feels tense.",stress,hard,ambiguous_mixed,stress,stress,fear,stress,health or wellness,0.9926501109985111,,True
+S081,I feel calm about my exam tomorrow.,non_stress,easy,direct_state,no_stress,non_stress,joy,no_stress,academic,0.8527216620022955,,True
+S082,I'm relaxed and comfortable with my schedule this week.,non_stress,easy,direct_state,no_stress,non_stress,joy,no_stress,general,0.9919314259968814,,True
+S083,Work feels manageable right now.,non_stress,easy,direct_state,no_stress,non_stress,neutral,no_stress,work or career,0.7780804270005319,,True
+S084,I don't feel stressed about my current deadlines.,non_stress,easy,direct_state,no_stress,non_stress,neutral,no_stress,work or career,1.6381084790009481,,True
+S085,I feel settled and in control of my responsibilities.,non_stress,easy,direct_state,no_stress,non_stress,joy,no_stress,general,0.8250598209997406,,True
+S086,This week has been busy but not stressful.,non_stress,medium,direct_state,no_stress,non_stress,neutral,no_stress,general,0.9179646810007398,,True
+S087,I can relax because I have enough time to finish everything.,non_stress,medium,direct_state,no_stress,non_stress,joy,no_stress,general,0.9095619799991255,,True
+S088,My workload feels reasonable today.,non_stress,medium,direct_state,no_stress,non_stress,neutral,no_stress,work or career,1.0725273770003696,,True
+S089,I feel prepared for what I need to do.,non_stress,medium,direct_state,no_stress,non_stress,neutral,no_stress,general,1.0228443949999928,,True
+S090,School and work both feel manageable this week.,non_stress,medium,direct_state,no_stress,non_stress,neutral,no_stress,work or career,0.9045126810015063,,True
+S091,"I have several responsibilities, but they don't feel overwhelming.",non_stress,medium,direct_state,no_stress,non_stress,neutral,no_stress,general,1.0736859559983714,,True
+S092,I feel steady even with a few things on my list.,non_stress,hard,direct_state,no_stress,non_stress,neutral,no_stress,general,0.789859583001089,,True
+S093,I'm keeping up with my commitments without much pressure.,non_stress,hard,direct_state,no_stress,non_stress,neutral,no_stress,general,0.9477810690004844,,True
+S094,I feel mentally clear today.,non_stress,hard,direct_state,no_stress,non_stress,joy,no_stress,general,1.2610598559986101,,True
+S095,Things feel under control right now.,non_stress,hard,direct_state,no_stress,non_stress,neutral,no_stress,general,0.8894420479991823,,True
+S096,"I have a full day, but I don't feel tense about it.",non_stress,hard,direct_state,no_stress,non_stress,neutral,no_stress,general,0.7354846750022261,,True
+S097,"I have two exams next week, but I've already made a study plan.",non_stress,easy,workload_pressure,stress,stress,neutral,stress,academic,1.548975536999933,,False
+S098,"Three deadlines are coming up, and I've scheduled time for each one.",non_stress,easy,workload_pressure,stress,stress,neutral,stress,academic,1.1846315129987488,,False
+S099,"My manager added another task, but there is enough time to finish it.",non_stress,easy,workload_pressure,no_stress,non_stress,neutral,no_stress,work or career,1.0201376740005799,,True
+S100,"I still have chapters to cover, but I'm on pace with my study plan.",non_stress,easy,workload_pressure,no_stress,non_stress,neutral,no_stress,academic,1.2683348970022053,,True
+S101,"I need to finish a report tonight, and I already have most of it done.",non_stress,easy,workload_pressure,stress,stress,neutral,stress,academic,1.0281926010029565,,False
+S102,"My calendar is full, but there are breaks between the important tasks.",non_stress,medium,workload_pressure,no_stress,non_stress,neutral,no_stress,work or career,1.2163668220018735,,True
+S103,"I finished my main assignment early, so the remaining work feels manageable.",non_stress,medium,workload_pressure,no_stress,non_stress,joy,no_stress,academic,0.9713421010019374,,True
+S104,"I'm covering for a coworker, but my own deadlines were adjusted.",non_stress,medium,workload_pressure,uncertain,uncertain,neutral,uncertain,work or career,1.0275306449984782,,False
+S105,"I have a lot to do, but I can complete it without cutting into sleep.",non_stress,medium,workload_pressure,no_stress,non_stress,neutral,no_stress,general,1.0659969789994648,,True
+S106,I moved one task to tomorrow because there was plenty of flexibility.,non_stress,medium,workload_pressure,no_stress,non_stress,neutral,no_stress,work or career,2.5872093129983114,,True
+S107,"I'm preparing for finals and internships, but I started both early.",non_stress,medium,workload_pressure,no_stress,non_stress,neutral,no_stress,academic,1.5288900939995074,,True
+S108,The group project is on schedule and everyone is doing their part.,non_stress,hard,workload_pressure,no_stress,non_stress,joy,no_stress,academic,0.8026499080006033,,True
+S109,"My bills are due, but I already set aside the money for them.",non_stress,hard,workload_pressure,no_stress,non_stress,neutral,no_stress,financial,0.7444531159999315,,True
+S110,"My family needs help, and I planned my coursework around it.",non_stress,hard,workload_pressure,stress,stress,sadness,stress,family,1.493903392998618,,False
+S111,"I have several expectations to meet, but none of them feel urgent.",non_stress,hard,workload_pressure,no_stress,non_stress,neutral,no_stress,general,0.9293788319992018,,True
+S112,"My schedule is busy, yet I still have enough space to rest.",non_stress,hard,workload_pressure,no_stress,non_stress,neutral,no_stress,general,0.9666016199989826,,True
+S113,I can think about tomorrow's exam without feeling tense.,non_stress,easy,physiological_cognitive,no_stress,non_stress,neutral,no_stress,academic,1.0594884260026447,,True
+S114,I slept normally even though I have several tasks this week.,non_stress,easy,physiological_cognitive,no_stress,non_stress,neutral,no_stress,work or career,0.8706624059996102,,True
+S115,My mind settles easily when I stop working for the day.,non_stress,easy,physiological_cognitive,no_stress,non_stress,joy,no_stress,work or career,1.008643581000797,,True
+S116,I can focus on one task at a time without worrying about the others.,non_stress,easy,physiological_cognitive,no_stress,non_stress,joy,no_stress,general,1.3794682740008284,,True
+S117,I feel physically relaxed when I open my school portal.,non_stress,easy,physiological_cognitive,no_stress,non_stress,joy,no_stress,academic,1.1468978080010857,,True
+S118,"I check the time occasionally, but I don't feel rushed.",non_stress,medium,physiological_cognitive,no_stress,non_stress,neutral,no_stress,general,0.8437641169985,,True
+S119,I can read and concentrate without my mind jumping to deadlines.,non_stress,medium,physiological_cognitive,no_stress,non_stress,joy,no_stress,academic,1.2998542390014336,,True
+S120,I feel steady when I think about what I need to do next.,non_stress,medium,physiological_cognitive,no_stress,non_stress,joy,no_stress,general,0.8939004919993749,,True
+S121,My body feels normal even on days when I have a lot scheduled.,non_stress,medium,physiological_cognitive,no_stress,non_stress,neutral,no_stress,health or wellness,0.7621851500007324,,True
+S122,I can prepare for tomorrow's presentation and still sleep normally.,non_stress,medium,physiological_cognitive,no_stress,non_stress,neutral,no_stress,work or career,1.0769379939993087,,True
+S123,I feel alert without feeling wound up.,non_stress,medium,physiological_cognitive,no_stress,non_stress,neutral,no_stress,general,0.9986081930001092,,True
+S124,I can enjoy my break without thinking about unfinished work.,non_stress,hard,physiological_cognitive,no_stress,non_stress,joy,no_stress,work or career,1.048558498001512,,True
+S125,I'm remembering things normally even during a busy week.,non_stress,hard,physiological_cognitive,no_stress,non_stress,neutral,no_stress,health or wellness,1.2178092490030394,,True
+S126,My breathing stays relaxed when I look at my to-do list.,non_stress,hard,physiological_cognitive,no_stress,non_stress,joy,no_stress,general,1.0039986470001168,,True
+S127,My mind feels organized rather than crowded.,non_stress,hard,physiological_cognitive,no_stress,non_stress,neutral,no_stress,general,0.8873261320004531,,True
+S128,I can move from one assignment to another without feeling scattered.,non_stress,hard,physiological_cognitive,no_stress,non_stress,neutral,no_stress,academic,1.447514626001066,,True
+S129,"I was stressed earlier this week, but I feel calm now.",non_stress,easy,negation_recovery,no_stress,non_stress,neutral,no_stress,general,0.801617246997921,,True
+S130,"I had been worried about the deadline, but the pressure is gone after finishing early.",non_stress,easy,negation_recovery,no_stress,non_stress,joy,no_stress,work or career,1.018929396999738,,True
+S131,I'm not stressed anymore because I finally made a clear plan.,non_stress,easy,negation_recovery,no_stress,non_stress,joy,no_stress,general,0.8223047760002373,,True
+S132,"Yesterday was overwhelming, but today I feel rested and in control.",non_stress,easy,negation_recovery,no_stress,non_stress,joy,no_stress,general,1.014428427999519,,True
+S133,"The exam used to worry me, but I feel prepared now.",non_stress,easy,negation_recovery,no_stress,non_stress,joy,no_stress,academic,0.9516886679994059,,True
+S134,"I expected this week to be stressful, but it has been manageable.",non_stress,medium,negation_recovery,no_stress,non_stress,neutral,no_stress,general,0.8252594959994894,,True
+S135,"I was tense this morning, but after organizing my tasks I feel fine.",non_stress,medium,negation_recovery,no_stress,non_stress,joy,no_stress,work or career,1.1109614799970586,,True
+S136,I'm not carrying that pressure anymore; the issue has been resolved.,non_stress,medium,negation_recovery,no_stress,non_stress,joy,no_stress,general,1.010019764999015,,True
+S137,"I had trouble relaxing before, but now I can switch off after work.",non_stress,medium,negation_recovery,no_stress,non_stress,joy,no_stress,work or career,1.0160699789994396,,True
+S138,"I was anxious about the presentation, but practice made me feel comfortable.",non_stress,medium,negation_recovery,no_stress,non_stress,joy,no_stress,work or career,0.7150740300021425,,True
+S139,"I had a lot on my mind, but I no longer feel overloaded.",non_stress,medium,negation_recovery,no_stress,non_stress,neutral,no_stress,general,0.9118107700014662,,True
+S140,"The situation looked stressful at first, but it turned out to be straightforward.",non_stress,hard,negation_recovery,no_stress,non_stress,neutral,no_stress,general,1.3500456229994597,,True
+S141,"I was worried about time, but the deadline was extended and I feel relieved.",non_stress,hard,negation_recovery,no_stress,non_stress,joy,no_stress,work or career,1.064624520000507,,True
+S142,"I felt behind last week, but I caught up and now feel calm.",non_stress,hard,negation_recovery,no_stress,non_stress,joy,no_stress,general,1.0041834490002657,,True
+S143,"I expected to panic, but I actually feel ready.",non_stress,hard,negation_recovery,no_stress,non_stress,joy,no_stress,general,0.8565506560007634,,True
+S144,"I had been under pressure, but things have settled down now.",non_stress,hard,negation_recovery,no_stress,non_stress,neutral,no_stress,general,0.78637927499949,,True
+S145,"I'm excited for the opportunity, and the preparation feels manageable.",non_stress,easy,ambiguous_mixed,no_stress,non_stress,joy,no_stress,work or career,1.0534720350005955,,True
+S146,"The project is demanding, but I enjoy the challenge and don't feel pressured.",non_stress,easy,ambiguous_mixed,no_stress,non_stress,joy,no_stress,work or career,0.8547104469980695,,True
+S147,I'm proud of how much I'm doing and still have enough time to rest.,non_stress,easy,ambiguous_mixed,no_stress,non_stress,joy,no_stress,general,1.0513669819993083,,True
+S148,"This week is busy, but I don't feel overwhelmed by it.",non_stress,easy,ambiguous_mixed,no_stress,non_stress,neutral,no_stress,general,0.9802764640007808,,True
+S149,I'm motivated to finish and feel comfortable with the amount of work left.,non_stress,easy,ambiguous_mixed,no_stress,non_stress,joy,no_stress,work or career,1.0112911910000548,,True
+S150,"I like being busy, and I'm still getting enough downtime.",non_stress,medium,ambiguous_mixed,no_stress,non_stress,joy,no_stress,general,1.0180120590011938,,True
+S151,I'm grateful for the opportunity and confident I can keep up with the pace.,non_stress,medium,ambiguous_mixed,no_stress,non_stress,joy,no_stress,work or career,0.7734893699998793,,True
+S152,"Things are going well, and I can think about what's next without worrying.",non_stress,medium,ambiguous_mixed,no_stress,non_stress,joy,no_stress,general,0.9637120229999709,,True
+S153,"My schedule is full, but I still feel relaxed and capable.",non_stress,medium,ambiguous_mixed,no_stress,non_stress,joy,no_stress,general,0.7799047299995436,,True
+S154,I'm making progress and don't feel bothered by the unfinished tasks.,non_stress,medium,ambiguous_mixed,no_stress,non_stress,joy,no_stress,general,0.7099934700017911,,True
+S155,"I enjoy the class, and the exam schedule feels reasonable.",non_stress,medium,ambiguous_mixed,no_stress,non_stress,joy,no_stress,academic,1.151222358999803,,True
+S156,"The new job is exciting, and learning everything has been energizing rather than stressful.",non_stress,hard,ambiguous_mixed,no_stress,non_stress,joy,no_stress,work or career,1.010915628001385,,True
+S157,I'm happy to help my family and still have enough time for school.,non_stress,hard,ambiguous_mixed,no_stress,non_stress,joy,no_stress,family,1.2865878519987746,,True
+S158,"I want to do well, but I don't feel pressured by that goal.",non_stress,hard,ambiguous_mixed,no_stress,non_stress,neutral,no_stress,general,0.7185197379985766,,True
+S159,"There is some uncertainty, but I'm comfortable waiting to see what happens.",non_stress,hard,ambiguous_mixed,no_stress,non_stress,neutral,no_stress,general,0.8255493340002431,,True
+S160,"I think I can handle it, and my body feels relaxed right now.",non_stress,hard,ambiguous_mixed,no_stress,non_stress,joy,no_stress,health or wellness,1.2164140599998063,,True

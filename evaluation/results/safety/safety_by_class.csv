@@ -1,0 +1,4 @@
+safety_true,n_examples,accuracy
+normal,40,0.95
+concern,40,1.0
+immediate_risk,40,0.9

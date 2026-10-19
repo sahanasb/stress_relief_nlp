@@ -1,0 +1,6 @@
+subcategory,n_examples,accuracy
+direct_state,32,1.0
+workload_pressure,32,0.84375
+physiological_cognitive,32,1.0
+negation_recovery,32,1.0
+ambiguous_mixed,32,1.0

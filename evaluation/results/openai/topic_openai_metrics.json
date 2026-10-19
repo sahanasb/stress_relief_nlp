@@ -1,0 +1,78 @@
+{
+  "n_examples": 210,
+  "accuracy": 0.9333333333333333,
+  "macro_precision": 0.9415567088904527,
+  "macro_recall": 0.9333333333333333,
+  "macro_f1": 0.9356057359574855,
+  "weighted_precision": 0.9415567088904527,
+  "weighted_recall": 0.9333333333333333,
+  "weighted_f1": 0.9356057359574854,
+  "mean_latency_seconds": 1.0236355269522825,
+  "median_latency_seconds": 0.9860543644990685,
+  "p95_latency_seconds": 1.3515408308501715,
+  "classification_report": {
+    "academic": {
+      "precision": 0.9666666666666667,
+      "recall": 0.9666666666666667,
+      "f1-score": 0.9666666666666667,
+      "support": 30.0
+    },
+    "work or career": {
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "f1-score": 0.9230769230769231,
+      "support": 30.0
+    },
+    "relationships": {
+      "precision": 0.90625,
+      "recall": 0.9666666666666667,
+      "f1-score": 0.9354838709677419,
+      "support": 30.0
+    },
+    "family": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9,
+      "f1-score": 0.9310344827586207,
+      "support": 30.0
+    },
+    "financial": {
+      "precision": 0.9655172413793104,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.9491525423728814,
+      "support": 30.0
+    },
+    "health or wellness": {
+      "precision": 1.0,
+      "recall": 0.8666666666666667,
+      "f1-score": 0.9285714285714286,
+      "support": 30.0
+    },
+    "general": {
+      "precision": 0.9310344827586207,
+      "recall": 0.9,
+      "f1-score": 0.9152542372881356,
+      "support": 30.0
+    },
+    "micro avg": {
+      "precision": 0.937799043062201,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.9355608591885441,
+      "support": 210.0
+    },
+    "macro avg": {
+      "precision": 0.9415567088904527,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.9356057359574855,
+      "support": 210.0
+    },
+    "weighted avg": {
+      "precision": 0.9415567088904527,
+      "recall": 0.9333333333333333,
+      "f1-score": 0.9356057359574854,
+      "support": 210.0
+    }
+  },
+  "out_of_schema_predictions": 1,
+  "out_of_schema_rate": 0.004761904761904762,
+  "api_errors": 0
+}

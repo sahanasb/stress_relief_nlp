@@ -6,3 +6,7 @@ sounddevice
 scipy
 numpy
 flask
+
+# optional: Pinecone backend (RAG_BACKEND=pinecone) and PDF knowledge files
+pinecone
+pymupdf

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>SerenAI</title>
+<title>WE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#060914; --panel:#0b1022; --panel2:#020b2fc4; --line:#1a4546; --ink:#e8ecff; --muted:#8791b8; --dim:#5b6590;
-  --indigo:#4c4cc2; --violet:#8b5cf6; --blue:#4f8cff; --teal:#2dd4bf; --amber:#fbbf24; --red:#f87171;
+  --bg:#060914; --panel:#0b1022; --panel2:#101733; --line:#1a2346; --ink:#e8ecff; --muted:#8791b8; --dim:#5b6590;
+  --indigo:#5b5cf0; --violet:#8b5cf6; --blue:#4f8cff; --teal:#2dd4bf; --amber:#fbbf24; --red:#f87171;
   --r:18px;
 }
 *{box-sizing:border-box}
@@ -28,8 +28,8 @@ header .sub{color:var(--muted);font-size:.8rem}
 .ghost:hover{border-color:var(--indigo)}
 
 .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr;
-  grid-template-areas:"voice nlp" "sims transcript" "topic transcript" "stats stats"}
-.voice{grid-area:voice}.nlp{grid-area:nlp}.sims{grid-area:sims}.topic{grid-area:topic}.transcript{grid-area:transcript}.stats{grid-area:stats}
+  grid-template-areas:"voice nlp" "sims transcript" "topic transcript" "rag rag" "stats stats"}
+.voice{grid-area:voice}.nlp{grid-area:nlp}.sims{grid-area:sims}.topic{grid-area:topic}.transcript{grid-area:transcript}.stats{grid-area:stats}.rag{grid-area:rag}
 .card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:16px;position:relative;min-width:0}
 .title{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.88rem;margin-bottom:12px}
 .title .i{color:var(--indigo)}
@@ -68,6 +68,26 @@ header .sub{color:var(--muted);font-size:.8rem}
 .primary.on{background:linear-gradient(135deg,#dc4a5c,#b83b6a);box-shadow:0 6px 22px rgba(220,74,92,.35)}
 .sq{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:#121937;color:var(--ink);display:grid;place-items:center;cursor:pointer}
 .sq:hover{border-color:var(--indigo)}
+.vset{position:relative;z-index:1;width:100%;margin-top:14px;display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(5,8,22,.65)}
+.vset[hidden]{display:none}
+.vset label{font-size:.72rem;color:var(--muted);display:grid;gap:5px}
+.vset label .row2{display:flex;justify-content:space-between}
+.vset select{background:#070b1c;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 9px;font:inherit;font-size:.82rem;width:100%}
+.vset input[type=range]{width:100%;accent-color:#6d5cf5}
+.vset .hint{margin:0;font-size:.7rem}
+.vset [hidden]{display:none!important}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:7px}
+.vgrid[hidden]{display:none}
+.vcard{display:grid;gap:2px;text-align:left;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#070b1c;color:var(--ink);cursor:pointer;font:inherit;position:relative}
+.vcard b{font-size:.82rem;font-weight:600}.vcard span{font-size:.66rem;color:var(--muted);line-height:1.25;padding-right:14px}
+.vcard:after{content:"▶";position:absolute;right:9px;top:9px;font-size:.62rem;color:var(--dim)}
+.vcard:hover{border-color:var(--indigo)}
+.vcard.sel{border-color:#7b7cff;background:rgba(91,92,240,.18)}.vcard.sel:after{color:#c3c5ff}
+.vcard.play:after{content:"◼";color:#a5a6ff}
+#nameCands{display:none;gap:6px;flex-wrap:wrap;align-items:center;padding:6px 14px 0;font-size:.72rem;color:var(--muted)}
+#nameCands.on{display:flex}
+#nameCands button{font:inherit;font-size:.74rem;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:rgba(91,92,240,.12);color:#c3c5ff;cursor:pointer}
+#nameCands button:hover{border-color:var(--indigo)}
 .sq .slash{display:none}.sq.muted .slash{display:block}.sq.muted{color:var(--dim)}
 
 /* NLP */
@@ -115,6 +135,8 @@ header .sub{color:var(--muted);font-size:.8rem}
 .transcript{display:flex;flex-direction:column;min-height:540px;padding:0}
 .transcript .thead{display:flex;align-items:center;padding:14px 16px 10px}
 .transcript .thead .title{margin:0}
+#nameChip{margin-left:10px;font-size:.72rem;padding:5px 10px;border-radius:99px;border:1px solid var(--line);background:rgba(91,92,240,.12);color:#c3c5ff;cursor:pointer;font:inherit;font-size:.72rem}
+#nameChip:hover{border-color:var(--indigo)}
 .transcript .thead .ghost{margin-left:auto;font-size:.72rem;padding:6px 11px;display:flex;gap:6px;align-items:center}
 #crisis{display:none;margin:0 14px 8px;padding:10px 12px;border-radius:12px;font-size:.8rem;border:1px solid}
 #crisis.concern{display:block;background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.4)}
@@ -141,6 +163,16 @@ form input:focus{border-color:var(--indigo)}form input::placeholder{color:var(--
 form button{width:44px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--indigo),#6d5cf5);color:#fff;cursor:pointer;display:grid;place-items:center}
 form button:disabled,form input:disabled{opacity:.5}
 
+/* RAG */
+.ragrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rg{border:1px solid var(--line);border-radius:12px;padding:12px;background:rgba(5,8,22,.5);animation:in .3s ease}
+.rg .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.rg .n{font-size:.8rem;font-weight:600;line-height:1.3}
+.rg .sec{font-size:.68rem;color:var(--muted);margin-top:2px}
+.rg .sc{font:700 .85rem "Space Grotesk",sans-serif;color:var(--teal);white-space:nowrap}
+.rg p{margin:8px 0 0;font-size:.72rem;color:var(--muted);line-height:1.45}
+.rgbar{height:4px;border-radius:9px;background:#050816;margin-top:9px;overflow:hidden}.rgbar i{display:block;height:100%;background:linear-gradient(90deg,#4f8cff,#2dd4bf)}
+.ragnote{font-size:.78rem;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:14px;grid-column:1/-1}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);padding:18px 10px}
 .stat{text-align:center;border-left:1px solid var(--line);padding:0 8px}.stat:first-child{border:0}
@@ -151,7 +183,8 @@ form button:disabled,form input:disabled{opacity:.5}
 #toast.show{opacity:1;transform:translateX(-50%)}
 
 @media(max-width:860px){
-  .grid{grid-template-columns:1fr;grid-template-areas:"voice" "transcript" "nlp" "sims" "topic" "stats"}
+  .grid{grid-template-columns:1fr;grid-template-areas:"voice" "transcript" "nlp" "rag" "sims" "topic" "stats"}
+  .ragrow{grid-template-columns:1fr}
   .simgrid{grid-template-columns:1fr}
   .msg{max-width:92%}
   .stat b{font-size:1.4rem}
@@ -170,13 +203,15 @@ form button:disabled,form input:disabled{opacity:.5}
 <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></symbol>
 <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h8M18 6h2M4 12h2M12 12h8M4 18h10M20 18h0"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M19 19v2H6"/></symbol>
 <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12c3-5 6-5 9 0s6 5 9 0"/><path d="M3 17c3-4 6-4 9 0s6 4 9 0" opacity=".6"/></symbol>
 </defs></svg>
 
 <div class="wrap">
 <header>
   <div class="logo"><svg class="i" style="width:20px;height:20px"><use href="#i-wave"/></svg></div>
-  <div><h1>SerenAI</h1><div class="sub">Voice stress-support companion</div></div>
+  <div><h1>WE</h1><div class="sub">Voice stress-support companion</div></div>
   <div class="sp"></div>
   <button class="ghost" id="newBtn">New session</button>
 </header>
@@ -187,14 +222,25 @@ form button:disabled,form input:disabled{opacity:.5}
   <canvas id="fx"></canvas>
   <div class="vtop">
     <div class="status"><span class="dot" id="dot"></span><span id="statusTxt">IDLE - READY TO LISTEN</span></div>
-    <div class="badges"><span class="badge" id="latBadge">⚡ Latency —</span><span class="badge">Browser speech + LLM</span></div>
+    <div class="badges"><span class="badge" id="latBadge">⚡ Latency —</span><span class="badge" id="engBadge">Browser speech + LLM</span></div>
   </div>
   <div class="stage"><div class="orb" id="orb"><div class="halo"></div><div class="ring"></div><div class="core"><svg class="i"><use href="#i-mic"/></svg></div></div></div>
   <div id="wave"></div>
   <div id="caption"></div>
   <div class="vbtns">
     <button class="primary" id="voiceBtn"><svg class="i"><use href="#i-mic"/></svg><span>Start Voice Support</span></button>
+    <button class="sq" id="setBtn" title="Voice settings" aria-label="Voice settings" aria-expanded="false"><svg class="i" style="width:20px;height:20px"><use href="#i-sliders"/></svg></button>
     <button class="sq" id="spkBtn" title="Spoken replies on/off" aria-label="Toggle spoken replies"><svg class="i" style="width:20px;height:20px"><use href="#i-spk"/><path class="slash" d="M3 3l18 18"/></svg></button>
+  </div>
+  <div class="vset" id="vset" hidden>
+    <label>Voice type<select id="engSel"></select></label>
+    <div class="vgrid" id="voiceGrid" role="radiogroup" aria-label="Choose a voice" hidden></div>
+    <label id="voiceSelWrap">Voice<select id="voiceSel"></select></label>
+    <label id="toneWrap">Speaking style<select id="toneSel"></select></label>
+    <label><span class="row2"><span>Speaking speed</span><span id="spdVal">1.0×</span></span><input type="range" id="spd" min="0.8" max="1.3" step="0.05" value="1"></label>
+    <label>Speech recognition (what I hear)<select id="sttSel"></select></label>
+    <button class="ghost" id="prevBtn" type="button">▶ Preview voice</button>
+    <p class="hint" id="vhint"></p>
   </div>
 </section>
 
@@ -228,8 +274,10 @@ form button:disabled,form input:disabled{opacity:.5}
 <section class="card transcript">
   <div class="thead">
     <div class="title"><svg class="i"><use href="#i-chat"/></svg>Live Transcript Feed</div>
+    <button id="nameChip" hidden title="Click to change the name SerenAI uses"></button>
     <button class="ghost" id="sigBtn"><svg class="i" style="width:14px;height:14px"><use href="#i-code"/></svg><span>Show Prompt Inputs</span></button>
   </div>
+  <div id="nameCands" aria-live="polite"></div>
   <div id="crisis" role="alert"></div>
   <div class="body">
     <div id="log" aria-live="polite"></div>
@@ -239,6 +287,11 @@ form button:disabled,form input:disabled{opacity:.5}
     <input id="input" placeholder="Type your name…" aria-label="Message">
     <button id="sendBtn" aria-label="Send"><svg class="i" style="width:18px;height:18px"><use href="#i-send"/></svg></button>
   </form>
+</section>
+
+<section class="card rag">
+  <div class="title"><svg class="i" style="color:var(--teal)"><use href="#i-book"/></svg><div>Retrieved Coping Knowledge (RAG)<small id="ragSub">Embeds your message, finds the closest passages, and grounds the reply in them</small></div><span class="badge" id="ragBadge" style="margin-left:auto">Waiting</span></div>
+  <div class="ragrow" id="ragList"><div class="ragnote">Passages the assistant used to ground its reply will appear here after your first message.</div></div>
 </section>
 
 <section class="card stats">
@@ -276,7 +329,7 @@ const CRISIS={
  immediate_risk:`<b>If you may be in immediate danger, call your local emergency number now.</b> In the US, call or text <a href="tel:988">988</a> or call <a href="tel:911">911</a>.`};
 
 /* ---------- helpers ---------- */
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),3800)}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),7000)}
 const time=()=>new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
 function addMsg(role,text,cls=''){
   const m=document.createElement('div');m.className='meta'+(role==='user'?' u':'');m.textContent=(role==="user"?"You":"WE")+' · '+time();log.append(m);
@@ -311,35 +364,205 @@ function renderSafety(s){
   $('#lvl').textContent=L[0];$('#lvl').className='badge '+L[1];$('#triageTxt').textContent=L[2];$('#triage').className='triage '+(s||'normal');
   const c=$('#crisis');c.className=CRISIS[s]?s:'';c.innerHTML=CRISIS[s]||'';
 }
+function renderRag(list){
+  const box=$('#ragList'),b=$('#ragBadge');
+  if(list===undefined)return;
+  if(list===null){b.textContent='Not used';b.className='badge';box.innerHTML='<div class="ragnote">Retrieval is skipped for safety check-ins and closing messages.</div>';return}
+  if(!list.length){b.textContent='No match';b.className='badge warn';box.innerHTML='<div class="ragnote">No passage was similar enough to this message, so the reply was generated without retrieved knowledge.</div>';return}
+  b.textContent=list.length+' passage'+(list.length>1?'s':'')+' used';b.className='badge ok';
+  box.innerHTML=list.map(k=>{const v=Math.round(k.score*100);return `<div class="rg"><div class="top"><div><div class="n">${esc(k.title)}</div><div class="sec">${esc(k.section)}</div></div><div class="sc">${v}%</div></div><div class="rgbar"><i style="width:${Math.min(100,v)}%"></i></div><p>${esc(k.snippet)}…</p></div>`}).join('');
+}
 function renderSig(){ $('#sigPre').textContent=lastSignals?JSON.stringify(lastSignals,null,2):'Send a message to see exactly what the response generator receives: the safety state, conversation state and the emotion / stress / topic signals.'}
 
 /* ---------- speech out ---------- */
-function speakThen(text,cb){
-  if(!('speechSynthesis' in window)||!speakOn&&!voice){cb&&cb();return}
+let cfg={tts:false,stt:false,voices:[],tones:[],defaults:{}}, S={engine:'natural',voice:'marin',bvoice:'',speed:1,tone:'calm',stt:'accurate'};
+try{Object.assign(S,JSON.parse(localStorage.getItem('serenai.voice')||'{}'))}catch(e){}
+const saveS=()=>{try{localStorage.setItem('serenai.voice',JSON.stringify(S))}catch(e){}};
+let bvoices=[], speechTok=0, curAudio=null, curFin=null, warned=false, userName=null, sayAs=null, previewing=null, sttDown=false;
+const isNat=v=>/natural|neural|online|premium|enhanced|google/i.test(v.name);
+const engine=()=>S.engine==='natural'&&cfg.tts?'natural':'browser';
+const sttMode=()=>S.stt==='accurate'&&cfg.stt&&!(sttDown&&SR)&&navigator.mediaDevices&&window.MediaRecorder?'accurate':'browser';
+const escRe=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const sample=()=>(userName?('Hi '+userName+', I\'m SerenAI.'):'Hi, I\'m SerenAI.')+' Take a slow breath with me, and tell me what\'s on your mind.';
+
+function loadBVoices(){
+  if(!('speechSynthesis' in window))return;
+  const all=speechSynthesis.getVoices(), lang=(navigator.language||'en').slice(0,2).toLowerCase();
+  bvoices=all.filter(v=>(v.lang||'').toLowerCase().startsWith(lang));if(!bvoices.length)bvoices=all;
+  bvoices.sort((a,b)=>isNat(b)-isNat(a)||a.name.localeCompare(b.name));
+  if(!bvoices.find(v=>v.name===S.bvoice))S.bvoice=bvoices[0]?bvoices[0].name:'';
+  renderVS();
+}
+function renderVS(){
+  const eng=$('#engSel'),vs=$('#voiceSel'),nat=engine()==='natural';
+  eng.innerHTML=(cfg.tts?'<option value="natural">Natural voice (OpenAI)</option>':'')+'<option value="browser">Browser voice (free)</option>';
+  eng.value=engine();
+  $('#voiceGrid').hidden=!nat;$('#voiceSelWrap').hidden=nat;$('#toneWrap').hidden=!nat;
+  if(nat){
+    $('#voiceGrid').innerHTML=cfg.voices.map(v=>`<button type="button" class="vcard${v.id===S.voice?' sel':''}${previewing===v.id?' play':''}" role="radio" aria-checked="${v.id===S.voice}" data-id="${esc(v.id)}"><b>${esc(v.label)}</b><span>${esc(v.desc)}</span></button>`).join('');
+    $('#toneSel').innerHTML=cfg.tones.map(t=>`<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');$('#toneSel').value=S.tone;
+    $('#vhint').textContent='Tap a voice to hear it. Natural voices use your OpenAI key — each spoken reply is one small API call. Marin, Cedar and Coral sound the most human.';
+  }else{
+    vs.innerHTML=bvoices.length?bvoices.map(v=>`<option value="${esc(v.name)}">${isNat(v)?'★ ':''}${esc(v.name)}</option>`).join(''):'<option value="">System default</option>';vs.value=S.bvoice;
+    $('#vhint').textContent=cfg.tts?'Voices marked ★ sound the most natural. Edge has the best ones (look for “Natural”).':'Voices marked ★ sound the most natural. Edge has the best (look for “Natural”). Add an OpenAI key to unlock lifelike voices.';
+  }
+  $('#sttSel').innerHTML=(cfg.stt?'<option value="accurate">Accurate — best for names (OpenAI)</option>':'')+'<option value="browser">Browser (free)</option>';$('#sttSel').value=sttMode();
+  $('#engBadge').textContent=(sttMode()==='accurate'?'Accurate speech':'Browser speech')+' + LLM';
+  $('#spd').value=S.speed;$('#spdVal').textContent=Number(S.speed).toFixed(2).replace(/0$/,'')+'×';
+}
+function mkFin(cb){let d=false;const f=()=>{if(d)return;d=true;if(curFin===f)curFin=null;cb&&cb()};curFin=f;return f}
+function stopSpeech(){
+  speechTok++;const f=curFin;curFin=null;
+  if(curAudio){try{curAudio.pause()}catch(e){}curAudio=null}
+  if('speechSynthesis' in window)speechSynthesis.cancel();
+  f&&f();
+}
+function browserSpeak(text,cb){
+  const fin=mkFin(cb);
+  if(!('speechSynthesis' in window)){fin();return}
   speechSynthesis.cancel();setMode('speaking');
-  const u=new SpeechSynthesisUtterance(text);let done=false;const fin=()=>{if(done)return;done=true;cb&&cb()};
-  u.onend=fin;u.onerror=fin;speechSynthesis.speak(u);
+  if(userName&&sayAs)text=text.replace(new RegExp(escRe(userName),'gi'),sayAs);     // say the name the way the user pronounces it
+  const u=new SpeechSynthesisUtterance(text),v=bvoices.find(v=>v.name===S.bvoice);
+  if(v){u.voice=v;u.lang=v.lang}u.rate=+S.speed;u.onend=fin;u.onerror=fin;speechSynthesis.speak(u);
+}
+async function naturalSpeak(text,cb){
+  const fin=mkFin(cb),tok=++speechTok;
+  try{
+    const res=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,voice:S.voice,tone:S.tone,session_id:sid})});
+    if(!res.ok)throw new Error('tts '+res.status);
+    const blob=await res.blob();if(tok!==speechTok)return;
+    const url=URL.createObjectURL(blob),a=new Audio(url);curAudio=a;
+    a.preservesPitch=true;a.webkitPreservesPitch=true;a.playbackRate=+S.speed;       // speed is applied here, without changing the pitch
+    const end=()=>{URL.revokeObjectURL(url);if(curAudio===a)curAudio=null;fin()};
+    a.onended=end;a.onerror=end;setMode('speaking');await a.play();
+  }catch(e){
+    if(tok!==speechTok)return;
+    if(!warned){warned=true;toast('Natural voice unavailable right now — using the browser voice instead.')}
+    browserSpeak(text,fin);
+  }
+}
+function say(text,cb){engine()==='natural'?naturalSpeak(text,cb):browserSpeak(text,cb)}
+function speakThen(text,cb){
+  if(!speakOn&&!voice){cb&&cb();return}
+  say(text,cb);
+}
+function previewVoice(){
+  const id=S.voice,nat=engine()==='natural',wasPlaying=previewing===id;
+  stopSpeech();                         // also ends a preview that is playing (its callback clears `previewing`)
+  if(wasPlaying){previewing=null;renderVS();return}
+  previewing=nat?id:null;renderVS();
+  say(sample(),()=>{previewing=null;renderVS()});
 }
 
 /* ---------- voice in ---------- */
+const MIC_BLOCKED='Microphone access is blocked. Click the lock icon in the address bar, set Microphone to Allow, then reload the page.';
 function startVoice(){
-  if(!SR){toast("Voice input isn't supported in this browser. Try Chrome, Edge or Safari, or type below.");return}
+  if(sttMode()==='browser'&&!SR){toast("Voice input isn't supported in this browser. Try Chrome, Edge or Safari, or type below.");return}
   if(closed)return;
   voice=true;speakOn=true;updSpk();$('#voiceBtn').classList.add('on');$('#voiceBtn span').textContent='Stop Voice Support';listen();
 }
 function stopVoice(){
-  voice=false;try{rec&&rec.abort()}catch(e){}if('speechSynthesis' in window)speechSynthesis.cancel();
+  voice=false;try{rec&&rec.abort()}catch(e){}stopSpeech();
   $('#voiceBtn').classList.remove('on');$('#voiceBtn span').textContent='Start Voice Support';$('#caption').textContent='';if(!busy)setMode('idle');
 }
-function listen(){
+function listen(){ sttMode()==='accurate'?listenAccurate():listenBrowser() }
+
+/* Accurate mode: record the clip, stop after a natural pause, transcribe on the server (primed for names). */
+let micStream=null, audioCtx=null;
+async function listenAccurate(){
   if(!voice||busy||closed)return;
-  rec=new SR();rec.lang=navigator.language||'en-US';rec.interimResults=true;rec.continuous=false;
-  let heard='';
-  rec.onresult=e=>{heard=[...e.results].map(r=>r[0].transcript).join('');$('#caption').textContent='“'+heard+'”'};
-  rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){toast('Microphone access was blocked. Allow it in your browser to use voice.');stopVoice()}};
-  rec.onend=()=>{if(!voice||busy)return;const t=heard.trim();if(t){$('#caption').textContent='';send(t)}else setTimeout(listen,300)};
-  try{rec.start();setMode('listening');$('#caption').textContent='Listening…'}catch(e){setTimeout(listen,600)}
+  try{
+    if(!micStream||!micStream.active)micStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+  }catch(e){toast(e&&e.name==='NotFoundError'?'No microphone was found. Plug one in or pick one in your system sound settings.':MIC_BLOCKED);stopVoice();return}
+  if(!voice||busy||closed)return;
+  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended'){try{await audioCtx.resume()}catch(e){}}
+  const src=audioCtx.createMediaStreamSource(micStream),an=audioCtx.createAnalyser();an.fftSize=1024;src.connect(an);
+  const buf=new Float32Array(an.fftSize),chunks=[];
+  const type=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'].find(t=>MediaRecorder.isTypeSupported(t))||'';
+  let mr;try{mr=new MediaRecorder(micStream,type?{mimeType:type}:undefined)}catch(e){src.disconnect();sttDown=true;renderVS();return listen()}
+  mr.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+  const t0=performance.now(),nameStep=!named,endSilence=nameStep?1500:1300;      // names get a little longer: people pause while spelling
+  let spoke=false,lastLoud=0,floor=0,nFloor=0,aborted=false,finished=false,tm=null;
+  const finish=()=>{if(finished)return;finished=true;clearInterval(tm);try{if(mr.state!=='inactive')mr.stop()}catch(e){}};
+  tm=setInterval(()=>{
+    an.getFloatTimeDomainData(buf);let sum=0;for(let i=0;i<buf.length;i++)sum+=buf[i]*buf[i];
+    const rms=Math.sqrt(sum/buf.length),now=performance.now();
+    if(now-t0<500){floor+=rms;nFloor++;return}                                     // measure the room's background noise first
+    if(rms>Math.max(0.015,(floor/Math.max(1,nFloor))*3)){spoke=true;lastLoud=now}
+    if(spoke&&(now-lastLoud>endSilence||now-t0>25000))finish();
+    else if(!spoke&&now-t0>12000)finish();
+  },60);
+  rec={abort(){aborted=true;finish()}};
+  mr.onstop=async()=>{
+    try{src.disconnect()}catch(e){}
+    if(aborted||!voice)return;
+    if(!spoke){setTimeout(listen,150);return}
+    setMode('processing');$('#caption').textContent='Understanding…';
+    const mime=mr.mimeType||type||'audio/webm',ext=mime.includes('mp4')?'mp4':mime.includes('ogg')?'ogg':'webm';
+    const fd=new FormData();fd.append('audio',new Blob(chunks,{type:mime}),'speech.'+ext);
+    fd.append('session_id',sid||'');fd.append('context',named?'chat':'name');fd.append('lang',(navigator.language||'en').slice(0,2));
+    let text='';
+    try{const r=await fetch('/api/stt',{method:'POST',body:fd});if(!r.ok)throw new Error('stt '+r.status);text=((await r.json()).text||'').trim()}
+    catch(e){
+      if(!voice)return;
+      if(SR){sttDown=true;renderVS();toast('Accurate speech recognition is unavailable — using the browser recogniser.');return listenBrowser()}
+      toast('Speech recognition failed. You can type instead.');stopVoice();return;
+    }
+    if(!voice)return;
+    $('#caption').textContent='';
+    if(text)send(text);else setTimeout(listen,200);
+  };
+  try{mr.start();setMode('listening');$('#caption').textContent=nameStep?'Say your name…':'Listening…'}catch(e){finish();setTimeout(listen,600)}
 }
+
+/* Browser mode: the built-in recogniser, asking for several candidate transcriptions (useful for names). */
+function listenBrowser(){
+  if(!voice||busy||closed||!SR)return;
+  rec=new SR();rec.lang=navigator.language||'en-US';rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=5;
+  let heard='',alts=[];
+  rec.onresult=e=>{heard=[...e.results].map(r=>r[0].transcript).join('');$('#caption').textContent='“'+heard+'”';
+    if(e.results.length===1)alts=[...e.results[0]].map(a=>a.transcript)};
+  rec.onerror=e=>{
+    const msg={'not-allowed':MIC_BLOCKED,'service-not-allowed':MIC_BLOCKED,
+      'audio-capture':'No microphone was found. Plug one in or pick one in your system sound settings.',
+      'network':"The browser's speech service could not be reached. Voice input needs an internet connection (and isn't available in Brave).",
+      'language-not-supported':'This browser does not support your language for voice input.'}[e.error];
+    if(msg){toast(msg);stopVoice()}
+  };
+  rec.onend=()=>{if(!voice||busy)return;const t=heard.trim();if(t){$('#caption').textContent='';send(t,named?[]:alts.filter(a=>a.trim()&&a.trim()!==t))}else setTimeout(listen,300)};
+  try{rec.start();setMode('listening');$('#caption').textContent=!named?'Say your name…':'Listening…'}catch(e){setTimeout(listen,600)}
+}
+
+/* ---------- name ---------- */
+function showName(n,pending){
+  const c=$('#nameChip');userName=pending?null:(n||null);c.hidden=false;
+  c.textContent=pending?('Hearing: '+n+' ✎'):n?('Calling you: '+n+' ✎'):'Add your name ✎';c.dataset.n=n||'';
+}
+function showCands(list){
+  const el=$('#nameCands');
+  if(!list||!list.length){el.classList.remove('on');el.innerHTML='';return}
+  el.innerHTML='<span>Or did you mean:</span>'+list.map(n=>`<button type="button" data-n="${esc(n)}">${esc(n)}</button>`).join('');el.classList.add('on');
+}
+async function setName(name,say,announce){
+  if(!sid)return;
+  const first=!named;
+  try{
+    const r=await (await fetch('/api/name',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_id:sid,name,say_as:say||'',announce:announce&&first})})).json();
+    named=true;sayAs=r.say_as||null;showName(r.name,false);showCands([]);input.placeholder='Or type your feelings here if you prefer not to speak…';
+    if(r.response){stopSpeech();addMsg('bot',r.response);speakThen(r.response,()=>{voice?listen():setMode('idle')})}
+    else toast(r.name?('Got it, I\'ll call you '+r.name+'.'):'Okay, I won\'t use a name.');
+  }catch(e){toast('Could not save the name.')}
+}
+$('#nameChip').onclick=()=>{
+  if(!sid)return;
+  const v=prompt('What should I call you? (type it exactly as you want it spelled)',$('#nameChip').dataset.n||'');
+  if(v===null)return;
+  let say='';
+  if(v.trim()){const p=prompt('Optional: how is it pronounced? Type it the way it sounds, e.g. "SAH-jah". Leave empty if the spelling is enough.',sayAs||'');say=p===null?'':p}
+  setName(v,say,!named);
+};
+$('#nameCands').onclick=e=>{const b=e.target.closest('button');if(b)setName(b.dataset.n,'',true)};
 
 /* ---------- chat ---------- */
 async function post(body){
@@ -347,24 +570,29 @@ async function post(body){
   let j={};try{j=await res.json()}catch(e){}
   return {ok:res.ok,status:res.status,j};
 }
-async function send(text){
+async function send(text,alts){
   text=text.trim();if(!text||busy||closed)return;
   addMsg('user',text);input.value='';setBusy(true);setMode('processing');$('#nlp').classList.add('loading');typing(true);
   let out;
-  try{out=await post({text})}catch(e){out=null}
+  try{out=await post(alts&&alts.length&&!named?{text,alts}:{text})}catch(e){out=null}
   typing(false);$('#nlp').classList.remove('loading');
   if(!out){addErr("Couldn't reach the server. Is it still running?");return after(null)}
   if(out.status===410){addErr('This session expired. Starting a new one…');setTimeout(start,1200);return}
   if(!out.ok){addErr('Something went wrong: '+(out.j.error||out.status));return after(null)}
-  const r=out.j,wasName=!named;named=true;
-  if(wasName){input.placeholder='Or type your feelings here if you prefer not to speak…';addMsg('bot',r.response);return after(r.response)}
+  const r=out.j;
+  if(r.name_step){   // the name conversation: ask -> read back the spelling -> confirm
+    if(r.name_done){named=true;showName(r.name||null,false);showCands([]);input.placeholder='Or type your feelings here if you prefer not to speak…'}
+    else{showName(r.name_pending||null,!!r.name_pending);showCands(r.candidates);input.placeholder='Say “yes”, or type / spell your name…'}
+    addMsg('bot',r.response);return after(r.response)
+  }
+  if(!named){named=true;showName((r.signals&&r.signals.user_name)||null,false);showCands([]);input.placeholder='Or type your feelings here if you prefer not to speak…'}
   screened++;$('#stSafe').textContent=screened;
   if(r.elapsed_ms!=null){$('#latBadge').textContent='⚡ Last run '+fmtMs(r.elapsed_ms);$('#stLat').textContent=fmtMs(r.elapsed_ms)}
   const safe=r.safety_state==='concern'||r.safety_state==='immediate_risk';
   renderSafety(r.safety_state);
   addMsg('bot',r.response,safe?'safety':'');
   if(r.analysis)renderAnalysis(r.analysis);
-  lastSignals=r.signals;renderSig();
+  renderRag(r.rag);lastSignals=r.signals;renderSig();
   if(r.should_close){closed=true;input.disabled=true;input.placeholder='Session ended. Start a new session any time.';voice&&stopVoice();speakThen(r.response,()=>setMode('idle'));setBusy(true);input.disabled=true;return}
   after(r.response);
 }
@@ -375,22 +603,36 @@ function after(reply){
 }
 async function runSim(text){
   if(busy||closed)return;
-  if(!named){setBusy(true);const o=await post({skip_name:true}).catch(()=>null);setBusy(false);if(!o||!o.ok)return addErr('Something went wrong.');named=true;input.placeholder='Or type your feelings here if you prefer not to speak…';addMsg('bot',o.j.response)}
+  if(!named){setBusy(true);const o=await post({skip_name:true}).catch(()=>null);setBusy(false);if(!o||!o.ok)return addErr('Something went wrong.');named=true;showName(null);input.placeholder='Or type your feelings here if you prefer not to speak…';addMsg('bot',o.j.response)}
   send(text);
 }
 async function start(){
-  closed=false;named=false;screened=0;lastSignals=null;stopVoice();setBusy(false);log.innerHTML='';
+  closed=false;named=false;userName=null;sayAs=null;showCands([]);$('#nameChip').hidden=true;screened=0;lastSignals=null;stopVoice();setBusy(false);log.innerHTML='';
   $('#stSafe').textContent='0';$('#stLat').textContent='—';$('#latBadge').textContent='⚡ Latency —';
   $('#stressPct').textContent='—';$('#stressPct').style.color='';$('#stressFill').style.width='0';$('#emoPrimary').textContent='Primary: —';
   $('#emoList').innerHTML='<div class="hint">Waiting for your first message…</div>';$('#chips').innerHTML='<span class="chip">Waiting for a message…</span>';
-  renderSafety('normal');renderSig();input.placeholder='Type your name…';updSpk();setMode('idle');
+  renderSafety('normal');renderSig();$('#ragBadge').textContent='Waiting';$('#ragBadge').className='badge';$('#ragList').innerHTML='<div class="ragnote">Passages the assistant used to ground its reply will appear here after your first message.</div>';input.placeholder='Type your name…';updSpk();setMode('idle');
   const r=await (await fetch('/api/start',{method:'POST'})).json();sid=r.session_id;addMsg('bot',r.intro);input.focus();
 }
 
 $('#form').addEventListener('submit',e=>{e.preventDefault();send(input.value)});
 $('#newBtn').onclick=start;
 $('#voiceBtn').onclick=()=>voice?stopVoice():startVoice();
-$('#spkBtn').onclick=()=>{speakOn=!speakOn;updSpk();if(!speakOn&&'speechSynthesis' in window)speechSynthesis.cancel()};
+$('#spkBtn').onclick=()=>{speakOn=!speakOn;updSpk();if(!speakOn)stopSpeech()};
+$('#setBtn').onclick=()=>{const v=$('#vset');v.hidden=!v.hidden;$('#setBtn').setAttribute('aria-expanded',!v.hidden)};
+$('#engSel').onchange=e=>{S.engine=e.target.value;saveS();renderVS()};
+$('#voiceSel').onchange=e=>{S.bvoice=e.target.value;saveS()};      // browser voices; natural voices use the card grid
+$('#voiceGrid').onclick=e=>{const b=e.target.closest('.vcard');if(!b)return;S.voice=b.dataset.id;saveS();previewVoice()};
+$('#toneSel').onchange=e=>{S.tone=e.target.value;saveS();previewVoice()};
+$('#sttSel').onchange=e=>{S.stt=e.target.value;sttDown=false;saveS();renderVS()};
+$('#spd').oninput=e=>{S.speed=+e.target.value;$('#spdVal').textContent=S.speed.toFixed(2).replace(/0$/,'')+'×';saveS();if(curAudio)curAudio.playbackRate=S.speed};
+$('#prevBtn').onclick=()=>previewVoice();
+if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=loadBVoices;loadBVoices()}
+fetch('/api/config').then(r=>r.json()).then(c=>{cfg=c;
+  if(c.rag)$('#ragSub').textContent='Hybrid search: '+c.rag.embedding+' vectors + keyword (BM25) · '+c.rag.backend+' index · top-'+c.rag.top_k+', diversity re-ranked';
+  const d=c.defaults||{};if(!c.voices.some(v=>v.id===S.voice))S.voice=d.voice||(c.voices[0]&&c.voices[0].id)||'marin';
+  if(!c.tones.some(t=>t.id===S.tone))S.tone=d.tone||'calm';renderVS()}).catch(()=>renderVS());
+renderVS();
 $('#sigBtn').onclick=()=>{showSig=!showSig;$('#sig').style.display=showSig?'block':'none';log.style.display=showSig?'none':'flex';$('#sigBtn span').textContent=showSig?'Show Transcript':'Show Prompt Inputs'};
 
 /* ---------- ambient visuals ---------- */

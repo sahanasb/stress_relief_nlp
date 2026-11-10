@@ -1,4 +1,5 @@
-import re
+from name_utils import extract_name, is_yes, spell_out, spelled_name
+from rag import retrieve_knowledge
 
 from nlp.emotion_detector import detect_emotion
 from nlp.stress_classifier import detect_stress
@@ -30,58 +31,8 @@ INTRO = (
 
 
 # -------------------------
-# Name extraction
+# Name extraction (see name_utils.py)
 # -------------------------
-def extract_name(text):
-    """Extract a user's preferred name from natural spoken introductions."""
-
-    if not text:
-        return None
-
-    text = text.strip()
-
-    patterns = [
-        r"\bmy name is\s*,?\s*(.+)",
-        r"\byou can call me\s*,?\s*(.+)",
-        r"\bcall me\s*,?\s*(.+)",
-        r"\bi am\s*,?\s*(.+)",
-        r"\bi'm\s*,?\s*(.+)",
-    ]
-
-    for pattern in patterns:
-        match = re.search(pattern, text, flags=re.IGNORECASE)
-
-        if match:
-            name = match.group(1)
-
-            # Remove common speech fillers from the beginning
-            name = re.sub(
-                r"^(uh|um|umm|erm|hmm)[,\s]+",
-                "",
-                name,
-                flags=re.IGNORECASE
-            )
-
-            # Clean punctuation
-            name = name.strip().strip(".,!?")
-
-            if name:
-                return name.title()
-
-    # User may have simply said their name
-    name = text.strip().strip(".,!?")
-
-    # Remove greetings/fillers from the beginning
-    name = re.sub(
-        r"^(hi|hello|hey|uh|um|umm)[,\s]+",
-        "",
-        name,
-        flags=re.IGNORECASE
-    )
-
-    return name.strip().title() if name.strip() else None
-
-
 # -------------------------
 # Core NLP / agent pipeline
 # -------------------------
@@ -259,7 +210,12 @@ def process_message(
     topic_score = topic_result["scores"][0]
 
     # -------------------------
-    # 8. Generate AI response
+    # 8. Retrieve coping knowledge (RAG)
+    # -------------------------
+    rag_sources = retrieve_knowledge(text, history, topic)
+
+    # -------------------------
+    # 9. Generate AI response
     # -------------------------
     response = generate_response(
         user_message=text,
@@ -272,10 +228,11 @@ def process_message(
         user_name=user_name,
         conversation_history=history,
         conversation_state=conversation_state,
+        knowledge=rag_sources,
     )
 
     # -------------------------
-    # 9. Save to short-term memory
+    # 10. Save to short-term memory
     # -------------------------
     history.append(
         {
@@ -302,7 +259,8 @@ def process_message(
         "topic": topic,
         "topic_score": topic_score,
         "should_close": False,
-        # Full score distributions (used by the web UI dashboard)
+        # Retrieved coping-knowledge passages (RAG) and full score distributions (web UI dashboard)
+        "rag_sources": rag_sources,
         "emotion_all": emotion_results,
         "stress_all": stress_results,
         "topic_all": [
@@ -330,29 +288,44 @@ def run_voice_app():
     # -------------------------
     # Ask for user's name
     # -------------------------
-    name_input = listen()
+    user_name = None
+    for attempt in range(3):
+        name_input = listen(name_mode=True)
+        print(f"\nYou: {name_input}")
 
-    print(f"\nYou: {name_input}")
+        # Spelled-out names ("S A J A") win over the raw transcription
+        heard = spelled_name(name_input) or extract_name(name_input)
+        if not heard:
+            msg = "Sorry, I didn't catch that. Could you say your name again, or spell it for me?"
+            print(f"\nSerenAI: {msg}")
+            speak(msg)
+            continue
 
-    # Extract only the actual name
-    user_name = extract_name(name_input)
+        # Read the spelling back: speech recognition often garbles names
+        check = f"I heard {heard}, spelled {spell_out(heard)}. Is that right?"
+        print(f"\nSerenAI: {check}")
+        speak(check, name=heard)
+        answer = listen()
+        print(f"\nYou: {answer}")
+        if is_yes(answer) and not spelled_name(answer):
+            user_name = heard
+            break
+        # a correction, e.g. "no, it's Sasha" or "S A S H A"
+        fixed = spelled_name(answer) or (None if is_yes(answer) else extract_name(answer))
+        if fixed:
+            user_name = fixed
+            break
+        msg = "Sorry about that. Let's try once more."
+        print(f"\nSerenAI: {msg}")
+        speak(msg)
 
     if user_name:
-
-        greeting = (
-            f"Nice to meet you, {user_name}. "
-            "How are you feeling today?"
-        )
-
+        greeting = f"Nice to meet you, {user_name}. How are you feeling today?"
     else:
-
-        greeting = (
-            "That's okay. "
-            "How are you feeling today?"
-        )
+        greeting = "That's okay. How are you feeling today?"
 
     print(f"\nSerenAI: {greeting}")
-    speak(greeting)
+    speak(greeting, name=user_name)
 
     # -------------------------
     # Main conversation loop

@@ -1,4 +1,6 @@
 import re
+import time
+from concurrent.futures import ThreadPoolExecutor
 
 from nlp.emotion_detector import detect_emotion
 from nlp.stress_classifier import detect_stress
@@ -59,7 +61,7 @@ def extract_name(text):
                 r"^(uh|um|umm|erm|hmm)[,\s]+",
                 "",
                 name,
-                flags=re.IGNORECASE
+                flags=re.IGNORECASE,
             )
 
             # Clean punctuation
@@ -76,7 +78,7 @@ def extract_name(text):
         r"^(hi|hello|hey|uh|um|umm)[,\s]+",
         "",
         name,
-        flags=re.IGNORECASE
+        flags=re.IGNORECASE,
     )
 
     return name.strip().title() if name.strip() else None
@@ -88,15 +90,16 @@ def extract_name(text):
 def process_message(
     text,
     user_name=None,
-    history=None
+    history=None,
 ):
     """
     Process one user message through SerenAI's pipeline.
 
-    This reusable application logic can later be called
-    from the voice application or another interface,
-    such as Gradio.
+    Safety is checked first. For normal messages, conversation-state
+    classification and the three NLP analyses run concurrently.
     """
+
+    total_start = time.perf_counter()
 
     if history is None:
         history = conversation_history
@@ -120,18 +123,23 @@ def process_message(
     # -------------------------
     # 1. Safety check
     # -------------------------
+    safety_start = time.perf_counter()
+
     safety_state = check_safety(
         user_message=text,
         conversation_history=history,
     )
 
+    print(
+        f"Safety latency: "
+        f"{time.perf_counter() - safety_start:.2f}s"
+    )
+
     # -------------------------
     # 2. Handle safety concerns
     # -------------------------
-    if safety_state in [
-        "concern",
-        "immediate_risk"
-    ]:
+    if safety_state in ["concern", "immediate_risk"]:
+        safety_response_start = time.perf_counter()
 
         response = generate_safety_response(
             user_message=text,
@@ -140,19 +148,17 @@ def process_message(
             conversation_history=history,
         )
 
-        # Save safety interaction
-        history.append(
-            {
-                "role": "user",
-                "content": text
-            }
+        print(
+            f"Safety response latency: "
+            f"{time.perf_counter() - safety_response_start:.2f}s"
         )
 
-        history.append(
-            {
-                "role": "assistant",
-                "content": response
-            }
+        history.append({"role": "user", "content": text})
+        history.append({"role": "assistant", "content": response})
+
+        print(
+            f"Total processing latency: "
+            f"{time.perf_counter() - total_start:.2f}s"
         )
 
         return {
@@ -169,25 +175,41 @@ def process_message(
         }
 
     # -------------------------
-    # 3. Detect conversation state
+    # 3. Run conversation state in parallel with sequential NLP analysis
     # -------------------------
-    conversation_state = detect_conversation_state(
-        user_message=text,
-        conversation_history=history,
+    parallel_start = time.perf_counter()
+
+    # Only the OpenAI conversation-state call runs in a worker thread.
+    # The local Hugging Face models remain sequential to avoid resource
+    # contention/hanging on shared CPU/MPS resources.
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        state_future = executor.submit(
+            detect_conversation_state,
+            user_message=text,
+            conversation_history=history,
+        )
+
+        emotion_results = detect_emotion(text)
+        stress_results = detect_stress(text)
+        topic_result = detect_topic(text)
+
+        conversation_state = state_future.result()
+
+    print(
+        f"Parallel State + Sequential NLP latency: "
+        f"{time.perf_counter() - parallel_start:.2f}s"
     )
 
     # -------------------------
-    # 4. Close conversation
+    # 4. Close conversation when appropriate
     # -------------------------
     if conversation_state == "close":
-
         if user_name:
             closing_message = (
                 f"I'm glad we could talk, {user_name}. "
                 "Take care of yourself, and you're welcome "
                 "to come back whenever you'd like."
             )
-
         else:
             closing_message = (
                 "I'm glad we could talk. "
@@ -195,20 +217,12 @@ def process_message(
                 "to come back whenever you'd like."
             )
 
-        # Save final user message
-        history.append(
-            {
-                "role": "user",
-                "content": text
-            }
-        )
+        history.append({"role": "user", "content": text})
+        history.append({"role": "assistant", "content": closing_message})
 
-        # Save SerenAI's closing response
-        history.append(
-            {
-                "role": "assistant",
-                "content": closing_message
-            }
+        print(
+            f"Total processing latency: "
+            f"{time.perf_counter() - total_start:.2f}s"
         )
 
         return {
@@ -225,42 +239,38 @@ def process_message(
         }
 
     # -------------------------
-    # 5. Emotion detection
+    # 5. Process emotion result
     # -------------------------
-    emotion_results = detect_emotion(text)
-
     top_emotion = max(
         emotion_results,
-        key=lambda x: x["score"]
+        key=lambda x: x["score"],
     )
 
     emotion = top_emotion["label"]
     emotion_score = top_emotion["score"]
 
     # -------------------------
-    # 6. Stress detection
+    # 6. Process stress result
     # -------------------------
-    stress_results = detect_stress(text)
-
     top_stress = max(
         stress_results,
-        key=lambda x: x["score"]
+        key=lambda x: x["score"],
     )
 
     stress_label = top_stress["label"]
     stress_score = top_stress["score"]
 
     # -------------------------
-    # 7. Topic detection
+    # 7. Process topic result
     # -------------------------
-    topic_result = detect_topic(text)
-
     topic = topic_result["labels"][0]
     topic_score = topic_result["scores"][0]
 
     # -------------------------
     # 8. Generate AI response
     # -------------------------
+    response_start = time.perf_counter()
+
     response = generate_response(
         user_message=text,
         emotion=emotion,
@@ -274,21 +284,20 @@ def process_message(
         conversation_state=conversation_state,
     )
 
+    print(
+        f"Response generation latency: "
+        f"{time.perf_counter() - response_start:.2f}s"
+    )
+
     # -------------------------
     # 9. Save to short-term memory
     # -------------------------
-    history.append(
-        {
-            "role": "user",
-            "content": text
-        }
-    )
+    history.append({"role": "user", "content": text})
+    history.append({"role": "assistant", "content": response})
 
-    history.append(
-        {
-            "role": "assistant",
-            "content": response
-        }
+    print(
+        f"Total processing latency: "
+        f"{time.perf_counter() - total_start:.2f}s"
     )
 
     return {
@@ -309,10 +318,7 @@ def process_message(
 # Current voice / terminal app
 # -------------------------
 def run_voice_app():
-    """
-    Run SerenAI using the microphone
-    and text-to-speech flow.
-    """
+    """Run SerenAI using the microphone and text-to-speech flow."""
 
     # -------------------------
     # Introduction
@@ -327,18 +333,14 @@ def run_voice_app():
 
     print(f"\nYou: {name_input}")
 
-    # Extract only the actual name
     user_name = extract_name(name_input)
 
     if user_name:
-
         greeting = (
             f"Nice to meet you, {user_name}. "
             "How are you feeling today?"
         )
-
     else:
-
         greeting = (
             "That's okay. "
             "How are you feeling today?"
@@ -351,127 +353,68 @@ def run_voice_app():
     # Main conversation loop
     # -------------------------
     while True:
-
         text = listen()
 
-        # For keyboard testing, replace:
-        #
-        # text = listen()
-        #
-        # with:
-        #
+        # For keyboard testing, replace the line above with:
         # text = input("\nYou: ")
 
         print(f"\nYou: {text}")
 
-        # -------------------------
-        # Empty input
-        # -------------------------
         if not text or not text.strip():
-
-            message = (
-                "I didn't catch that. "
-                "Please try again."
-            )
-
+            message = "I didn't catch that. Please try again."
             print(f"\nSerenAI: {message}")
             speak(message)
-
             continue
 
-        # -------------------------
         # Manual quit option
-        # -------------------------
         if text.strip().lower() == "quit":
-
             if user_name:
-                goodbye = (
-                    f"Take care, {user_name}. Goodbye!"
-                )
-
+                goodbye = f"Take care, {user_name}. Goodbye!"
             else:
                 goodbye = "Take care. Goodbye!"
 
             print(f"\nSerenAI: {goodbye}")
             speak(goodbye)
-
             break
 
-        # -------------------------
         # Process user message
-        # -------------------------
         result = process_message(
             text=text,
             user_name=user_name,
         )
 
-        # -------------------------
-        # Display safety state
-        # -------------------------
-        print(
-            f"\nSafety State: "
-            f"{result['safety_state']}"
-        )
+        print(f"\nSafety State: {result['safety_state']}")
 
-        # -------------------------
-        # Display conversation state
-        # -------------------------
         if result["conversation_state"] is not None:
-
             print(
                 f"Conversation State: "
                 f"{result['conversation_state']}"
             )
 
-        # -------------------------
-        # Display NLP analysis
-        # -------------------------
+        # Show NLP analysis only when the normal pipeline ran
         if result["emotion"] is not None:
-
             print("\n--- NLP Analysis ---")
-
             print(
-                f"Emotion: "
-                f"{result['emotion']} "
+                f"Emotion: {result['emotion']} "
                 f"({result['emotion_score']:.2%})"
             )
-
             print(
-                f"Stress: "
-                f"{result['stress_label']} "
+                f"Stress: {result['stress_label']} "
                 f"({result['stress_score']:.2%})"
             )
-
             print(
-                f"Topic: "
-                f"{result['topic']} "
+                f"Topic: {result['topic']} "
                 f"({result['topic_score']:.2%})"
             )
 
-        # -------------------------
-        # Display response
-        # -------------------------
-        if result["safety_state"] in [
-            "concern",
-            "immediate_risk"
-        ]:
-
+        if result["safety_state"] in ["concern", "immediate_risk"]:
             print("\nSafety Support Agent:")
-
         else:
-
             print("\nSerenAI:")
 
         print(result["response"])
-
-        # -------------------------
-        # Speak response
-        # -------------------------
         speak(result["response"])
 
-        # -------------------------
-        # End conversation
-        # -------------------------
         if result["should_close"]:
             break
 

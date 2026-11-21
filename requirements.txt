@@ -1,11 +1,13 @@
-transformers
-torch
+# transformers
+# torch
 openai
 python-dotenv
 sounddevice
 scipy
 numpy
 flask
+werkzeug
+gunicorn
 
 # optional: Pinecone backend (RAG_BACKEND=pinecone) and PDF knowledge files
 pinecone

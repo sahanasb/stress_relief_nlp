@@ -1,9 +1,10 @@
 from name_utils import extract_name, is_yes, spell_out, spelled_name
 from rag import retrieve_knowledge
 
-from nlp.emotion_detector import detect_emotion
-from nlp.stress_classifier import detect_stress
-from nlp.topic_classifier import detect_topic
+# commented out for now, so that these three models are not downloaded
+# from nlp.emotion_detector import detect_emotion
+# from nlp.stress_classifier import detect_stress
+# from nlp.topic_classifier import detect_topic
 
 from agent.safety import check_safety
 from agent.stress_agent import generate_response
@@ -178,7 +179,9 @@ def process_message(
     # -------------------------
     # 5. Emotion detection
     # -------------------------
-    emotion_results = detect_emotion(text)
+    # hard coded emotion results for now
+    # emotion_results = detect_emotion(text)
+    emotion_results = [{'label': 'sadness', 'score': 0.7072107195854187}, {'label': 'neutral', 'score': 0.09054538607597351}, {'label': 'surprise', 'score': 0.06394631415605545}, {'label': 'anger', 'score': 0.056541647762060165}, {'label': 'disgust', 'score': 0.04389435797929764}, {'label': 'fear', 'score': 0.035222478210926056}, {'label': 'joy', 'score': 0.0026391297578811646}]
 
     top_emotion = max(
         emotion_results,
@@ -191,7 +194,9 @@ def process_message(
     # -------------------------
     # 6. Stress detection
     # -------------------------
-    stress_results = detect_stress(text)
+    # hard coded stress results for now
+    # stress_results = detect_stress(text)
+    stress_results = [{'label': 'stress', 'score': 0.5812897086143494}, {'label': 'not_stress', 'score': 0.41871029138565063}]
 
     top_stress = max(
         stress_results,
@@ -204,7 +209,9 @@ def process_message(
     # -------------------------
     # 7. Topic detection
     # -------------------------
-    topic_result = detect_topic(text)
+    # hard coded topic results for now
+    # topic_result = detect_topic(text)
+    topic_result = {'sequence': "I'm burnt out with all these deadlines, I can't think straight.", 'labels': ['work or career', 'general', 'health or wellness', 'financial', 'academic', 'family', 'relationships'], 'scores': [0.8665347695350647, 0.04167915880680084, 0.026527700945734978, 0.025949502363801003, 0.019192306324839592, 0.013102172873914242, 0.007014376576989889]}
 
     topic = topic_result["labels"][0]
     topic_score = topic_result["scores"][0]

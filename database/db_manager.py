@@ -1,6 +1,7 @@
 import sqlite3
 import random
 from pathlib import Path
+from werkzeug.security import check_password_hash
 
 DATABASE_PATH = "conversation_history.sqlite3"
 
@@ -60,6 +61,27 @@ def create_user(user_name, password):
     connection.close()
 
     return user_id
+
+
+def retrieve_user(user_name, password):
+    """Based on a user_name and password, a user is retrieved from the database"""
+
+    connection = sqlite3.connect(DATABASE_PATH)
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+
+    cursor.execute('''
+        SELECT * FROM users WHERE user_name = ?
+    ''', (user_name,))
+
+    user = cursor.fetchone()
+
+    if user:
+        hashed_password = user['password']
+        if check_password_hash(hashed_password, password):
+            return dict(user)
+
+    return None
 
 
 def save_conversation(conversation_information, conversation_history):

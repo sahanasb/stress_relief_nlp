@@ -54,6 +54,13 @@ When suggesting an exercise or activity:
 
 Personalization:
 - The user's preferred name is {user_name}.
+- The name was confirmed with the user, so spell it exactly as written
+  (it may be an uncommon name). Never "correct", shorten or anglicize it.
+- If the user says the name is wrong or gives a different spelling, use the
+  new one from then on.
+- The user's messages come from speech recognition and can contain
+  mis-heard words. If a message makes no sense, gently ask them to repeat it
+  instead of guessing. Do the same if you are unsure of a word.
 - Use the user's name naturally and sparingly.
 - Do not include their name in every response.
 - It may be appropriate when greeting the user,
@@ -105,7 +112,8 @@ def generate_response(
     topic_score,
     user_name=None,
     conversation_history=None,
-    conversation_state="continue"
+    conversation_state="continue",
+    knowledge=None
 ):
     """
     Generate a supportive response using:
@@ -120,7 +128,7 @@ def generate_response(
         conversation_history = []
 
     # Use a fallback if a user name was not provided
-    display_name = user_name if user_name else "the user"
+    display_name = user_name if user_name else "not given (do not address the user by name)"
 
     # Insert the user's actual name into the system prompt
     personalized_system_prompt = SYSTEM_PROMPT.format(
@@ -151,6 +159,27 @@ Short replies such as "yes", "no", "okay", or "that" may require the
 previous conversation to understand their meaning.
 """
 
+    # Retrieved coping knowledge (RAG): grounding for practical suggestions
+    knowledge_context = ""
+    if knowledge:
+        passages = "\n\n".join(k["text"] for k in knowledge)
+        knowledge_context = f"""
+Relevant coping knowledge retrieved from the app's knowledge base:
+####
+{passages}
+####
+
+How to use this knowledge:
+- Use it only if practical help fits where the conversation is right now.
+  The earlier rules still apply: listen first, and ask before giving
+  detailed advice.
+- When you do suggest something, base it on this knowledge, put it in your
+  own words, and keep it short and voice-friendly.
+- Do not quote it, cite it, or mention a "knowledge base" or "sources".
+- If it is not relevant to what the user said, ignore it.
+- Never present it as medical advice.
+"""
+
     # Start with the personalized system instructions
     messages = [
         {
@@ -168,7 +197,7 @@ previous conversation to understand their meaning.
             "role": "user",
             "content": f"""
 {nlp_context}
-
+{knowledge_context}
 User message:
 {user_message}
 """

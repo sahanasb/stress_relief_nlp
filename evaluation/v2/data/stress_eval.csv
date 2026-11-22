@@ -1,0 +1,161 @@
+id,text,stress_true,difficulty,subcategory
+S001,I'm really stressed about my exam tomorrow.,stress,easy,direct_state
+S002,I feel overwhelmed by everything I have to do this week.,stress,easy,direct_state
+S003,I'm under a lot of pressure at work right now.,stress,easy,direct_state
+S004,I'm struggling to cope with all these deadlines.,stress,easy,direct_state
+S005,I feel tense and stressed about money.,stress,easy,direct_state
+S006,This week has been exhausting and stressful.,stress,medium,direct_state
+S007,I can't relax because I have too much on my plate.,stress,medium,direct_state
+S008,I feel like I'm being pulled in five directions at once.,stress,medium,direct_state
+S009,I'm worried I won't keep up with everything.,stress,medium,direct_state
+S010,I feel overloaded by school and work together.,stress,medium,direct_state
+S011,I have too many responsibilities and it's getting to me.,stress,medium,direct_state
+S012,I feel constantly pressured by what needs to be done.,stress,hard,direct_state
+S013,I'm having a hard time keeping up with my commitments.,stress,hard,direct_state
+S014,I feel mentally stretched thin today.,stress,hard,direct_state
+S015,Everything feels like too much right now.,stress,hard,direct_state
+S016,I'm tense because several important things are happening at once.,stress,hard,direct_state
+S017,"I have two exams, a project, and a work shift before Friday.",stress,easy,workload_pressure
+S018,Three deadlines landed on the same day and I don't know where to start.,stress,easy,workload_pressure
+S019,My manager added another task even though I'm already behind.,stress,easy,workload_pressure
+S020,I studied all weekend but still have chapters left to cover.,stress,easy,workload_pressure
+S021,I need to finish a report tonight and prepare for a presentation tomorrow.,stress,easy,workload_pressure
+S022,My calendar is packed from morning to night for the next four days.,stress,medium,workload_pressure
+S023,"Every time I finish one assignment, two more are waiting.",stress,medium,workload_pressure
+S024,I'm covering for a coworker while trying to meet my own deadlines.,stress,medium,workload_pressure
+S025,I have to choose between sleeping enough and finishing everything on time.,stress,medium,workload_pressure
+S026,I keep moving tasks to tomorrow because today is already full.,stress,medium,workload_pressure
+S027,I'm preparing for finals while also applying for internships.,stress,medium,workload_pressure
+S028,The group project is behind schedule and I'm the one trying to fix it.,stress,hard,workload_pressure
+S029,I have bills due while my work hours were cut this month.,stress,hard,workload_pressure
+S030,My family needs help at the same time my coursework is piling up.,stress,hard,workload_pressure
+S031,I'm trying to meet multiple people’s expectations at once.,stress,hard,workload_pressure
+S032,I have no open space in my schedule and another obligation just came up.,stress,hard,workload_pressure
+S033,My shoulders stay tight whenever I think about tomorrow's exam.,stress,easy,physiological_cognitive
+S034,I keep waking up at night thinking about everything I forgot to finish.,stress,easy,physiological_cognitive
+S035,My mind races through my to-do list even when I'm trying to rest.,stress,easy,physiological_cognitive
+S036,I can't focus because I'm thinking about all the deadlines ahead.,stress,easy,physiological_cognitive
+S037,My stomach feels knotted whenever I open my school portal.,stress,easy,physiological_cognitive
+S038,I keep checking the clock because I feel like I'm running out of time.,stress,medium,physiological_cognitive
+S039,I reread the same paragraph because my mind won't settle down.,stress,medium,physiological_cognitive
+S040,I feel restless and can't stop thinking about what could go wrong.,stress,medium,physiological_cognitive
+S041,I've been getting headaches on days when my workload is highest.,stress,medium,physiological_cognitive
+S042,I keep mentally rehearsing tomorrow's presentation instead of sleeping.,stress,medium,physiological_cognitive
+S043,I feel wired even though I'm physically tired.,stress,medium,physiological_cognitive
+S044,I can't enjoy my break because my mind keeps returning to unfinished work.,stress,hard,physiological_cognitive
+S045,I keep forgetting small things because I'm juggling too much.,stress,hard,physiological_cognitive
+S046,My breathing gets shallow when I look at everything due this week.,stress,hard,physiological_cognitive
+S047,I feel mentally crowded by tasks I haven't completed.,stress,hard,physiological_cognitive
+S048,I keep switching between assignments because I can't decide what is most urgent.,stress,hard,physiological_cognitive
+S049,"I'm not in a crisis, but I am definitely stressed about this week.",stress,easy,negation_recovery
+S050,"I'm calmer than yesterday, but I still feel pressure about the deadline.",stress,easy,negation_recovery
+S051,"I'm not panicking, though I am carrying a lot of stress right now.",stress,easy,negation_recovery
+S052,"I slept better last night, but the workload is still stressing me out.",stress,easy,negation_recovery
+S053,"I'm not overwhelmed every minute, but the exam is still weighing on me.",stress,easy,negation_recovery
+S054,"I have a plan now, though I still feel stressed about finishing in time.",stress,medium,negation_recovery
+S055,"I'm not falling apart, but I can tell the pressure is affecting me.",stress,medium,negation_recovery
+S056,"I'm handling it, but I still feel tense about the situation.",stress,medium,negation_recovery
+S057,"I'm less anxious than before, yet the deadlines still feel heavy.",stress,medium,negation_recovery
+S058,"I'm not scared exactly, but I am stressed by how much is happening.",stress,medium,negation_recovery
+S059,"I'm functioning okay, though I keep feeling pressure in the background.",stress,medium,negation_recovery
+S060,"I'm not upset with anyone, but the amount of work is stressing me.",stress,hard,negation_recovery
+S061,"I know it will probably be fine, but I still feel overloaded right now.",stress,hard,negation_recovery
+S062,"I'm taking breaks, yet I can't fully switch off from the pressure.",stress,hard,negation_recovery
+S063,"I'm more organized now, but the situation still feels stressful.",stress,hard,negation_recovery
+S064,"I'm not spiraling, but I do feel consistently tense about what I need to do.",stress,hard,negation_recovery
+S065,"I'm excited for the opportunity, but preparing for it is wearing me out.",stress,easy,ambiguous_mixed
+S066,"The project is interesting, yet the deadline pressure is intense.",stress,easy,ambiguous_mixed
+S067,"I'm proud of how much I'm doing, but I barely have time to recover.",stress,easy,ambiguous_mixed
+S068,"I know this is temporary, though it still feels like a lot to manage.",stress,easy,ambiguous_mixed
+S069,"I'm motivated to finish, but the amount of work is starting to overwhelm me.",stress,easy,ambiguous_mixed
+S070,"Part of me likes being busy, but I haven't had a real break in days.",stress,medium,ambiguous_mixed
+S071,"I'm grateful for the chance, but I'm worried I can't keep up with the pace.",stress,medium,ambiguous_mixed
+S072,"Things are going well overall, but I'm constantly thinking about what comes next.",stress,medium,ambiguous_mixed
+S073,"I feel capable, yet my schedule is so full that I can't relax.",stress,medium,ambiguous_mixed
+S074,"I'm making progress, but every unfinished task is still on my mind.",stress,medium,ambiguous_mixed
+S075,"I enjoy the class, but the exam schedule is making me tense.",stress,medium,ambiguous_mixed
+S076,"The new job is exciting, though learning everything at once is exhausting.",stress,hard,ambiguous_mixed
+S077,"I'm happy to help my family, but balancing it with school is draining me.",stress,hard,ambiguous_mixed
+S078,"I want to do well, but that expectation is creating a lot of pressure.",stress,hard,ambiguous_mixed
+S079,"I'm optimistic, yet the uncertainty is keeping me on edge.",stress,hard,ambiguous_mixed
+S080,"I think I can handle it, but right now my body still feels tense.",stress,hard,ambiguous_mixed
+S081,I feel calm about my exam tomorrow.,non_stress,easy,direct_state
+S082,I'm relaxed and comfortable with my schedule this week.,non_stress,easy,direct_state
+S083,Work feels manageable right now.,non_stress,easy,direct_state
+S084,I don't feel stressed about my current deadlines.,non_stress,easy,direct_state
+S085,I feel settled and in control of my responsibilities.,non_stress,easy,direct_state
+S086,This week has been busy but not stressful.,non_stress,medium,direct_state
+S087,I can relax because I have enough time to finish everything.,non_stress,medium,direct_state
+S088,My workload feels reasonable today.,non_stress,medium,direct_state
+S089,I feel prepared for what I need to do.,non_stress,medium,direct_state
+S090,School and work both feel manageable this week.,non_stress,medium,direct_state
+S091,"I have several responsibilities, but they don't feel overwhelming.",non_stress,medium,direct_state
+S092,I feel steady even with a few things on my list.,non_stress,hard,direct_state
+S093,I'm keeping up with my commitments without much pressure.,non_stress,hard,direct_state
+S094,I feel mentally clear today.,non_stress,hard,direct_state
+S095,Things feel under control right now.,non_stress,hard,direct_state
+S096,"I have a full day, but I don't feel tense about it.",non_stress,hard,direct_state
+S097,"I have two exams next week, but I've already made a study plan.",non_stress,easy,workload_pressure
+S098,"Three deadlines are coming up, and I've scheduled time for each one.",non_stress,easy,workload_pressure
+S099,"My manager added another task, but there is enough time to finish it.",non_stress,easy,workload_pressure
+S100,"I still have chapters to cover, but I'm on pace with my study plan.",non_stress,easy,workload_pressure
+S101,"I need to finish a report tonight, and I already have most of it done.",non_stress,easy,workload_pressure
+S102,"My calendar is full, but there are breaks between the important tasks.",non_stress,medium,workload_pressure
+S103,"I finished my main assignment early, so the remaining work feels manageable.",non_stress,medium,workload_pressure
+S104,"I'm covering for a coworker, but my own deadlines were adjusted.",non_stress,medium,workload_pressure
+S105,"I have a lot to do, but I can complete it without cutting into sleep.",non_stress,medium,workload_pressure
+S106,I moved one task to tomorrow because there was plenty of flexibility.,non_stress,medium,workload_pressure
+S107,"I'm preparing for finals and internships, but I started both early.",non_stress,medium,workload_pressure
+S108,The group project is on schedule and everyone is doing their part.,non_stress,hard,workload_pressure
+S109,"My bills are due, but I already set aside the money for them.",non_stress,hard,workload_pressure
+S110,"My family needs help, and I planned my coursework around it.",non_stress,hard,workload_pressure
+S111,"I have several expectations to meet, but none of them feel urgent.",non_stress,hard,workload_pressure
+S112,"My schedule is busy, yet I still have enough space to rest.",non_stress,hard,workload_pressure
+S113,I can think about tomorrow's exam without feeling tense.,non_stress,easy,physiological_cognitive
+S114,I slept normally even though I have several tasks this week.,non_stress,easy,physiological_cognitive
+S115,My mind settles easily when I stop working for the day.,non_stress,easy,physiological_cognitive
+S116,I can focus on one task at a time without worrying about the others.,non_stress,easy,physiological_cognitive
+S117,I feel physically relaxed when I open my school portal.,non_stress,easy,physiological_cognitive
+S118,"I check the time occasionally, but I don't feel rushed.",non_stress,medium,physiological_cognitive
+S119,I can read and concentrate without my mind jumping to deadlines.,non_stress,medium,physiological_cognitive
+S120,I feel steady when I think about what I need to do next.,non_stress,medium,physiological_cognitive
+S121,My body feels normal even on days when I have a lot scheduled.,non_stress,medium,physiological_cognitive
+S122,I can prepare for tomorrow's presentation and still sleep normally.,non_stress,medium,physiological_cognitive
+S123,I feel alert without feeling wound up.,non_stress,medium,physiological_cognitive
+S124,I can enjoy my break without thinking about unfinished work.,non_stress,hard,physiological_cognitive
+S125,I'm remembering things normally even during a busy week.,non_stress,hard,physiological_cognitive
+S126,My breathing stays relaxed when I look at my to-do list.,non_stress,hard,physiological_cognitive
+S127,My mind feels organized rather than crowded.,non_stress,hard,physiological_cognitive
+S128,I can move from one assignment to another without feeling scattered.,non_stress,hard,physiological_cognitive
+S129,"I was stressed earlier this week, but I feel calm now.",non_stress,easy,negation_recovery
+S130,"I had been worried about the deadline, but the pressure is gone after finishing early.",non_stress,easy,negation_recovery
+S131,I'm not stressed anymore because I finally made a clear plan.,non_stress,easy,negation_recovery
+S132,"Yesterday was overwhelming, but today I feel rested and in control.",non_stress,easy,negation_recovery
+S133,"The exam used to worry me, but I feel prepared now.",non_stress,easy,negation_recovery
+S134,"I expected this week to be stressful, but it has been manageable.",non_stress,medium,negation_recovery
+S135,"I was tense this morning, but after organizing my tasks I feel fine.",non_stress,medium,negation_recovery
+S136,I'm not carrying that pressure anymore; the issue has been resolved.,non_stress,medium,negation_recovery
+S137,"I had trouble relaxing before, but now I can switch off after work.",non_stress,medium,negation_recovery
+S138,"I was anxious about the presentation, but practice made me feel comfortable.",non_stress,medium,negation_recovery
+S139,"I had a lot on my mind, but I no longer feel overloaded.",non_stress,medium,negation_recovery
+S140,"The situation looked stressful at first, but it turned out to be straightforward.",non_stress,hard,negation_recovery
+S141,"I was worried about time, but the deadline was extended and I feel relieved.",non_stress,hard,negation_recovery
+S142,"I felt behind last week, but I caught up and now feel calm.",non_stress,hard,negation_recovery
+S143,"I expected to panic, but I actually feel ready.",non_stress,hard,negation_recovery
+S144,"I had been under pressure, but things have settled down now.",non_stress,hard,negation_recovery
+S145,"I'm excited for the opportunity, and the preparation feels manageable.",non_stress,easy,ambiguous_mixed
+S146,"The project is demanding, but I enjoy the challenge and don't feel pressured.",non_stress,easy,ambiguous_mixed
+S147,I'm proud of how much I'm doing and still have enough time to rest.,non_stress,easy,ambiguous_mixed
+S148,"This week is busy, but I don't feel overwhelmed by it.",non_stress,easy,ambiguous_mixed
+S149,I'm motivated to finish and feel comfortable with the amount of work left.,non_stress,easy,ambiguous_mixed
+S150,"I like being busy, and I'm still getting enough downtime.",non_stress,medium,ambiguous_mixed
+S151,I'm grateful for the opportunity and confident I can keep up with the pace.,non_stress,medium,ambiguous_mixed
+S152,"Things are going well, and I can think about what's next without worrying.",non_stress,medium,ambiguous_mixed
+S153,"My schedule is full, but I still feel relaxed and capable.",non_stress,medium,ambiguous_mixed
+S154,I'm making progress and don't feel bothered by the unfinished tasks.,non_stress,medium,ambiguous_mixed
+S155,"I enjoy the class, and the exam schedule feels reasonable.",non_stress,medium,ambiguous_mixed
+S156,"The new job is exciting, and learning everything has been energizing rather than stressful.",non_stress,hard,ambiguous_mixed
+S157,I'm happy to help my family and still have enough time for school.,non_stress,hard,ambiguous_mixed
+S158,"I want to do well, but I don't feel pressured by that goal.",non_stress,hard,ambiguous_mixed
+S159,"There is some uncertainty, but I'm comfortable waiting to see what happens.",non_stress,hard,ambiguous_mixed
+S160,"I think I can handle it, and my body feels relaxed right now.",non_stress,hard,ambiguous_mixed

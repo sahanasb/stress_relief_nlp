@@ -1,0 +1,31 @@
+id,query,history,topic,expected_source,should_retrieve,difficulty,subcategory
+R001,My heart is racing and I need a breathing exercise.,[],health or wellness,breathing-exercises.md,true,easy,direct_topic
+R002,Can you show me a slow breathing pattern with a longer exhale?,[],health or wellness,breathing-exercises.md,true,easy,direct_topic
+R003,My exam is tomorrow and I am panicking about everything I still need to study.,[],academic,exam-and-academic-stress.md,true,easy,direct_topic
+R004,I have three assignments due and I do not know which school task to start first.,[],academic,exam-and-academic-stress.md,true,medium,indirect_context
+R005,I had a huge argument with my sister and I am still angry.,[],family,family-and-relationship-stress.md,true,easy,direct_topic
+R006,My partner and I keep misunderstanding each other and every conversation turns tense.,[],relationships,family-and-relationship-stress.md,true,medium,indirect_context
+R007,Bills are piling up and I am scared I will not have enough money this month.,[],financial,financial-stress.md,true,easy,direct_topic
+R008,Rent and debt are constantly on my mind and I keep avoiding looking at the numbers.,[],financial,financial-stress.md,true,medium,indirect_context
+R009,I am spiraling and need something that will bring me back to the present moment.,[],health or wellness,grounding-5-4-3-2-1.md,true,medium,indirect_context
+R010,I feel panicky and spaced out. Can you guide me through noticing things around me?,[],health or wellness,grounding-5-4-3-2-1.md,true,easy,direct_topic
+R011,I have been sitting at my desk all day and feel restless and stuck.,[],health or wellness,movement-and-body-reset.md,true,medium,indirect_context
+R012,Would a short walk or stretching help me reset after hours at the computer?,[],health or wellness,movement-and-body-reset.md,true,easy,direct_topic
+R013,My jaw and shoulders are so tense. I want an exercise that releases each muscle slowly.,[],health or wellness,progressive-muscle-relaxation.md,true,easy,direct_topic
+R014,I am wound up before bed and keep clenching my hands and shoulders.,[],health or wellness,progressive-muscle-relaxation.md,true,medium,indirect_context
+R015,I have to give a presentation and I am terrified I will forget what to say.,[],academic,public-speaking-and-performance-nerves.md,true,easy,direct_topic
+R016,My interview is tomorrow and my mouth gets dry and my heart races when I practice.,[],work or career,public-speaking-and-performance-nerves.md,true,medium,indirect_context
+R017,My mind keeps running through worst-case scenarios and I cannot stop the what-ifs.,[],general,racing-thoughts-and-worry.md,true,easy,direct_topic
+R018,I keep replaying a mistake and assuming the worst possible outcome will happen.,[],general,racing-thoughts-and-worry.md,true,medium,indirect_context
+R019,I keep calling myself a failure because I did not finish everything today.,[],general,self-compassion-and-small-steps.md,true,medium,indirect_context
+R020,This task feels so huge that I cannot start. I need a tiny first step.,[],general,self-compassion-and-small-steps.md,true,easy,direct_topic
+R021,I lie awake at night because my mind will not switch off.,[],health or wellness,sleep-and-winding-down.md,true,easy,direct_topic
+R022,I keep checking my phone late at night and then stare at the clock because I cannot sleep.,[],health or wellness,sleep-and-winding-down.md,true,medium,indirect_context
+R023,I have felt low and stressed for weeks and it is interfering with school and sleep.,[],health or wellness,when-to-reach-out.md,true,medium,support_escalation
+R024,Panic keeps coming back and I am wondering whether I should talk to a counselor or doctor.,[],health or wellness,when-to-reach-out.md,true,easy,support_escalation
+R025,I am exhausted from nonstop deadlines and feel completely burned out at work.,[],work or career,work-deadlines-and-burnout.md,true,easy,direct_topic
+R026,My manager keeps adding tasks and I need a way to prioritize and protect my energy.,[],work or career,work-deadlines-and-burnout.md,true,medium,indirect_context
+R027,Yes please,"[{""role"": ""user"", ""content"": ""I have an exam tomorrow and I am overwhelmed by how much I need to review.""}, {""role"": ""assistant"", ""content"": ""We can make it more manageable.""}]",academic,exam-and-academic-stress.md,true,hard,history_dependent
+R028,What should I do first?,"[{""role"": ""user"", ""content"": ""My rent is due and I also have credit card bills I am worried about.""}, {""role"": ""assistant"", ""content"": ""That sounds like a lot to carry.""}]",financial,financial-stress.md,true,hard,history_dependent
+R029,What is the capital of France?,[],general,,false,easy,irrelevant_query
+R030,How many planets are in the solar system?,[],general,,false,easy,irrelevant_query

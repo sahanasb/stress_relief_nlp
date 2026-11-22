@@ -1,0 +1,211 @@
+id,text,emotion_true,difficulty,subcategory,emotion_pred,emotion_confidence,latency_seconds,error,correct
+E001,I'm furious about the exam.,anger,easy,direct_expression,anger,0.986530601978302,2.120106001966633,,True
+E002,The presentation makes me really angry.,anger,easy,direct_expression,anger,0.981892466545105,0.027674067998304963,,True
+E003,I'm so irritated by the deadline.,anger,medium,direct_expression,anger,0.9508301615715027,0.31859835295472294,,True
+E004,I'm mad that the manager happened.,anger,medium,direct_expression,anger,0.8105536103248596,0.02693896001437679,,True
+E005,I feel angry every time I think about the rent.,anger,hard,direct_expression,anger,0.9892730116844177,0.16371928801527247,,True
+E006,I'm boiling over because of the family dinner.,anger,hard,direct_expression,anger,0.957422137260437,0.16453629900934175,,True
+E007,I keep replaying the deadline and clenching my jaw.,anger,easy,indirect_expression,anger,0.5788384079933167,0.16539600800024346,,True
+E008,"Every time the manager comes up, I want to snap at someone.",anger,easy,indirect_expression,anger,0.9517884254455566,0.1684764579986222,,True
+E009,I can't stop stewing over the rent.,anger,medium,indirect_expression,anger,0.5081323981285095,0.02570632501738146,,True
+E010,I feel my patience disappear when I think about the family dinner.,anger,medium,indirect_expression,anger,0.45749932527542114,0.17428542400011793,,True
+E011,The argument with my partner has me pacing around the room.,anger,hard,indirect_expression,anger,0.5231471657752991,0.02619000297272578,,True
+E012,I'm trying not to lash out over the doctor appointment.,anger,hard,indirect_expression,anger,0.9192670583724976,0.026488947973120958,,True
+E013,I'm not scared about the rent; I'm angry about how it was handled.,anger,easy,negation_contrast,anger,0.8425853848457336,0.16472312301630154,,True
+E014,"I'm not sad about the family dinner, I'm irritated.",anger,easy,negation_contrast,anger,0.5568636059761047,0.026650628948118538,,True
+E015,"The argument with my partner doesn't make me anxious, it makes me furious.",anger,medium,negation_contrast,anger,0.9413893222808838,0.1634421159978956,,True
+E016,I'm not disappointed so much as angry about the doctor appointment.,anger,medium,negation_contrast,anger,0.9534817934036255,0.030635458999313414,,True
+E017,"I'm calm about the outcome, but angry about the group project itself.",anger,hard,negation_contrast,anger,0.9850841164588928,0.16651087999343872,,True
+E018,I'm not upset in a vague way; I'm specifically mad about the job interview.,anger,hard,negation_contrast,anger,0.847275972366333,0.1688204649835825,,True
+E019,"I'm relieved it's over, but I'm still angry about the argument with my partner.",anger,easy,mixed_emotion,anger,0.9648593664169312,0.17156959098065272,,True
+E020,"Part of me is sad, but mostly I'm angry about the doctor appointment.",anger,easy,mixed_emotion,anger,0.9068654775619507,0.02861781301908195,,True
+E021,"I'm nervous too, yet the strongest feeling is anger about the group project.",anger,medium,mixed_emotion,fear,0.9748930931091309,0.02921649703057483,,False
+E022,"I can see the funny side, but the job interview still makes me furious.",anger,medium,mixed_emotion,anger,0.9483677744865417,0.02890402398770675,,True
+E023,"I'm disappointed and angry, with anger winning out over the unexpected bill.",anger,hard,mixed_emotion,anger,0.9133062958717346,0.028322527010459453,,True
+E024,"I'm tired, but mostly irritated by the weekend plan.",anger,hard,mixed_emotion,anger,0.935502827167511,0.025666042987722903,,True
+E025,They changed the group project at the last minute after promising they wouldn't.,anger,easy,situational_inference,neutral,0.9097212553024292,0.028874206996988505,,False
+E026,Someone ignored what we agreed on about the job interview and acted like it was nothing.,anger,easy,situational_inference,anger,0.478293776512146,0.026047396007925272,,True
+E027,I was blamed for the unexpected bill even though I had warned everyone in advance.,anger,medium,situational_inference,anger,0.38428032398223877,0.02858292101882398,,True
+E028,They took credit for my work on the weekend plan and never acknowledged me.,anger,medium,situational_inference,anger,0.40919509530067444,0.02833874401403591,,True
+E029,The rules for the exam were suddenly changed only after I finished.,anger,hard,situational_inference,surprise,0.9292579889297485,0.02585244900546968,,False
+E030,I was treated unfairly during the presentation and I can't let it go.,anger,hard,situational_inference,anger,0.5064108967781067,0.030766509007662535,,True
+E031,The exam is disgusting to me.,disgust,easy,direct_expression,disgust,0.9898844957351685,0.02629875100683421,,True
+E032,I feel disgusted by what happened with the presentation.,disgust,easy,direct_expression,disgust,0.9843137264251709,0.02556482399813831,,True
+E033,The whole deadline situation makes me feel sick.,disgust,medium,direct_expression,disgust,0.34636345505714417,0.17657754704123363,,True
+E034,I find the manager revolting.,disgust,medium,direct_expression,disgust,0.8682583570480347,0.023479615978430957,,True
+E035,Thinking about the rent grosses me out.,disgust,hard,direct_expression,disgust,0.6916191577911377,0.02293200301937759,,True
+E036,I feel repulsed by the family dinner.,disgust,hard,direct_expression,anger,0.5177042484283447,0.024351602012757212,,False
+E037,Just thinking about the deadline turns my stomach.,disgust,easy,indirect_expression,disgust,0.6763400435447693,0.02475314401090145,,True
+E038,I want to get away from the manager as soon as it comes up.,disgust,easy,indirect_expression,anger,0.532026469707489,0.024516608973499388,,False
+E039,The rent leaves a bad taste in my mouth.,disgust,medium,indirect_expression,disgust,0.9777283668518066,0.02427155402256176,,True
+E040,I cringe whenever I remember the family dinner.,disgust,medium,indirect_expression,fear,0.9260377287864685,0.023773590044584125,,False
+E041,I feel physically put off by the argument with my partner.,disgust,hard,indirect_expression,anger,0.6058645844459534,0.027518460992723703,,False
+E042,I don't even want to be near anything connected to the doctor appointment.,disgust,hard,indirect_expression,disgust,0.5807148218154907,0.028978226997423917,,True
+E043,I'm not afraid of the rent; I find it disgusting.,disgust,easy,negation_contrast,disgust,0.9694874882698059,0.02810343401506543,,True
+E044,"The family dinner doesn't make me sad, it makes me feel repulsed.",disgust,easy,negation_contrast,fear,0.8861886858940125,0.027472336019854993,,False
+E045,I'm not angry so much as grossed out by the argument with my partner.,disgust,medium,negation_contrast,anger,0.9618498682975769,0.026693299994803965,,False
+E046,I can handle the doctor appointment; I just find it deeply unpleasant.,disgust,medium,negation_contrast,disgust,0.7694786190986633,0.02695359697099775,,True
+E047,"The group project isn't scary to me, just revolting.",disgust,hard,negation_contrast,fear,0.8724252581596375,0.024270846974104643,,False
+E048,"I'm not shocked anymore, only disgusted by the job interview.",disgust,hard,negation_contrast,disgust,0.9864057898521423,0.024644955003168434,,True
+E049,"I'm angry too, but mostly disgusted by the argument with my partner.",disgust,easy,mixed_emotion,disgust,0.8024223446846008,0.028774172998964787,,True
+E050,"The doctor appointment is surprising, but what I really feel is disgust.",disgust,easy,mixed_emotion,disgust,0.9877358078956604,0.026887344021815807,,True
+E051,"I'm upset and disgusted, with disgust being stronger about the group project.",disgust,medium,mixed_emotion,disgust,0.9874234795570374,0.031446776003576815,,True
+E052,"I feel disappointed, but the job interview mostly turns my stomach.",disgust,medium,mixed_emotion,sadness,0.9743105173110962,0.028555335011333227,,False
+E053,"I'm relieved it's over, yet still repulsed by the unexpected bill.",disgust,hard,mixed_emotion,joy,0.9826608300209045,0.03009568603010848,,False
+E054,"I'm uneasy and disgusted by the weekend plan, especially disgusted.",disgust,hard,mixed_emotion,disgust,0.9829548001289368,0.02748714102199301,,True
+E055,I found spoiled food left around after the group project and nearly gagged.,disgust,easy,situational_inference,disgust,0.9689508676528931,0.0298567499849014,,True
+E056,Someone bragged about cheating during the job interview and I wanted nothing to do with it.,disgust,easy,situational_inference,disgust,0.8771384954452515,0.028035495954100043,,True
+E057,The unexpected bill involved behavior I find morally repulsive.,disgust,medium,situational_inference,disgust,0.9382041692733765,0.023476361006032676,,True
+E058,I saw something unhygienic during the weekend plan and had to look away.,disgust,medium,situational_inference,disgust,0.7963222861289978,0.026554231997579336,,True
+E059,The way people acted during the exam made me want to leave immediately.,disgust,hard,situational_inference,anger,0.636726975440979,0.027755103015806526,,False
+E060,I learned a gross detail about the presentation and can't stop cringing.,disgust,hard,situational_inference,disgust,0.9651880860328674,0.026631703949533403,,True
+E061,I'm scared about the exam.,fear,easy,direct_expression,fear,0.9939337372779846,0.02684951398987323,,True
+E062,The presentation terrifies me.,fear,easy,direct_expression,fear,0.9687681794166565,0.16613991500344127,,True
+E063,I'm afraid of what might happen with the deadline.,fear,medium,direct_expression,fear,0.9917851686477661,0.025039662956260145,,True
+E064,I feel really fearful about the manager.,fear,medium,direct_expression,fear,0.993878185749054,0.027342910994775593,,True
+E065,I'm frightened by the thought of the rent.,fear,hard,direct_expression,fear,0.9949883222579956,0.02373234898550436,,True
+E066,I'm nervous because the family dinner feels threatening.,fear,hard,direct_expression,fear,0.9937599301338196,0.023268867982551455,,True
+E067,I keep imagining everything going wrong with the deadline.,fear,easy,indirect_expression,neutral,0.310183584690094,0.025286137009970844,,False
+E068,My stomach drops whenever I think about the manager.,fear,easy,indirect_expression,sadness,0.3738170862197876,0.022983508999459445,,False
+E069,I can't settle down because of what could happen with the rent.,fear,medium,indirect_expression,sadness,0.9126723408699036,0.02612344897352159,,False
+E070,I keep checking for bad news about the family dinner.,fear,medium,indirect_expression,neutral,0.8011756539344788,0.023143831989727914,,False
+E071,My mind keeps jumping to worst-case scenarios about the argument with my partner.,fear,hard,indirect_expression,disgust,0.6758159399032593,0.03079916798742488,,False
+E072,I feel on edge every time the doctor appointment comes to mind.,fear,hard,indirect_expression,fear,0.9868738055229187,0.025721664016600698,,True
+E073,I'm not angry about the rent; I'm scared.,fear,easy,negation_contrast,fear,0.9893749952316284,0.024164527014363557,,True
+E074,The family dinner doesn't make me sad as much as afraid.,fear,easy,negation_contrast,sadness,0.5683075785636902,0.02539726597024128,,False
+E075,"I'm not excited about the argument with my partner, I'm genuinely frightened.",fear,medium,negation_contrast,fear,0.993492066860199,0.026187617040704936,,True
+E076,I'm not irritated by the doctor appointment; I'm worried something bad will happen.,fear,medium,negation_contrast,anger,0.6817384958267212,0.02583217603387311,,False
+E077,"I don't feel disgusted by the group project, just scared of the outcome.",fear,hard,negation_contrast,disgust,0.9847860932350159,0.027564267977140844,,False
+E078,I'm not surprised anymore; now I'm afraid of what the job interview could lead to.,fear,hard,negation_contrast,surprise,0.5888031721115112,0.02621538599487394,,False
+E079,"I'm excited too, but mostly scared about the argument with my partner.",fear,easy,mixed_emotion,fear,0.9144949316978455,0.02789376798318699,,True
+E080,"I'm sad and afraid, with fear being stronger around the doctor appointment.",fear,easy,mixed_emotion,sadness,0.5303097367286682,0.028109279985073954,,False
+E081,"Part of me is hopeful, but I'm still terrified about the group project.",fear,medium,mixed_emotion,fear,0.9888096451759338,0.08602192404214293,,True
+E082,"I'm frustrated, yet what dominates is fear about the job interview.",fear,medium,mixed_emotion,anger,0.9424218535423279,0.029640980006661266,,False
+E083,"I'm curious and scared at the same time, mostly scared about the unexpected bill.",fear,hard,mixed_emotion,fear,0.7633181214332581,0.02707354602171108,,True
+E084,"I'm relieved I have a plan, but still afraid of the weekend plan.",fear,hard,mixed_emotion,joy,0.9641751050949097,0.025589850964024663,,False
+E085,I have to face the group project tomorrow and I keep thinking I might freeze.,fear,easy,situational_inference,sadness,0.5890229940414429,0.026202694978564978,,False
+E086,There is a real chance the job interview could go badly and I can't stop anticipating it.,fear,easy,situational_inference,fear,0.8351174592971802,0.025746378989424556,,True
+E087,I woke up twice thinking about what could happen during the unexpected bill.,fear,medium,situational_inference,surprise,0.879433810710907,0.02622373402118683,,False
+E088,I keep rehearsing escape plans in case the weekend plan goes wrong.,fear,medium,situational_inference,neutral,0.45694249868392944,0.026449964032508433,,False
+E089,My heart starts racing when I picture the exam happening.,fear,hard,situational_inference,fear,0.6198220252990723,0.025141621998045594,,True
+E090,I keep delaying sleep because tomorrow's presentation feels threatening.,fear,hard,situational_inference,fear,0.9874351024627686,0.023177123977802694,,True
+E091,I'm really happy about the exam.,joy,easy,direct_expression,joy,0.9907481074333191,0.028596686956007034,,True
+E092,The presentation makes me feel joyful.,joy,easy,direct_expression,joy,0.9919856786727905,0.022266941028647125,,True
+E093,I'm delighted with how the deadline turned out.,joy,medium,direct_expression,joy,0.97911137342453,0.024332572997082025,,True
+E094,I feel genuinely happy because of the manager.,joy,medium,direct_expression,joy,0.994596540927887,0.023433046007994562,,True
+E095,I'm thrilled about the rent.,joy,hard,direct_expression,joy,0.9780896306037903,0.02421659603714943,,True
+E096,The family dinner put me in a great mood.,joy,hard,direct_expression,joy,0.9829777479171753,0.024838297977112234,,True
+E097,I can't stop smiling when I think about the deadline.,joy,easy,indirect_expression,joy,0.9720182418823242,0.024950867984443903,,True
+E098,I keep telling people how well the manager went.,joy,easy,indirect_expression,neutral,0.4994898736476898,0.02436589595163241,,False
+E099,I feel lighter every time the rent comes to mind.,joy,medium,indirect_expression,joy,0.8907370567321777,0.022802588995546103,,True
+E100,I caught myself grinning about the family dinner all day.,joy,medium,indirect_expression,joy,0.9249922633171082,0.023812194005586207,,True
+E101,I have so much positive energy after the argument with my partner.,joy,hard,indirect_expression,joy,0.9846916794776917,0.027366823982447386,,True
+E102,I keep replaying the best parts of the doctor appointment in my head.,joy,hard,indirect_expression,neutral,0.8646881580352783,0.028011255024466664,,False
+E103,I'm not nervous about the rent; I'm excited and happy.,joy,easy,negation_contrast,joy,0.9545004367828369,0.026883054990321398,,True
+E104,"The family dinner doesn't make me sad at all, it makes me joyful.",joy,easy,negation_contrast,joy,0.8253602385520935,0.026628535008057952,,True
+E105,I'm not angry about the argument with my partner; I'm actually delighted.,joy,medium,negation_contrast,joy,0.6904028058052063,0.027015933010261506,,True
+E106,"I expected to be worried, but the doctor appointment makes me happy.",joy,medium,negation_contrast,joy,0.9815845489501953,0.026357558032032102,,True
+E107,"I'm not surprised anymore, just really pleased about the group project.",joy,hard,negation_contrast,surprise,0.961725652217865,0.027753840025980026,,False
+E108,I'm not pretending to be okay; I'm genuinely happy about the job interview.,joy,hard,negation_contrast,joy,0.9940967559814453,0.02687718503875658,,True
+E109,"I'm tired, but mostly happy about the argument with my partner.",joy,easy,mixed_emotion,joy,0.9648529291152954,0.026385062956251204,,True
+E110,"I'm a little nervous, yet I'm much more excited and joyful about the doctor appointment.",joy,easy,mixed_emotion,joy,0.9327930808067322,0.02692873601336032,,True
+E111,"I'm surprised and happy, with happiness stronger after the group project.",joy,medium,mixed_emotion,surprise,0.9780721664428711,0.03051814896753058,,False
+E112,I feel relieved and joyful about the job interview.,joy,medium,mixed_emotion,joy,0.9922335147857666,0.024837927019689232,,True
+E113,"I'm emotional, but in a happy way because of the unexpected bill.",joy,hard,mixed_emotion,joy,0.975307285785675,0.026944677985738963,,True
+E114,"I'm slightly overwhelmed, though overall the weekend plan makes me very happy.",joy,hard,mixed_emotion,surprise,0.8546403646469116,0.025627119990531355,,False
+E115,The group project went better than I hoped and I celebrated afterward.,joy,easy,situational_inference,joy,0.9727932214736938,0.024774941033683717,,True
+E116,I got good news about the job interview and immediately called someone to share it.,joy,easy,situational_inference,joy,0.7935696244239807,0.026690405036788434,,True
+E117,Everything finally worked out with the unexpected bill and I spent the evening smiling.,joy,medium,situational_inference,joy,0.9660524129867554,0.025396601005923003,,True
+E118,I received praise for the weekend plan and felt proud all day.,joy,medium,situational_inference,joy,0.9815058708190918,0.024723410024307668,,True
+E119,The exam ended with exactly the outcome I wanted.,joy,hard,situational_inference,joy,0.9229251742362976,0.02472928399220109,,True
+E120,"After weeks of effort, the presentation finally paid off and I felt fantastic.",joy,hard,situational_inference,joy,0.9908086657524109,0.02905604598345235,,True
+E121,I feel pretty neutral about the exam.,neutral,easy,direct_expression,joy,0.8497978448867798,0.025209556974004954,,False
+E122,I don't have a strong feeling about the presentation.,neutral,easy,direct_expression,disgust,0.7827646136283875,0.025458912015892565,,False
+E123,The deadline seems fine to me.,neutral,medium,direct_expression,joy,0.48623642325401306,0.023779148003086448,,False
+E124,I'm neither happy nor upset about the manager.,neutral,medium,direct_expression,sadness,0.7569674253463745,0.024219580984208733,,False
+E125,I feel calm and neutral about the rent.,neutral,hard,direct_expression,joy,0.9607627391815186,0.022868358995765448,,False
+E126,The family dinner doesn't really affect my mood.,neutral,hard,direct_expression,neutral,0.4616276025772095,0.026864857994951308,,True
+E127,"The deadline happened, and I just moved on with my day.",neutral,easy,indirect_expression,neutral,0.861294150352478,0.025627342984080315,,True
+E128,I noted the manager and didn't think much more about it.,neutral,easy,indirect_expression,neutral,0.7765428423881531,0.024385688011534512,,True
+E129,The rent is something I can deal with without much emotion.,neutral,medium,indirect_expression,neutral,0.5275415182113647,0.023724870989099145,,True
+E130,I don't keep thinking about the family dinner; it's just another task.,neutral,medium,indirect_expression,neutral,0.8540446758270264,0.02768023096723482,,True
+E131,"The argument with my partner came up, but it didn't change how I felt.",neutral,hard,indirect_expression,disgust,0.5195552706718445,0.030510448035784066,,False
+E132,I can take or leave the doctor appointment; it doesn't matter much to me.,neutral,hard,indirect_expression,neutral,0.6649723649024963,0.02592927502701059,,True
+E133,I'm not worried or excited about the rent.,neutral,easy,negation_contrast,fear,0.816106915473938,0.025506157951895148,,False
+E134,"The family dinner doesn't make me angry, sad, or especially happy.",neutral,easy,negation_contrast,anger,0.933961033821106,0.027867947006598115,,False
+E135,I'm not afraid of the argument with my partner; I just see it as routine.,neutral,medium,negation_contrast,fear,0.7452414631843567,0.026629927975591272,,False
+E136,I'm neither surprised nor disappointed by the doctor appointment.,neutral,medium,negation_contrast,surprise,0.9796446561813354,0.02411519398447126,,False
+E137,"The group project isn't bothering me, but it isn't exciting either.",neutral,hard,negation_contrast,sadness,0.4130840599536896,0.026421713992021978,,False
+E138,I'm not emotional about the job interview; I'm simply dealing with it.,neutral,hard,negation_contrast,neutral,0.7397887110710144,0.02852535096462816,,True
+E139,"There are good and bad parts to the argument with my partner, but overall I feel neutral.",neutral,easy,mixed_emotion,joy,0.7337492108345032,0.027463090023957193,,False
+E140,"I was briefly surprised by the doctor appointment, but now I feel normal about it.",neutral,easy,mixed_emotion,surprise,0.9791993498802185,0.02654787100618705,,False
+E141,"I had some nerves earlier, though the group project feels routine now.",neutral,medium,mixed_emotion,joy,0.46858957409858704,0.030641160032246262,,False
+E142,"I can see why others care about the job interview, but I feel indifferent.",neutral,medium,mixed_emotion,disgust,0.6679607629776001,0.027014918974600732,,False
+E143,"The unexpected bill was mildly annoying and mildly interesting, so it balances out.",neutral,hard,mixed_emotion,joy,0.6864853501319885,0.027736533025745302,,False
+E144,"I felt something at first, but now the weekend plan leaves me mostly neutral.",neutral,hard,mixed_emotion,disgust,0.4708488881587982,0.02702708001015708,,False
+E145,"The group project is scheduled for next week, and I wrote it on my calendar.",neutral,easy,situational_inference,neutral,0.8249090313911438,0.027273555984720588,,True
+E146,I finished the job interview and then went back to my usual routine.,neutral,easy,situational_inference,neutral,0.38828539848327637,0.026642979006282985,,True
+E147,"Someone mentioned the unexpected bill, and I acknowledged it without much reaction.",neutral,medium,situational_inference,surprise,0.7815892100334167,0.025959708029404283,,False
+E148,"The weekend plan changed time, so I updated my schedule and carried on.",neutral,medium,situational_inference,neutral,0.9219850301742554,0.02727076702285558,,True
+E149,I received the details for the exam and filed them away.,neutral,hard,situational_inference,neutral,0.6074848771095276,0.024478927021846175,,True
+E150,"The presentation is one item on my list, no more important than the others.",neutral,hard,situational_inference,neutral,0.7951013445854187,0.02650861901929602,,True
+E151,I'm sad about the exam.,sadness,easy,direct_expression,sadness,0.9863241314888,0.026767346018459648,,True
+E152,The presentation makes me feel really down.,sadness,easy,direct_expression,sadness,0.9647175669670105,0.024995406973175704,,True
+E153,I feel heartbroken about the deadline.,sadness,medium,direct_expression,sadness,0.9903659820556641,0.022856205992866307,,True
+E154,I'm deeply disappointed and sad about the manager.,sadness,medium,direct_expression,sadness,0.9726975560188293,0.024738880980294198,,True
+E155,The rent has left me feeling low.,sadness,hard,direct_expression,sadness,0.9380843043327332,0.02348022803198546,,True
+E156,I feel miserable when I think about the family dinner.,sadness,hard,direct_expression,sadness,0.9795665144920349,0.023974034003913403,,True
+E157,I keep tearing up when I think about the deadline.,sadness,easy,indirect_expression,anger,0.6152511835098267,0.024536756973247975,,False
+E158,I haven't felt like doing much since the manager.,sadness,easy,indirect_expression,sadness,0.4075167179107666,0.023128101020120084,,True
+E159,The rent keeps weighing on me.,sadness,medium,indirect_expression,sadness,0.35476943850517273,0.024240394996013492,,True
+E160,I feel a heaviness whenever the family dinner comes to mind.,sadness,medium,indirect_expression,sadness,0.9764016270637512,0.025187254999764264,,True
+E161,I've been quiet and withdrawn since the argument with my partner.,sadness,hard,indirect_expression,sadness,0.5560652017593384,0.02867587102809921,,True
+E162,I keep wishing the doctor appointment had turned out differently.,sadness,hard,indirect_expression,sadness,0.788592517375946,0.024668486032169312,,True
+E163,I'm not angry about the rent; I'm sad.,sadness,easy,negation_contrast,sadness,0.9748123288154602,0.025426239997614175,,True
+E164,"The family dinner doesn't scare me, it just makes me feel low.",sadness,easy,negation_contrast,fear,0.973368763923645,0.02645700698485598,,False
+E165,I'm not disgusted by the argument with my partner; I'm hurt and sad.,sadness,medium,negation_contrast,disgust,0.9890261292457581,0.026586196036078036,,False
+E166,"I'm not surprised anymore, only saddened by the doctor appointment.",sadness,medium,negation_contrast,surprise,0.6918925642967224,0.02580523199867457,,False
+E167,"The group project isn't making me anxious, just deeply disappointed.",sadness,hard,negation_contrast,fear,0.7195780873298645,0.023323107976466417,,False
+E168,I'm not irritated so much as heartbroken about the job interview.,sadness,hard,negation_contrast,sadness,0.9564588665962219,0.02664838096825406,,True
+E169,"I'm angry too, but mostly sad about the argument with my partner.",sadness,easy,mixed_emotion,anger,0.9658424258232117,0.02771855000173673,,False
+E170,"I'm relieved it's over, yet still sad about the doctor appointment.",sadness,easy,mixed_emotion,sadness,0.5908561944961548,0.026717293018009514,,True
+E171,"I'm worried and sad, with sadness being stronger around the group project.",sadness,medium,mixed_emotion,fear,0.7414416670799255,0.030897569027729332,,False
+E172,"I can smile about parts of it, but the job interview still makes me sad overall.",sadness,medium,mixed_emotion,sadness,0.9635290503501892,0.02815030299825594,,True
+E173,"I'm disappointed and frustrated, though mostly just sad about the unexpected bill.",sadness,hard,mixed_emotion,sadness,0.8811307549476624,0.025268602999858558,,True
+E174,"I'm surprised by the weekend plan, but the sadness is what stays with me.",sadness,hard,mixed_emotion,surprise,0.9758977293968201,0.027315327955875546,,False
+E175,The group project didn't work out after I had hoped for it for weeks.,sadness,easy,situational_inference,sadness,0.8816250562667847,0.02745810098713264,,True
+E176,I got bad news about the job interview and spent the evening alone.,sadness,easy,situational_inference,sadness,0.6470029950141907,0.025768406980205327,,True
+E177,"The unexpected bill ended, and I keep thinking about what I lost.",sadness,medium,situational_inference,surprise,0.49268531799316406,0.027081251027993858,,False
+E178,Someone important to me won't be part of the weekend plan anymore.,sadness,medium,situational_inference,sadness,0.4892103970050812,0.02672483498463407,,True
+E179,"I tried hard for the exam, but the outcome left me feeling empty.",sadness,hard,situational_inference,sadness,0.9855578541755676,0.027100166014861315,,True
+E180,The presentation reminded me of something I miss and I couldn't shake the feeling.,sadness,hard,situational_inference,fear,0.8986854553222656,0.026739180961158127,,False
+E181,I'm really surprised by the exam.,surprise,easy,direct_expression,surprise,0.9857016801834106,0.02740611700573936,,True
+E182,The presentation completely shocked me.,surprise,easy,direct_expression,surprise,0.9765441417694092,0.022533710987772793,,True
+E183,I didn't expect the deadline at all.,surprise,medium,direct_expression,surprise,0.9719390869140625,0.02422782202484086,,True
+E184,I'm astonished by what happened with the manager.,surprise,medium,direct_expression,surprise,0.9761543869972229,0.023533488041721284,,True
+E185,The rent caught me totally off guard.,surprise,hard,direct_expression,fear,0.7927838563919067,0.027830527047626674,,False
+E186,I'm still surprised about the family dinner.,surprise,hard,direct_expression,surprise,0.9823668003082275,0.024164334987290204,,True
+E187,I had to read the message about the deadline twice.,surprise,easy,indirect_expression,neutral,0.8225580453872681,0.027225590019952506,,False
+E188,I just stared for a moment when I heard about the manager.,surprise,easy,indirect_expression,disgust,0.545076847076416,0.025366982037667185,,False
+E189,The rent was the last thing I expected today.,surprise,medium,indirect_expression,surprise,0.9291906952857971,0.024427059979643673,,True
+E190,"I keep saying, 'Wait, really?' about the family dinner.",surprise,medium,indirect_expression,surprise,0.7041957974433899,0.027081468957476318,,True
+E191,It took me a minute to process the argument with my partner.,surprise,hard,indirect_expression,neutral,0.789643406867981,0.030798838997725397,,False
+E192,I did a double take when the doctor appointment happened.,surprise,hard,indirect_expression,fear,0.9296908378601074,0.025196803966537118,,False
+E193,I'm not angry about the rent; I'm mostly shocked.,surprise,easy,negation_contrast,surprise,0.9817482829093933,0.026174566999543458,,True
+E194,"The family dinner isn't frightening me, it just surprised me.",surprise,easy,negation_contrast,surprise,0.7885180115699768,0.026213966018985957,,True
+E195,I'm not sad about the argument with my partner; I simply didn't see it coming.,surprise,medium,negation_contrast,sadness,0.9162469506263733,0.028823133965488523,,False
+E196,"The doctor appointment doesn't disgust me, but it absolutely caught me off guard.",surprise,medium,negation_contrast,disgust,0.9749870300292969,0.02731430297717452,,False
+E197,I'm not excited or upset yet; I'm still processing the surprise of the group project.,surprise,hard,negation_contrast,surprise,0.9234880208969116,0.026830640039406717,,True
+E198,I'm not worried about the job interview; I'm just amazed it happened.,surprise,hard,negation_contrast,surprise,0.9786227941513062,0.027578733977861702,,True
+E199,"I'm happy and surprised about the argument with my partner, but surprise hit first.",surprise,easy,mixed_emotion,surprise,0.9676545858383179,0.02979070204310119,,True
+E200,"I'm nervous too, yet mostly shocked by the doctor appointment.",surprise,easy,mixed_emotion,surprise,0.5048878788948059,0.024663193966262043,,True
+E201,"I'm a little disappointed, but what stands out is how unexpected the group project was.",surprise,medium,mixed_emotion,surprise,0.8983680605888367,0.030824210960417986,,True
+E202,I'm amused and surprised by the job interview.,surprise,medium,mixed_emotion,surprise,0.9726561903953552,0.026392807019874454,,True
+E203,"I'm relieved, but still stunned by the unexpected bill.",surprise,hard,mixed_emotion,surprise,0.9843389987945557,0.02481336600612849,,True
+E204,"I'm confused and surprised, with surprise being the strongest feeling about the weekend plan.",surprise,hard,mixed_emotion,surprise,0.9853535294532776,0.02818134502740577,,True
+E205,The group project changed without warning and I had no idea it was coming.,surprise,easy,situational_inference,surprise,0.8863036632537842,0.028022620012052357,,True
+E206,I opened the message about the job interview and just stared at the screen.,surprise,easy,situational_inference,neutral,0.5948594808578491,0.029095468984451145,,False
+E207,Someone announced the unexpected bill out of nowhere during the meeting.,surprise,medium,situational_inference,surprise,0.9297069311141968,0.025513604981824756,,True
+E208,The weekend plan happened months earlier than anyone predicted.,surprise,medium,situational_inference,surprise,0.5607331395149231,0.025268154975492507,,True
+E209,I walked in expecting one thing and found the exam completely different.,surprise,hard,situational_inference,surprise,0.5197819471359253,0.02717380999820307,,True
+E210,"No one had hinted at the presentation, so the news stopped me in my tracks.",surprise,hard,situational_inference,neutral,0.6116281151771545,0.03073426999617368,,False

@@ -1,0 +1,5 @@
+subcategory,n_examples,hit_at_1,hit_at_3,mrr
+direct_topic,13,0.8461538461538461,1.0,0.9230769230769231
+indirect_context,11,0.9090909090909091,1.0,0.9545454545454546
+support_escalation,2,1.0,1.0,1.0
+history_dependent,2,1.0,1.0,1.0

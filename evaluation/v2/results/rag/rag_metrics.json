@@ -1,0 +1,14 @@
+{
+  "mode": "production_embeddings",
+  "n_examples": 30,
+  "n_positive_queries": 28,
+  "n_irrelevant_queries": 2,
+  "hit_at_1": 0.8928571428571429,
+  "hit_at_3": 1.0,
+  "mrr": 0.9464285714285714,
+  "irrelevant_rejection_accuracy": 1.0,
+  "mean_latency_seconds": 0.35955658708699045,
+  "median_latency_seconds": 0.18800073498277925,
+  "p95_latency_seconds": 0.7433271508227335,
+  "n_errors": 0
+}

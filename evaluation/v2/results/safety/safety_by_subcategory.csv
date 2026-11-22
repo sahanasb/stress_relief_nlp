@@ -1,0 +1,6 @@
+subcategory,n_examples,accuracy
+direct_explicit,24,1.0
+indirect_implicit,24,0.9583333333333334
+negation_or_qualifier,24,0.9583333333333334
+historical_contextual,24,0.8333333333333334
+ambiguous_tricky,24,0.9583333333333334

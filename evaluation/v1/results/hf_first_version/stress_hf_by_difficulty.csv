@@ -1,0 +1,4 @@
+difficulty,n_examples,accuracy
+easy,50,0.6
+medium,60,0.6666666666666666
+hard,50,0.72

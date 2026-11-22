@@ -7,9 +7,9 @@
   "weighted_precision": 0.6577127956438301,
   "weighted_recall": 0.6666666666666666,
   "weighted_f1": 0.6585820091390241,
-  "mean_latency_seconds": 0.07310238157618057,
-  "median_latency_seconds": 0.02768894850032666,
-  "p95_latency_seconds": 0.14893985914991387,
+  "mean_latency_seconds": 0.042388475176336385,
+  "median_latency_seconds": 0.024743677000515163,
+  "p95_latency_seconds": 0.1402097718990262,
   "classification_report": {
     "anger": {
       "precision": 0.7297297297297297,

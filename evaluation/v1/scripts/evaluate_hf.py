@@ -84,14 +84,30 @@ def predict_emotion(text):
     return str(top["label"]).lower().strip(), float(top["score"])
 
 
+# def predict_stress(text):
+#     """
+#     Uses the project's existing detect_stress() function exactly as the
+#     application does, then selects the highest-scoring model label.
+#     """
+#     results = detect_stress(text)
+#     top = max(results, key=lambda item: item["score"])
+#     return str(top["label"]).lower().strip(), float(top["score"])
 def predict_stress(text):
     """
-    Uses the project's existing detect_stress() function exactly as the
-    application does, then selects the highest-scoring model label.
+    Uses the project's existing detect_stress() function,
+    selects the highest-scoring model label,
+    and normalizes the native Hugging Face label
+    to the evaluation label schema.
     """
     results = detect_stress(text)
     top = max(results, key=lambda item: item["score"])
-    return str(top["label"]).lower().strip(), float(top["score"])
+
+    label = str(top["label"]).lower().strip()
+
+    if label == "not_stress":
+        label = "non_stress"
+
+    return label, float(top["score"])
 
 
 def predict_topic(text):

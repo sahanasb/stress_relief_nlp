@@ -1,0 +1,2 @@
+id,history,current_message,state_true,difficulty,subcategory,state_pred,latency_seconds,error,correct
+C076,"[{""role"": ""user"", ""content"": ""That suggestion helped.""}, {""role"": ""assistant"", ""content"": ""Is there anything else on your mind?""}]",Nothing else.,close,medium,short_contextual,offer_to_close,1.7121393699999317,,False

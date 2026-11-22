@@ -12,7 +12,9 @@ import time
 import uuid
 import wave
 from collections import OrderedDict
+from werkzeug.security import generate_password_hash
 
+import database.db_manager as db
 from name_utils import (clean_typed_name, is_no, is_yes, name_candidates, spell_out,
                         spelled_name)
 from flask import Flask, Response, jsonify, request, send_from_directory
@@ -22,6 +24,8 @@ try:
     load_dotenv()
 except ImportError:
     pass
+
+db.create_database("conversation_history.sqlite3")
 
 DEMO = os.getenv("SERENAI_DEMO") == "1"
 if DEMO:
@@ -191,6 +195,31 @@ def start():
     SESSIONS[sid] = {"name": None, "say_as": None, "history": [], "named": False,
                      "stage": "ask_name", "pending": None, "tries": 0}
     return jsonify(session_id=sid, intro=INTRO)
+
+
+@app.post("/api/register")
+def create_user():
+    """Registration to create a user_name and id"""
+    data = request.get_json()
+    user_name = data.get("user_name")
+    password = data.get("password")
+    hashed_password = generate_password_hash(password)
+    user_id = db.create_user(user_name, hashed_password)
+    return jsonify(user_id=user_id, message="User Created")
+    # should there be a password check to see if it's at least 8 characters and includes symbols?
+
+
+@app.post("/api/login")
+def login():
+    """Log in as user"""
+    data = request.get_json()
+    user_name = data.get("user_name")
+    password = data.get("password")
+    user_data = db.retrieve_user(user_name, password)
+    print(user_data)
+    if user_data is None:
+        return jsonify(message="Username or password does not exist")
+    return jsonify(user_data=user_data, message="User Logged In")
 
 
 def _name_reply(s, name, candidates=None, **extra):
@@ -426,4 +455,6 @@ def stt():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=int(os.getenv("PORT", 5000)), debug=False)
+    production = os.getenv("PRODUCTION", "").lower() == "true"
+    host = "0.0.0.0" if production else "127.0.0.1"
+    app.run(host=host, port=int(os.getenv("PORT", 5000)), debug=False)

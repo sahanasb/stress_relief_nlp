@@ -27,6 +27,14 @@ header .sub{color:var(--muted);font-size:.8rem}
 .ghost{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:7px 13px;font:inherit;font-size:.82rem;cursor:pointer}
 .ghost:hover{border-color:var(--indigo)}
 
+/*auth popup*/
+.auth-bg{position:fixed;inset:0;background:rgba(6,9,20,.78);backdrop-filter:blur(6px);display:none;place-items:center;z-index:20;padding:16px}
+.auth-bg.open{display:grid}
+.auth-card{width:100%;max-width:380px;display:grid;gap:12px}
+.auth-card input{width:100%;background:#070b1c;border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:11px 14px;font:inherit;font-size:.86rem;outline:none}
+.auth-card input:focus{border-color:var(--indigo)}
+.auth-err{color:var(--red);font-size:.78rem;min-height:1em}
+
 .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr;
   grid-template-areas:"voice nlp" "sims transcript" "topic transcript" "rag rag" "stats stats"}
 .voice{grid-area:voice}.nlp{grid-area:nlp}.sims{grid-area:sims}.topic{grid-area:topic}.transcript{grid-area:transcript}.stats{grid-area:stats}.rag{grid-area:rag}
@@ -214,7 +222,26 @@ form button:disabled,form input:disabled{opacity:.5}
   <div><h1>WE</h1><div class="sub">Voice stress-support companion</div></div>
   <div class="sp"></div>
   <button class="ghost" id="newBtn">New session</button>
+  <button class="ghost" id="loginBtn">Log in</button>
+  <button class="ghost" id="logoutBtn" style="display: none;">Log Out</button>
 </header>
+
+<!--- Login and Register Box -->
+<div id="authModal" class="auth-bg">
+  <div class="card auth-card">
+    <div class="title" style="margin-bottom:0">
+      <span id="authTitle">Sign In</span>
+      <button type="button" class="ghost" style="margin-left:auto" onclick="closeAuth()">✕</button>
+    </div>
+
+    <input id="authUser" type="text" placeholder="Username" autocomplete="username">
+    <input id="authPass" type="password" placeholder="Password" autocomplete="current-password">
+    <div id="authErr" class="auth-err"></div>
+
+    <button id="authSubmit" type="button" class="primary" style="justify-content:center" onclick="submitAuth()">Sign In</button>
+    <button id="authToggle" type="button" class="ghost" onclick="toggleAuthMode()">Need an account? Create one</button>
+  </div>
+</div>
 
 <div class="grid">
 
@@ -309,6 +336,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const log=$('#log'), input=$('#input'), sendBtn=$('#sendBtn');
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 let sid=null, named=false, busy=false, closed=false, voice=false, speakOn=true, mode='idle', rec=null, screened=0, lastSignals=null, showSig=false;
+let isSignUp = false;
 try{ speakOn=localStorage.getItem('serenai.speak')!=='0'; }catch(e){}
 
 const SIMS=[
@@ -615,8 +643,64 @@ async function start(){
   const r=await (await fetch('/api/start',{method:'POST'})).json();sid=r.session_id;addMsg('bot',r.intro);input.focus();
 }
 
+/* ---------- login box ---------- */
+function openAuth() {
+  document.getElementById("authErr").textContent = "";
+  document.getElementById("authModal").classList.add("open");
+}
+function closeAuth() {
+  document.getElementById("authModal").classList.remove("open");
+}
+//toggles between log in and register
+function toggleAuthMode() {
+  isSignUp = !isSignUp;
+  document.getElementById("authTitle").textContent = isSignUp ? "Create Account" : "Sign In";
+  document.getElementById("authSubmit").textContent = isSignUp ? "Create Account" : "Sign In";
+  document.getElementById("authToggle").textContent = isSignUp
+    ? "Already have an account? Sign In"
+    : "Need an account? Create one";
+  document.getElementById("authErr").textContent = "";
+}
+//updates button after log in
+function updateAuthUI(isLoggedIn) {
+  if (isLoggedIn) {
+    document.getElementById("loginBtn").style.display = "none";
+    document.getElementById("logoutBtn").style.display = "block";
+  } else {
+    document.getElementById("loginBtn").style.display = "block";
+    document.getElementById("logoutBtn").style.display = "none";
+  }
+}
+async function submitAuth() {
+  const user_name = document.getElementById("authUser").value.trim();
+  const password = document.getElementById("authPass").value;
+  const err = document.getElementById("authErr");
+
+  const res = await fetch(isSignUp ? "/api/register" : "/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user_name, password })
+  });
+
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    err.textContent = data.error || "Something went wrong";
+    return;
+  }
+
+  console.log(data)
+  closeAuth();
+  updateAuthUI(true);
+}
+async function logout() {
+  await fetch("/api/logout", { method: "POST" });
+  updateAuthUI(false);
+}
+
 $('#form').addEventListener('submit',e=>{e.preventDefault();send(input.value)});
 $('#newBtn').onclick=start;
+$('#loginBtn').onclick=openAuth;
+$('#logoutBtn').onclick=logout;
 $('#voiceBtn').onclick=()=>voice?stopVoice():startVoice();
 $('#spkBtn').onclick=()=>{speakOn=!speakOn;updSpk();if(!speakOn)stopSpeech()};
 $('#setBtn').onclick=()=>{const v=$('#vset');v.hidden=!v.hidden;$('#setBtn').setAttribute('aria-expanded',!v.hidden)};

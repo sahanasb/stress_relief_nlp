@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 transformers
 torch
 openai
@@ -6,6 +7,8 @@ sounddevice
 scipy
 numpy
 flask
+werkzeug
+gunicorn
 
 # optional: Pinecone backend (RAG_BACKEND=pinecone) and PDF knowledge files
 pinecone

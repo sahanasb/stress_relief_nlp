@@ -1,5 +1,5 @@
 """
-WE web UI.
+SerenAI web UI.
 
 Run:   python app.py                  -> http://127.0.0.1:5000
 Demo:  SERENAI_DEMO=1 python app.py   (no models / API keys; canned scenarios to preview the UI)
@@ -12,6 +12,9 @@ import time
 import uuid
 import wave
 import sqlite3
+import smtplib
+import ssl
+from email.message import EmailMessage
 from collections import OrderedDict
 from werkzeug.security import generate_password_hash
 
@@ -515,6 +518,118 @@ def stt():
         except Exception as e:
             app.logger.warning("STT model %s failed: %s", model, e)
     return jsonify(error="stt_failed"), 502
+
+
+# ---------- session summary + email ----------
+SUMMARY_MODEL = os.getenv("SUMMARY_MODEL", "gpt-4o-mini")
+SMTP_HOST = os.getenv("SMTP_HOST")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USER = os.getenv("SMTP_USER")
+SMTP_PASS = os.getenv("SMTP_PASS")
+SMTP_FROM = os.getenv("SMTP_FROM") or SMTP_USER
+EMAIL_AVAILABLE = bool(SMTP_HOST and SMTP_FROM)
+MAX_EMAILS_PER_SESSION = 5
+_EMAIL_RE = re.compile(r"^[^@\s]{1,64}@[^@\s]{1,255}\.[^@\s]{2,}$")
+
+SUMMARY_PROMPT = (
+    "You write a short, kind summary of a stress-support conversation for the person who had it. "
+    "Address them as 'you'. Use plain text with these four headings, each followed by 1-3 short lines: "
+    "What we talked about / How you were feeling / What seemed to help / Things you might try next. "
+    "Only use what is in the conversation. Do not diagnose, do not give medical advice, and do not "
+    "invent details. If crisis resources or a safety check-in came up, mention them gently and note "
+    "that 988 (US) is available any time. Keep it under 180 words."
+)
+
+
+def _transcript(history):
+    return "\n".join(f"{'User' if m['role'] == 'user' else 'SerenAI'}: {m['content']}" for m in history)
+
+
+def _fallback_summary(history, name):
+    """Simple summary used when no language model is available."""
+    user_msgs = [m["content"].strip() for m in history if m["role"] == "user"]
+    bits = [(t if len(t) <= 140 else t[:137] + "...") for t in user_msgs[:5]]
+    lines = [f"Session summary{' for ' + name if name else ''}", "",
+             f"What we talked about ({len(user_msgs)} message{'s' if len(user_msgs) != 1 else ''} from you):"]
+    lines += [f"- {b}" for b in bits]
+    if len(user_msgs) > len(bits):
+        lines.append(f"- ...and {len(user_msgs) - len(bits)} more")
+    lines += ["", "If things ever feel like too much, you can call or text 988 (US) at any time."]
+    return "\n".join(lines)
+
+
+def build_summary(history, name):
+    if not history:
+        return None
+    if DEMO or not os.getenv("OPENAI_API_KEY"):
+        return _fallback_summary(history, name)
+    try:
+        r = _openai_client().chat.completions.create(
+            model=SUMMARY_MODEL, temperature=0.3,
+            messages=[{"role": "system", "content": SUMMARY_PROMPT},
+                      {"role": "user", "content": _transcript(history)[-12000:]}])
+        text = (r.choices[0].message.content or "").strip()
+        if text:
+            return text
+    except Exception:
+        app.logger.warning("summary model failed, using fallback", exc_info=True)
+    return _fallback_summary(history, name)
+
+
+@app.post("/api/summary")
+def summary():
+    d = request.get_json(force=True)
+    s = SESSIONS.get(d.get("session_id"))
+    if s is None:
+        return jsonify(error="session_expired"), 410
+    text = build_summary(s["history"], s["name"])
+    if text is None:
+        return jsonify(error="nothing_to_summarize"), 400
+    s["summary"] = text
+    return jsonify(summary=text, email=EMAIL_AVAILABLE)
+
+
+@app.post("/api/summary/email")
+def email_summary():
+    """Email the summary that /api/summary produced for this session (never arbitrary client text)."""
+    d = request.get_json(force=True)
+    s = SESSIONS.get(d.get("session_id"))
+    if s is None:
+        return jsonify(error="session_expired"), 410
+    to = (d.get("email") or "").strip()
+    if not _EMAIL_RE.match(to):
+        return jsonify(error="Please enter a valid email address."), 400
+    if not s.get("summary"):
+        return jsonify(error="Generate the summary first."), 400
+    if not EMAIL_AVAILABLE:
+        return jsonify(error="email_unavailable"), 503
+    if s.get("emails_sent", 0) >= MAX_EMAILS_PER_SESSION:
+        return jsonify(error="Email limit reached for this session."), 429
+
+    msg = EmailMessage()
+    msg["Subject"] = "Your SerenAI session summary"
+    msg["From"] = SMTP_FROM
+    msg["To"] = to
+    msg.set_content(s["summary"] + "\n\n--\nSent from SerenAI. SerenAI is a stress-support tool, "
+                    "not a substitute for professional care.")
+    try:
+        ctx = ssl.create_default_context()
+        if SMTP_PORT == 465:
+            with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=ctx, timeout=20) as srv:
+                if SMTP_USER:
+                    srv.login(SMTP_USER, SMTP_PASS or "")
+                srv.send_message(msg)
+        else:
+            with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=20) as srv:
+                srv.starttls(context=ctx)
+                if SMTP_USER:
+                    srv.login(SMTP_USER, SMTP_PASS or "")
+                srv.send_message(msg)
+    except Exception:
+        app.logger.exception("email send failed")
+        return jsonify(error="Could not send the email. Please try again."), 502
+    s["emails_sent"] = s.get("emails_sent", 0) + 1
+    return jsonify(sent=True)
 
 
 if __name__ == "__main__":

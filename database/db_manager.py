@@ -1,15 +1,25 @@
+import os
 import sqlite3
 import random
+import libsql
 from pathlib import Path
 from werkzeug.security import check_password_hash
 
 DATABASE_PATH = "conversation_history.sqlite3"
 
+TURSO_URL = os.environ.get("TURSO_DATABASE_URL")
+TURSO_TOKEN = os.environ.get("TURSO_AUTH_TOKEN")
+
+def get_connection():
+    if TURSO_URL and TURSO_TOKEN:
+        return libsql.connect(database=TURSO_URL, auth_token=TURSO_TOKEN)
+    return sqlite3.connect(DATABASE_PATH)
+
 
 def create_database(database_name=DATABASE_PATH):
     """Creates a database with two tables (users, conversation) if it doesn't already exist"""
     print("connecting to database...")
-    connection = sqlite3.connect(database_name)
+    connection = get_connection()
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -48,7 +58,7 @@ def create_user(user_name, password):
     """Creates a user, taking in their chosen user_name and assigning them an ID"""
     
     try:
-        connection = sqlite3.connect(DATABASE_PATH)
+        connection = get_connection()
         cursor = connection.cursor()
 
         cursor.execute('''
@@ -69,8 +79,7 @@ def retrieve_user(user_name, password):
     """Based on a user_name and password, a user is retrieved from the database"""
 
     try:
-        connection = sqlite3.connect(DATABASE_PATH)
-        connection.row_factory = sqlite3.Row
+        connection = get_connection()
         cursor = connection.cursor()
 
         cursor.execute('''
@@ -80,9 +89,10 @@ def retrieve_user(user_name, password):
         user = cursor.fetchone()
 
         if user:
+            user = dict(zip([col[0] for col in cursor.description], user))
             hashed_password = user['password']
             if check_password_hash(hashed_password, password):
-                return dict(user)
+                return user
         return None
 
     finally:
@@ -92,7 +102,7 @@ def retrieve_user(user_name, password):
 def save_conversation(conversation_information, conversation_history):
     """Saves a user's conversation"""
 
-    connection = sqlite3.connect(DATABASE_PATH)
+    connection = get_connection()
     cursor = connection.cursor()
 
     cursor.execute('''

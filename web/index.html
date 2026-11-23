@@ -731,6 +731,20 @@ function updateAuthUI(isLoggedIn, userName = "") {
   }
 }
 
+async function checkAuth() {
+  const res = await fetch("/api/me");
+  if (!res.ok) return;
+  const data = await res.json();
+  if (data.logged_in) {
+    updateAuthUI(true, data.user_name);
+  } else {
+    updateAuthUI(false);
+  }
+}
+
+// Run automatically when the page loads
+checkAuth();
+
 async function submitAuth() {
   const user_name = document.getElementById("authUser").value.trim();
   const password = document.getElementById("authPass").value;

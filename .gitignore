@@ -1,6 +1,6 @@
 .env
-
+/db_tests
 __pycache__/
 *.pyc
-
 rag_store/
+.venv/

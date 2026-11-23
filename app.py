@@ -241,17 +241,21 @@ def create_user():
     return jsonify(user_id=user_id, user_name=user_name, message="User Created"), 201
 
 
+@app.get("/api/me")
+def get_current_user():
+    """Check if a user is currently logged in"""
+    if "user_id" in session:
+        return jsonify(
+            logged_in=True,
+            user_id=session["user_id"],
+            user_name=session["user_name"]
+        ), 200
+    return jsonify(logged_in=False), 200
+
+
 @app.post("/api/login")
 def login():
     """Log in as user"""
-    # data = request.get_json()
-    # user_name = data.get("user_name").strip().lower()
-    # password = data.get("password")
-    # user_data = db.retrieve_user(user_name, password)
-    # print(user_data)
-    # if user_data is None:
-    #     return jsonify(message="Username or password does not exist"), 401
-    # return jsonify(user_data=user_data, message="User Logged In")
     data = request.get_json() or {}
     user_name = (data.get("user_name") or "").strip().lower()
     password = data.get("password") or ""

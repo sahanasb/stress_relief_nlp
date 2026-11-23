@@ -1,0 +1,4 @@
+difficulty,n_scenarios,passed,pass_rate,mean_latency_seconds,n_errors,check_safety_pass_rate,check_conversation_state_pass_rate,check_should_close_pass_rate,check_response_nonempty_pass_rate,check_history_updated_pass_rate,check_rag_pass_rate
+easy,16,15,0.9375,6.7854809795026085,0,1.0,1.0,1.0,1.0,1.0,0.9375
+medium,18,18,1.0,4.782026598440199,0,1.0,1.0,1.0,1.0,1.0,1.0
+hard,16,16,1.0,5.068571490883187,0,1.0,1.0,1.0,1.0,1.0,1.0

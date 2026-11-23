@@ -1,0 +1,14 @@
+expected_source,n_examples,source_retrieval_rate,mean_groundedness_score,faithfulness_pass_rate
+breathing-exercises.md,2,0.5,3.0,0.0
+exam-and-academic-stress.md,2,1.0,3.5,0.0
+family-and-relationship-stress.md,2,1.0,3.5,0.0
+financial-stress.md,2,1.0,4.5,0.0
+grounding-5-4-3-2-1.md,2,1.0,4.5,0.5
+movement-and-body-reset.md,2,1.0,3.5,0.0
+progressive-muscle-relaxation.md,2,1.0,3.5,0.0
+public-speaking-and-performance-nerves.md,2,1.0,3.0,0.0
+racing-thoughts-and-worry.md,2,1.0,4.5,0.0
+self-compassion-and-small-steps.md,2,0.5,4.5,0.5
+sleep-and-winding-down.md,2,1.0,3.5,0.0
+when-to-reach-out.md,2,1.0,4.0,0.0
+work-deadlines-and-burnout.md,2,1.0,4.0,0.0

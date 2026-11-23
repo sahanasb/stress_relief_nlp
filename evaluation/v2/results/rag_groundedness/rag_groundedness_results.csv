@@ -1,0 +1,328 @@
+id,query,history,expected_source,difficulty,subcategory,guidance_focus,actual_safety,actual_state,response,retrieved_sources,expected_source_retrieved,groundedness_score,relevance_score,source_use_score,hallucination_detected,unsupported_claim_count,reason,faithfulness_pass,pipeline_latency_seconds,judge_latency_seconds,error
+GF01,My heart is racing and my chest feels tight from stress. Can you give me a simple breathing exercise to do right now?,[],breathing-exercises.md,easy,direct_practical,slow breathing with a longer exhale,normal,continue,"Jade, chest tightness and a racing heart can happen with stress, but they can also signal a medical problem. If the tightness is severe, new, worsening, or comes with trouble breathing, faintness, sweating, nausea, or pain spreading to your arm, back, jaw, or neck, seek emergency help now rather than relying on breathing.
+
+If it feels like your usual stress response, try this:
+
+1. Sit upright and loosen anything tight.
+2. Breathe in gently through your nose for **4 seconds**.
+3. Breathe out slowly through pursed lips for **6 seconds**.
+4. Repeat for about **one to two minutes**—keep the breaths gentle, not deep or forced.
+5. If you feel dizzy, stop and return to normal breathing.
+
+Take your time. When you’re finished, let me know whether the racing or tightness has changed.","[""breathing-exercises.md"", ""racing-thoughts-and-worry.md"", ""breathing-exercises.md""]",True,3,5,4,True,5,"It appropriately connects slow breathing and dizziness guidance to the user's symptoms, but adds unsupported emergency criteria, posture and clothing advice, a 4–6-second pursed-lip protocol, and a one-to-two-minute duration.",False,13.251116872997954,6.968083197018132,
+GF02,I need something quiet I can do at my desk to calm my body in the next few minutes. Please walk me through it.,[],breathing-exercises.md,medium,indirect_practical,brief slow-breathing guidance,normal,continue,"Okay, Jade. Let’s do a quiet two-minute desk reset.
+
+Sit back if you can, and place both feet on the floor. Let your hands rest loosely.
+
+First, notice three points of contact: your feet with the floor, your back with the chair, and your hands with the desk or your lap.
+
+Now gently lower your shoulders. Unclench your jaw. Let your tongue rest comfortably.
+
+Breathe in softly through your nose for a count of four…  
+1… 2… 3… 4…
+
+Then breathe out slowly for a count of six…  
+1… 2… 3… 4… 5… 6…
+
+Let’s repeat that three more times, keeping the breath easy rather than deep.
+
+In for four…  
+and out for six…
+
+Again… in for four…  
+and out for six…
+
+One more time… in…  
+and slowly out.
+
+Now notice whether your shoulders, jaw, or hands feel even slightly less tense. There’s nothing you need to solve in this moment—just let your body settle for another few breaths.
+
+Take your time. When you’re finished, let me know how you’re feeling.","[""sleep-and-winding-down.md"", ""movement-and-body-reset.md"", ""self-compassion-and-small-steps.md""]",False,3,5,2,True,3,"The quiet two-minute format is relevant and partly supported, but the grounding, muscle-release, and timed-breathing instructions are not supported by the retrieved passages.",False,8.499164281995036,4.300733558018692,
+GF03,I have an exam tomorrow and I am overwhelmed by everything I still need to study. What practical first step should I take?,[],exam-and-academic-stress.md,easy,direct_practical,prioritize study tasks and make a manageable plan,normal,continue,"Jade, start with a **10-minute triage**, not studying yet:
+
+1. Write down every topic you might need to review.
+2. Mark each one **A: likely/high value**, **B: useful**, or **C: low priority**.
+3. Choose **one A topic** you can realistically work on for the next 25 minutes.
+4. Study only that topic—practice questions or active recall are better than rereading.
+
+After that block, take a short break and choose the next highest-value topic. Aim for coverage, not perfection, and protect some sleep tonight.
+
+Set the 10-minute timer now. Take your time, and when you’ve chosen your first topic, let me know.","[""exam-and-academic-stress.md"", ""exam-and-academic-stress.md"", ""financial-stress.md""]",True,3,5,4,True,5,"The response appropriately recommends breaking study pressure into manageable pieces and protecting sleep, but adds unsupported specifics about 10- and 25-minute timings, active recall, taking breaks, and prioritizing coverage over perfection.",False,7.18387403601082,5.914954206964467,
+GF04,I have three assignments due this week and I keep freezing instead of starting. Can you help me decide what to do first?,[],exam-and-academic-stress.md,medium,indirect_practical,triage school workload into small study blocks,normal,continue,"Absolutely, Jade. Freezing when several deadlines pile up is understandable—we can make this smaller.
+
+Tell me the three assignments in this format:
+
+1. **Assignment:**  
+   **Due:**  
+   **Estimated time:**  
+   **How far along:**  
+
+Then I’ll help rank them. Generally, we’ll prioritize the one that is due soonest, takes the most time, or has the biggest consequences if late. After that, we’ll choose one tiny first step—like opening the instructions and writing a rough outline.","[""exam-and-academic-stress.md"", ""financial-stress.md"", ""exam-and-academic-stress.md""]",True,4,5,4,True,1,"The response appropriately breaks the workload into smaller pieces and suggests a tiny first step, but its broader prioritization criteria of time required and consequences are not directly supported by the retrieved evidence.",False,5.924648365995381,4.815006179036573,
+GF05,I had a huge argument with my sister and I am still angry. What can I do before I talk to her again?,[],family-and-relationship-stress.md,easy,direct_practical,pause before reacting and communicate clearly,normal,continue,"That sounds really intense, Jade. Before talking with your sister again, try to create some space so the anger isn’t driving the conversation:
+
+1. **Pause contact for now.** Avoid texting or calling until you feel more settled.
+2. **Let the anger move through safely.** Take a brisk walk, write uncensored notes, or do slow breathing: inhale for four counts, exhale for six, for about a minute.
+3. **Clarify your goal.** Ask yourself, “Do I want to be understood, set a boundary, apologize for my part, or solve one specific issue?”
+4. **Plan a calm opening.** For example: “I’m still upset, but I don’t want us to keep hurting each other. Can we talk about what happened when we’re both ready?”
+5. **Set a limit.** If voices rise or insults start, you can say, “I want to continue this, but I need a break and we can try again later.”
+
+You can care about your sister and still take time before reconnecting. Would you rather talk through what happened, or focus on planning exactly what you might say?","[""family-and-relationship-stress.md"", ""family-and-relationship-stress.md"", ""self-compassion-and-small-steps.md""]",True,4,5,4,True,2,"The response appropriately applies the evidence about pausing, setting limits, and clarifying what the user wants, but adds unsupported specific coping techniques and an exact breathing protocol.",False,8.00506866100477,5.425211207999382,
+GF06,Every conversation with my partner gets tense and defensive. Can you suggest a calmer way to approach the next conversation?,[],family-and-relationship-stress.md,medium,indirect_practical,take a pause and use non-blaming communication,normal,continue,"That sounds exhausting, Jade. When both people expect tension, it can be easy to become defensive before the conversation really begins.
+
+For the next conversation, try this:
+
+1. **Choose a calm time**, not during an argument.
+2. **Start with reassurance:**  
+   “I care about us, and I want us to understand each other—not to win.”
+3. **Use one specific concern** and speak from your experience:  
+   “I feel shut out when we stop talking,” rather than “You never listen.”
+4. **Invite their perspective:**  
+   “How does this feel from your side?”
+5. **Reflect before responding:**  
+   “What I’m hearing is…” Then ask, “Did I get that right?”
+6. **Pause if either of you becomes overwhelmed:**  
+   “I want to continue this, but I need about twenty minutes to calm down. Let’s come back to it at [specific time].”
+
+You might begin with:  
+**“Can we try this conversation differently? I’d like us both to slow down, listen, and take a break if we get defensive.”**
+
+Would you like to tell me what the recurring topic is, so we can shape the opening words more specifically?","[""family-and-relationship-stress.md"", ""family-and-relationship-stress.md"", ""self-compassion-and-small-steps.md""]",True,3,5,4,True,5,"The response is highly relevant and correctly uses the evidence-based twenty-minute pause and commitment to return, but several additional communication techniques are not supported by the retrieved passages.",False,7.475011659960728,4.608540704997722,
+GF07,Bills and rent are piling up and money is making me anxious. What is one practical thing I can do today?,[],financial-stress.md,easy,direct_practical,write down income/expenses and prioritize urgent bills,normal,continue,"That sounds really frightening, Jade. One practical thing you can do today is make a **simple “money snapshot”**—without trying to solve everything at once.
+
+Write down:
+
+1. Money you have available right now  
+2. Income expected before the next payday  
+3. Bills due, with their dates and amounts  
+
+Then circle the most urgent bill—usually rent, utilities, or anything with immediate consequences. Focus only on that one next step, such as contacting the provider to ask about a payment arrangement.
+
+Take it one line at a time. When you’ve made the snapshot, let me know what feels most urgent.","[""financial-stress.md"", ""financial-stress.md"", ""when-to-reach-out.md""]",True,4,5,5,True,1,"The money snapshot and prioritizing the most urgent bill are well supported, but suggesting contacting a provider for a payment arrangement is not grounded in the retrieved evidence.",False,6.680130205990281,3.1328328520176,
+GF08,I keep avoiding my credit-card balance because looking at the numbers scares me. How can I make this feel more manageable?,[],financial-stress.md,medium,indirect_practical,face finances in small steps and choose one action,normal,continue,"That sounds really frightening, Jade. Avoiding the balance can feel protective in the moment, but it often makes the uncertainty grow.
+
+Would you rather talk through what feels scariest about it, or would you like a simple, low-pressure plan for facing it in very small steps?","[""financial-stress.md"", ""financial-stress.md"", ""self-compassion-and-small-steps.md""]",True,5,3,3,False,0,"It appropriately validates the fear and reflects the evidence that avoidance can increase uncertainty, but it does not yet provide the requested manageable step-by-step plan.",False,5.634658788971137,3.1875301899854094,
+GF09,I am spiraling and feel disconnected from the room around me. Can you guide me through a grounding exercise?,[],grounding-5-4-3-2-1.md,easy,direct_practical,5-4-3-2-1 grounding sequence,normal,continue,"Yes, Jade. I’m here with you. Let’s gently bring your attention back to the room.
+
+First, press both feet into the floor. Notice the support beneath you. Take one slow breath in… and let it out.
+
+Now, look around and name:
+
+- **5 things you can see**
+- **4 things you can feel**—such as your feet, clothing, or the chair
+- **3 things you can hear**
+- **2 things you can smell**, or remember a familiar scent
+- **1 thing you can taste**, or imagine a calming taste
+
+There’s no need to do this perfectly. Take your time, and keep breathing normally. When you’re finished, tell me what you notice or how you’re feeling.","[""grounding-5-4-3-2-1.md"", ""racing-thoughts-and-worry.md"", ""grounding-5-4-3-2-1.md""]",True,4,5,5,True,2,"The response appropriately uses the supported 5-4-3-2-1 exercise and feet-on-floor grounding, but adds a slow-breathing instruction and sensory-count details not explicitly provided in the retrieved evidence.",False,7.359169085044414,6.872759125952143,
+GF10,My thoughts are racing so fast that I need something sensory to pull me back into the present. What should I do?,[],grounding-5-4-3-2-1.md,medium,indirect_practical,present-moment sensory grounding,normal,continue,"Jade, try this sensory grounding exercise:
+
+1. Name **5 things you can see**.  
+2. Notice **4 things you can feel**—your feet on the floor, clothing, or the chair.  
+3. Identify **3 things you can hear**.  
+4. Notice **2 things you can smell**.  
+5. Name **1 thing you can taste**, or take a sip of water and focus on it.
+
+Move slowly and describe each one in your mind. Let your breathing be gentle—no need to force it.
+
+Take your time. When you’re finished, let me know what you notice.","[""grounding-5-4-3-2-1.md"", ""racing-thoughts-and-worry.md"", ""breathing-exercises.md""]",True,5,5,5,False,0,The response directly applies the retrieved 5-4-3-2-1 grounding technique and gently incorporates breathing guidance appropriate for racing thoughts.,True,5.836000896000769,5.810540200967807,
+GF11,I have been at my desk all day and feel restless and stuck. What quick physical reset could I try?,[],movement-and-body-reset.md,easy,direct_practical,"short walk, stretching, hydration or gentle movement",normal,continue,"Jade, try this quick two-minute reset:
+
+1. Stand up and take a few slow breaths.
+2. Roll your shoulders backward five times, then gently stretch your neck side to side.
+3. Shake out your hands, arms, and legs for about 20 seconds.
+4. Lift your shoulders toward your ears, hold for three seconds, then let them drop. Repeat twice.
+5. Walk around or step outside for a few minutes, and drink some water if you can.
+
+Keep the movements gentle and stop if anything hurts. Take your time—when you’re finished, let me know whether you feel any less restless.","[""movement-and-body-reset.md"", ""progressive-muscle-relaxation.md"", ""movement-and-body-reset.md""]",True,4,5,5,True,4,"The response appropriately uses the supported shoulder, neck, shaking, walking, and hydration resets, but adds unsupported breathing advice, specific repetitions and durations, and a pain-related stop instruction.",False,5.188400165003259,4.3636168030207045,
+GF12,I cannot concentrate after hours on my laptop and my whole body feels stale. Give me a simple reset that does not require a workout.,[],movement-and-body-reset.md,medium,indirect_practical,gentle short movement break,normal,continue,"Try this simple **two-minute reset**, Jade:
+
+1. Step away from your laptop and stand or sit somewhere different.  
+2. Let your arms hang loosely and take **three slow breaths**—in gently, out a little longer.  
+3. Roll your shoulders backward five times, unclench your jaw, and stretch your hands.  
+4. Look at something far away for about 30 seconds.  
+5. Take a few sips of water before returning.
+
+No workout—just a brief body and attention reset. Take your time, and when you’re finished, let me know whether you feel any different.","[""movement-and-body-reset.md"", ""sleep-and-winding-down.md"", ""movement-and-body-reset.md""]",True,3,5,3,True,5,"The brief step-away and gentle movement fit the evidence and request, but the breathing, specific stretches, distant-gazing duration, water advice, and two-minute timing are not supported by the retrieved passages.",False,6.142680787015706,7.002716463000979,
+GF13,"My jaw, shoulders, and hands are tense. Can you walk me through a muscle-release exercise?",[],progressive-muscle-relaxation.md,easy,direct_practical,progressive muscle relaxation with gentle tense/release,normal,continue,"Of course, Jade. We’ll keep it gentle—don’t strain or clench hard, and stop if anything hurts.
+
+Sit comfortably and let your feet rest on the floor.
+
+1. **Hands:** Slowly make a soft fist—about 30% effort. Hold for five seconds…  
+   Now release completely. Notice the warmth or looseness.  
+   *Pause.*
+
+2. **Shoulders:** Gently lift your shoulders toward your ears. Hold for five seconds…  
+   Now let them drop, as if setting down a heavy bag.  
+   *Pause.*
+
+3. **Jaw:** Keep your teeth slightly apart. Gently press your lips together—not your teeth. Hold for three seconds…  
+   Now let your jaw hang loose, with your tongue resting comfortably.  
+   *Pause.*
+
+4. Take one slow breath in through your nose for four…  
+   and breathe out gently for six.  
+   Repeat that two more times, letting your shoulders soften with each exhale.
+
+Take your time. When you’re finished, let me know how your jaw, shoulders, and hands feel.","[""movement-and-body-reset.md"", ""progressive-muscle-relaxation.md"", ""breathing-exercises.md""]",True,3,5,4,True,3,"The response is highly relevant and uses progressive relaxation and longer-exhale breathing, but its specific contraction durations, effort level, and jaw technique are not supported by the retrieved passages.",False,7.238534636038821,6.556763207016047,
+GF14,I am wound up before bed and keep clenching without noticing. Is there a step-by-step body exercise I can try?,[],progressive-muscle-relaxation.md,medium,indirect_practical,progressive relaxation before bed,normal,continue,"Yes—try a gentle progressive muscle relaxation exercise. It can help you notice and release tension before sleep.
+
+Get comfortable, and take one slow breath. Then, one area at a time:
+
+1. **Hands:** Gently clench your fists for about five seconds. Notice the tension, then release fully for ten seconds.
+2. **Shoulders:** Lift them toward your ears for five seconds, then let them drop.
+3. **Jaw and face:** Gently tighten, without pain, then soften your jaw, forehead, and around your eyes.
+4. **Belly:** Tighten lightly for five seconds, then let it relax.
+5. **Legs and feet:** Press your feet into the floor or mattress for five seconds, then release.
+
+Use only mild tension—don’t strain, and skip any area that hurts. Afterward, notice the difference between tight and relaxed, and let your breathing stay easy.
+
+Take your time. When you’re finished, let me know how your body feels.","[""progressive-muscle-relaxation.md"", ""sleep-and-winding-down.md"", ""grounding-5-4-3-2-1.md""]",True,4,5,5,True,3,"The response appropriately uses progressive muscle relaxation and supported tension areas, but adds unsupported timing instructions, extra muscle-group procedures, and safety guidance not specified in the retrieved evidence.",False,7.256568794022314,4.926411181979347,
+GF15,I have to give a presentation tomorrow and I am terrified I will forget everything. What should I do before and during it?,[],public-speaking-and-performance-nerves.md,easy,direct_practical,"rehearse opening, use key points, breathe and slow down",normal,continue,"That sounds really frightening, Jade—but forgetting a word or two doesn’t mean the presentation will fail. You don’t need to memorize every sentence; focus on the main message.
+
+**Before the presentation:**
+- Write a simple outline: **opening, three key points, conclusion**.
+- Put only keywords—not full sentences—on your notes.
+- Practice aloud once or twice, especially your first and last sentences.
+- Prepare a brief backup phrase, such as: “Let me check my notes and come back to that.”
+- Pack what you need tonight, then let yourself rest rather than repeatedly rehearsing.
+
+**During it:**
+- Before you begin, breathe out slowly and plant both feet on the floor.
+- Speak a little slower than feels natural.
+- Look at your keywords, not the whole script.
+- If your mind goes blank, pause, take one breath, and say: “The main point here is…” Then return to your outline.
+- Remember: pauses usually feel much longer to you than they appear to the audience.
+
+Try this now: inhale gently for four counts, then exhale for six. Repeat that three times. Take your time, and when you’re finished, let me know how you’re feeling.","[""work-deadlines-and-burnout.md"", ""public-speaking-and-performance-nerves.md"", ""sleep-and-winding-down.md""]",True,2,5,2,True,12,"The response is highly relevant and offers practical presentation advice, but most specific techniques and claims are not supported by the retrieved passages, aside from general acknowledgement of presentation nerves and resting.",False,8.795331534987781,8.498359263991006,
+GF16,My interview is tomorrow and my mouth gets dry and my heart races every time I practice. Can you give me a practical way to handle the nerves?,[],public-speaking-and-performance-nerves.md,medium,indirect_practical,rehearsal and in-the-moment performance strategies,normal,continue,"Absolutely, Jade. Dry mouth and a racing heart are common signs that your body is gearing up—not proof that you’ll perform badly.
+
+Try this **one-minute reset** before practicing and again just before the interview:
+
+1. Put both feet on the floor and relax your shoulders.  
+2. Breathe in gently through your nose for **4 seconds**.  
+3. Breathe out slowly for **6 seconds**.  
+4. Repeat that five times.  
+5. Take a small sip of water, then begin with your prepared first sentence.
+
+During the interview, it’s completely okay to pause, take a sip, or say, **“Let me think about that for a moment.”** Speak a little slower than feels natural; it often sounds confident to the listener.
+
+Try the breathing now for five rounds. Take your time, and when you’re finished, let me know how your body feels.","[""public-speaking-and-performance-nerves.md"", ""exam-and-academic-stress.md"", ""work-deadlines-and-burnout.md""]",True,4,5,4,True,3,"The response appropriately normalizes interview nerves and uses supported breathing and hydration advice, but adds an unevidenced exact breathing pattern, confidence claim about speaking slowly, and specific interview tactics.",False,7.130226898007095,6.3626739389728755,
+GF17,My mind keeps looping through worst-case scenarios. What can I do when the what-ifs will not stop?,[],racing-thoughts-and-worry.md,easy,direct_practical,"name the worry, check evidence, focus on controllable action",normal,continue,"That sounds exhausting, Jade. When your mind keeps forecasting the worst, it can feel impossible to switch off.
+
+Would you rather talk through the specific worry, or would you prefer a practical way to interrupt the loop right now?","[""racing-thoughts-and-worry.md"", ""sleep-and-winding-down.md"", ""racing-thoughts-and-worry.md""]",True,5,2,1,False,0,The response is empathetic and relevant to the concern but offers no practical strategy and does not use the retrieved guidance.,False,5.865205537993461,2.5362967459950596,
+GF18,I keep replaying one mistake and assuming the worst outcome is inevitable. Can you give me a thinking exercise to interrupt that loop?,[],racing-thoughts-and-worry.md,medium,indirect_practical,create distance from worry and reality-check the thought,normal,continue,"Absolutely, Jade. Try this **“story versus facts”** exercise:
+
+1. **Name the worry:**  
+   “I’m having the thought that the worst outcome is inevitable.”
+
+2. **Separate facts from predictions:**  
+   Write or say aloud:
+   - What do I *know* happened?
+   - What am I *predicting* might happen?
+
+3. **Check the evidence:**  
+   What supports the worst-case prediction? What evidence points to other possible outcomes?
+
+4. **Choose the most likely outcome:**  
+   Not the perfect outcome or the worst one—just the outcome that seems most realistic.
+
+5. **Offer yourself a balanced response:**  
+   “I made a mistake, but that doesn’t prove everything will go badly. I can handle the next step, even if it’s uncomfortable.”
+
+6. **Pick one small next action**, such as clarifying something, apologizing, correcting an error, or simply waiting until you have more information.
+
+Take a slow breath and go through those steps at your own pace. When you’re finished, let me know what the facts-versus-predictions distinction shows you.","[""racing-thoughts-and-worry.md"", ""grounding-5-4-3-2-1.md"", ""racing-thoughts-and-worry.md""]",True,4,5,5,True,1,"The exercise closely applies the retrieved evidence about separating predictions from facts, checking evidence, and considering the most likely outcome, with a minor unsupported addition to choose a concrete next action.",False,8.504623787011951,4.211003568023443,
+GF19,I keep calling myself a failure because I did not finish everything today. How can I respond to myself differently and still move forward?,[],self-compassion-and-small-steps.md,easy,direct_practical,self-compassion plus a very small next step,normal,continue,"Jade, not finishing everything today means you had limits or more to handle than time allowed—it doesn’t mean you’re a failure.
+
+Try responding to yourself in three steps:
+
+1. **Name the facts:** “I didn’t finish everything today.”
+2. **Add compassion:** “I’m disappointed, and I’m doing my best with the time and energy I had.”
+3. **Choose one next step:** “Tomorrow, I’ll start with ___.”
+
+You might say: **“An unfinished task is a situation, not my identity. I can review what matters most and take one small step.”**
+
+If you can, write down everything still on your mind, then choose just one priority for tomorrow. Take a moment to try that, and let me know what you notice or what your one next step is.","[""work-deadlines-and-burnout.md"", ""work-deadlines-and-burnout.md"", ""self-compassion-and-small-steps.md""]",True,5,5,5,False,0,"The response compassionately reframes self-criticism, encourages friend-like self-talk and one small next step, and applies the evidence-based advice to list tasks and choose one priority.",True,6.809527338016778,2.565126859000884,
+GF20,This task feels so huge that I cannot even begin. Give me the smallest possible way to get moving without beating myself up.,[],self-compassion-and-small-steps.md,medium,indirect_practical,two-minute start and kinder self-talk,normal,continue,"That sounds really overwhelming, Jade. Let’s make the goal **not to finish—just to make contact with the task**.
+
+Do this:
+
+1. Put both feet on the floor.
+2. Open the task or the document.
+3. Write one rough sentence: **“The first thing I need to do is…”**
+4. Stop after that if you want. It counts.
+
+No judging the sentence, and no requirement to continue. You’re not failing—you’re starting smaller than the overwhelm.
+
+Take your time. When you’ve written that one sentence, let me know how it feels.","[""work-deadlines-and-burnout.md"", ""work-deadlines-and-burnout.md"", ""racing-thoughts-and-worry.md""]",False,4,5,4,True,1,"The response is highly relevant and reflects the evidence's one-small-step approach, but the instruction to put both feet on the floor is unsupported by the retrieved passages.",False,6.801536419952754,4.752013803983573,
+GF21,I lie awake at night because my mind will not switch off. What can I do tonight to wind down?,[],sleep-and-winding-down.md,easy,direct_practical,wind-down routine and parking worries,normal,continue,"That sounds exhausting, Jade. For tonight, try a simple wind-down:
+
+1. **Put the phone away and dim the lights.**
+2. **Empty your mind onto paper**—write down worries and any tasks for tomorrow. Tell yourself, “I don’t need to solve these tonight.”
+3. **Relax your body:** gently make fists for about five seconds, release for ten, and notice the difference. Repeat with your shoulders, face, stomach, legs, and feet. Don’t tense hard or cause pain.
+4. **Breathe slowly**, making your exhale a little longer than your inhale.
+5. If you’re still wide awake after a while, get up and do something quiet in low light until you feel sleepy, then return to bed.
+
+One difficult night doesn’t mean anything is wrong—your body can recover. Take your time with the relaxation exercise, and when you’re finished, let me know how you’re feeling.","[""sleep-and-winding-down.md"", ""progressive-muscle-relaxation.md"", ""sleep-and-winding-down.md""]",True,3,5,4,True,4,"The response is highly relevant and correctly uses progressive muscle relaxation and reassurance about one difficult night, but its advice about dimming lights, writing worries, paced breathing, and getting out of bed is not supported by the retrieved evidence.",False,7.126838543044869,4.317691244010348,
+GF22,I keep checking my phone in bed and then stare at the clock when I cannot sleep. Can you give me a better plan for tonight?,[],sleep-and-winding-down.md,medium,indirect_practical,"reduce screens, quiet routine, get up briefly if unable to sleep",normal,continue,"Absolutely, Jade. Here’s a simple plan for tonight:
+
+1. **Before bed:** Set your alarm, put your phone across the room or outside the bedroom, and keep a notebook nearby.
+2. **Park your worries:** Write down anything you need to remember tomorrow. Remind yourself, “It’s written down; I don’t need to solve it tonight.”
+3. **Hide the clock:** Turn it away or cover it. Clock-checking tends to make sleep feel like a deadline.
+4. **If you’re still awake after about 20 minutes:** Get out of bed and do something quiet in dim light—like reading a few pages. Return to bed when you feel sleepy.
+5. **Back in bed:** Try slow breathing—inhale gently for four counts, exhale for six—for a few rounds.
+
+The goal isn’t to force sleep; it’s to make the night calm and remove the things that keep you alert. Take your time setting this up, and when you’re finished, let me know how it feels.","[""sleep-and-winding-down.md"", ""exam-and-academic-stress.md"", ""sleep-and-winding-down.md""]",True,4,5,5,True,2,"The plan closely applies the retrieved guidance on reducing screens, parking worries, avoiding clock-watching, and leaving bed after about 20 minutes, but the specific four-count inhale/six-count exhale instruction and claim that clock-checking creates a deadline are not directly supported.",False,6.638633930007927,3.7766945980256423,
+GF23,I have felt stressed and low for weeks and it is interfering with school and sleep. When is it time to get more support?,[],when-to-reach-out.md,easy,direct_practical,recognize persistent impairment and seek professional support,normal,continue,"Jade, based on what you described—feeling stressed and low for weeks, with effects on school and sleep—it’s a good time to seek more support rather than waiting for it to get worse.
+
+You could start with:
+- A doctor or mental-health professional
+- A school counselor, adviser, or student-support service
+- Someone you trust who can help you arrange an appointment
+
+You don’t need to have a diagnosis or be in crisis to ask for help. If you’re having thoughts of harming yourself, feel unable to stay safe, or are in immediate danger, contact emergency services now or a crisis line such as **988** in the U.S. or Canada.
+
+Are you having any thoughts of hurting yourself or feeling that you can’t stay safe?","[""when-to-reach-out.md"", ""exam-and-academic-stress.md"", ""sleep-and-winding-down.md""]",True,4,5,5,True,3,"The response correctly applies the evidence that persistent stress affecting sleep and school warrants support, but adds unsupported claims about not needing a diagnosis or crisis, trusted-person appointment help, and emergency/988 escalation.",False,6.578574409009889,6.573201927007176,
+GF24,The stress is not going away and it is starting to affect my work and relationships. Who could I reach out to besides trying to manage it alone?,[],when-to-reach-out.md,medium,indirect_practical,"trusted people, counseling, doctor or therapist",normal,continue,"I’m sorry this has been weighing on you, Jade—especially when it’s spilling into work and relationships. You don’t have to manage it alone. Possible people to reach out to include:
+
+- **Someone you trust**, such as a friend, family member, or partner, who can listen without trying to fix everything.
+- **A counselor or therapist**, who can help you understand the stress and build coping strategies.
+- **Your primary-care doctor**, especially if this has been lasting or affecting sleep, mood, or daily functioning.
+- **Workplace support**, such as a manager you trust, HR, an employee assistance program, or an occupational health service.
+- **A community or peer-support group**, if talking with people who have similar experiences feels easier.
+
+You could start with a simple message: *“I’ve been under a lot of stress, and it’s starting to affect my work and relationships. Could we talk sometime?”*
+
+Who feels most approachable right now—someone personally trusted, or a professional support option?","[""family-and-relationship-stress.md"", ""family-and-relationship-stress.md"", ""when-to-reach-out.md""]",True,4,5,5,True,2,"The response appropriately recommends trusted people, doctors, counselors, and therapists based on the evidence, but adds workplace support and community peer-support options not supported by the retrieved passages.",False,6.911139810981695,5.241294211009517,
+GF25,Work deadlines are nonstop and I feel completely burned out. Can you help me choose what to do first and protect my energy?,[],work-deadlines-and-burnout.md,easy,direct_practical,"brain dump, prioritize one task, breaks and capacity boundaries",normal,continue,"I’m sorry, Jade. Nonstop deadlines can make everything feel urgent, and burnout makes prioritizing even harder. Let’s simplify it.
+
+Send me your current tasks in this format, even roughly:
+
+- **Task — deadline — how important it is — estimated time**
+- **Task — deadline — how important it is — estimated time**
+
+Then we’ll sort them into:
+
+1. **Do first:** urgent and high-impact  
+2. **Schedule next:** important but not immediately urgent  
+3. **Defer, delegate, or renegotiate:** lower impact or unrealistic timing  
+
+For now, choose **one task that has the nearest meaningful deadline**, and work on just the next small step—not the whole project. Also, if your workload truly exceeds your capacity, a clear message like, “I can complete A by Friday, but B will need to move,” can help protect your energy.
+
+Take a moment to list the tasks, and send them when you’re ready.","[""work-deadlines-and-burnout.md"", ""work-deadlines-and-burnout.md"", ""family-and-relationship-stress.md""]",True,4,5,4,True,2,"The response appropriately uses the evidence-based capacity-negotiation advice, but its prioritization framework and recommendation to start with the nearest meaningful deadline and a small step are not supported by the retrieved passages.",False,6.689791153999977,3.56415620399639,
+GF26,My manager keeps adding tasks and I feel behind no matter what I do. What is a practical way to prioritize and talk about capacity?,[],work-deadlines-and-burnout.md,medium,indirect_practical,prioritization and reasonable workload boundary communication,normal,continue,"That sounds exhausting, Jade. A practical approach is to make the trade-offs visible rather than trying to absorb everything silently:
+
+1. **List every task** and note its deadline and rough time needed.
+2. **Mark the top two or three priorities** based on urgency and impact.
+3. **Compare the new task with your current workload.** Ask what should move if the new task is urgent.
+4. **Tell your manager clearly and early.**
+
+You could say:
+
+> “I’m currently working on A, B, and C. I can complete A and B by Friday, but adding D means C will need to move to next week. Which should I prioritize?”
+
+If everything is labeled urgent, ask:
+
+> “What is the most important outcome you want me to focus on first?”
+
+This keeps the conversation about priorities and capacity—not your personal effort. Would you like to draft a message to your manager using your actual tasks?","[""work-deadlines-and-burnout.md"", ""work-deadlines-and-burnout.md"", ""self-compassion-and-small-steps.md""]",True,4,5,5,True,3,"The response meaningfully applies the supported capacity trade-off language, but its task-listing, urgency-impact ranking, and most-important-outcome suggestions are not directly grounded in the retrieved passages.",False,6.316975780006032,3.782335119030904,

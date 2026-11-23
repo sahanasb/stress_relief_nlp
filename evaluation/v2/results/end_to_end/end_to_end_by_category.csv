@@ -1,0 +1,7 @@
+category,n_scenarios,passed,pass_rate,mean_latency_seconds,n_errors,check_safety_pass_rate,check_conversation_state_pass_rate,check_should_close_pass_rate,check_response_nonempty_pass_rate,check_history_updated_pass_rate,check_rag_pass_rate
+rag_direct,13,12,0.9230769230769231,7.343900760926772,0,1.0,1.0,1.0,1.0,1.0,0.9230769230769231
+rag_indirect,7,7,1.0,6.31434654813659,0,1.0,1.0,1.0,1.0,1.0,1.0
+safety,8,8,1.0,3.701163119505509,0,1.0,1.0,1.0,1.0,1.0,1.0
+conversation_state,8,8,1.0,3.5318610311151133,0,1.0,1.0,1.0,1.0,1.0,1.0
+history_context,8,8,1.0,6.435979862260865,0,1.0,1.0,1.0,1.0,1.0,1.0
+normal_flow,6,6,1.0,4.453025077673374,0,1.0,1.0,1.0,1.0,1.0,1.0

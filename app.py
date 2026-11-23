@@ -527,7 +527,10 @@ SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASS = os.getenv("SMTP_PASS")
 SMTP_FROM = os.getenv("SMTP_FROM") or SMTP_USER
-EMAIL_AVAILABLE = bool(SMTP_HOST and SMTP_FROM)
+RESEND_API_KEY = os.getenv("RESEND_API_KEY") or os.getenv("resend_api_key")
+# With the free onboarding@resend.dev sender, Resend only delivers to the email on your Resend account.
+RESEND_FROM = os.getenv("RESEND_FROM", "SerenAI Stress Relief <onboarding@resend.dev>")
+EMAIL_AVAILABLE = bool(RESEND_API_KEY or (SMTP_HOST and SMTP_FROM))
 MAX_EMAILS_PER_SESSION = 5
 _EMAIL_RE = re.compile(r"^[^@\s]{1,64}@[^@\s]{1,255}\.[^@\s]{2,}$")
 
@@ -589,6 +592,36 @@ def summary():
     return jsonify(summary=text, email=EMAIL_AVAILABLE)
 
 
+def _send_with_resend(to, subject, body):
+    """Same technique as the homework notebook: resend.Emails.send. Returns 'success' or 'error: ...'."""
+    from html import escape
+    plain = re.sub(r"[*#`]", "", str(body))
+    html = ("<div style='font-family:Arial,sans-serif;max-width:560px'>"
+            "<h2 style='color:#2a4fb0'>Your SerenAI Session Summary</h2>"
+            "<p style='font-size:14px;color:#333;line-height:1.5'>" + escape(plain).replace("\n", "<br>") + "</p>"
+            "<p style='font-size:12px;color:#777'>Sent by SerenAI. This is general wellness information, "
+            "not medical advice.</p></div>")
+    params = {"from": RESEND_FROM, "to": [to], "subject": subject, "html": html, "text": plain}
+    try:
+        import resend
+        resend.api_key = RESEND_API_KEY
+        resend.Emails.send(params)
+        return "success"
+    except ImportError:                      # library not installed: call the REST API directly
+        import json as _json
+        import urllib.request
+        req = urllib.request.Request("https://api.resend.com/emails", data=_json.dumps(params).encode(),
+                                     headers={"Authorization": f"Bearer {RESEND_API_KEY}",
+                                              "Content-Type": "application/json"}, method="POST")
+        try:
+            urllib.request.urlopen(req, timeout=20).read()
+            return "success"
+        except Exception as e:
+            return f"error: {type(e).__name__}: {e}"
+    except Exception as e:
+        return f"error: {type(e).__name__}: {e}"
+
+
 @app.post("/api/summary/email")
 def email_summary():
     """Email the summary that /api/summary produced for this session (never arbitrary client text)."""
@@ -605,6 +638,16 @@ def email_summary():
         return jsonify(error="email_unavailable"), 503
     if s.get("emails_sent", 0) >= MAX_EMAILS_PER_SESSION:
         return jsonify(error="Email limit reached for this session."), 429
+
+    if RESEND_API_KEY:
+        result = _send_with_resend(to, "Your SerenAI session summary", s["summary"])
+        if result != "success":
+            app.logger.warning("Resend failed: %s", result)
+            hint = (" With the free sender, Resend only delivers to the email on your Resend account."
+                    if "403" in result or "own email" in result.lower() or "testing" in result.lower() else "")
+            return jsonify(error="Could not send the email." + hint), 502
+        s["emails_sent"] = s.get("emails_sent", 0) + 1
+        return jsonify(sent=True)
 
     msg = EmailMessage()
     msg["Subject"] = "Your SerenAI session summary"

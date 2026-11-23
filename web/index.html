@@ -26,6 +26,7 @@ header .sub{color:var(--muted);font-size:.8rem}
 .sp{flex:1}
 .ghost{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:7px 13px;font:inherit;font-size:.82rem;cursor:pointer}
 .ghost:hover{border-color:var(--indigo)}
+.welcome{color:var(--muted);font-size:.8rem;margin-top:0px;margin-bottom:10px}
 
 /*auth popup*/
 .auth-bg{position:fixed;inset:0;background:rgba(6,9,20,.78);backdrop-filter:blur(6px);display:none;place-items:center;z-index:20;padding:16px}
@@ -222,12 +223,14 @@ form button:disabled,form input:disabled{opacity:.5}
 <div class="wrap">
 <header>
   <div class="logo"><svg class="i" style="width:20px;height:20px"><use href="#i-wave"/></svg></div>
-  <div><h1>WE</h1><div class="sub">Voice stress-support companion. For more support call: <a href="tel:+13372139961">+1 (337) 213-9961</a></div></div>
+  <div><h1>WE</h1><div class="sub">Voice stress-support companion.</div></div>
   <div class="sp"></div>
   <button class="ghost" id="newBtn">New session</button>
   <button class="ghost" id="loginBtn">Log in</button>
   <button class="ghost" id="logoutBtn" style="display: none;">Log Out</button>
 </header>
+
+<div id="welcomeMsg" class="welcome" style="display: none;"></div>
 
 <!--- Login and Register Box -->
 <div id="authModal" class="auth-bg">
@@ -339,6 +342,8 @@ form button:disabled,form input:disabled{opacity:.5}
   <div class="stat"><b style="color:var(--teal)">3 Models</b><span>Emotion · Stress · Topic classifiers</span></div>
   <div class="stat"><b id="stSafe" style="color:var(--amber)">0</b><span>Messages Safety-Screened</span></div>
 </section>
+
+<section class="card"></section>
 
 </div></div>
 <div id="toast"></div>
@@ -711,13 +716,18 @@ function togglePass(inputId, btn) {
 }
 
 // updates button after log in
-function updateAuthUI(isLoggedIn) {
+function updateAuthUI(isLoggedIn, userName = "") {
+  const welcome = document.getElementById("welcomeMsg");
   if (isLoggedIn) {
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("logoutBtn").style.display = "block";
+    welcome.textContent = `Welcome ${userName}!`;
+    welcome.style.display = "block";
   } else {
     document.getElementById("loginBtn").style.display = "block";
     document.getElementById("logoutBtn").style.display = "none";
+    welcome.textContent = "";
+    welcome.style.display = "none";
   }
 }
 
@@ -776,9 +786,8 @@ async function submitAuth() {
     return;
   }
 
-  console.log(data);
   closeAuth();
-  updateAuthUI(true);
+  updateAuthUI(true, data.user_name);
 }
 
 async function logout() {

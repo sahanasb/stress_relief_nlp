@@ -26,7 +26,8 @@ conversation_history = []
 INTRO = (
     "Hi, I'm SerenAI, your stress support assistant. "
     "I'm here to listen and help you work through everyday stress. "
-    "Before we get started, what should I call you?"
+    "You can speak here, or call the number +1 (337) 213-9961 if you would like to talk on the phone."
+    "\n\nBefore we get started, what should I call you?"
 )
 
 

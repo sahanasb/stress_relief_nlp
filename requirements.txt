@@ -9,6 +9,7 @@ numpy
 flask
 werkzeug
 gunicorn
+libsql
 
 # optional: Pinecone backend (RAG_BACKEND=pinecone) and PDF knowledge files
 pinecone

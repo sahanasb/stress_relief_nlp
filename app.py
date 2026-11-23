@@ -11,13 +11,14 @@ import struct
 import time
 import uuid
 import wave
+import sqlite3
 from collections import OrderedDict
 from werkzeug.security import generate_password_hash
 
 import database.db_manager as db
 from name_utils import (clean_typed_name, is_no, is_yes, name_candidates, spell_out,
                         spelled_name)
-from flask import Flask, Response, jsonify, request, send_from_directory
+from flask import Flask, Response, jsonify, request, send_from_directory, session
 
 try:
     from dotenv import load_dotenv
@@ -150,6 +151,7 @@ _tts_cache = OrderedDict()           # (model, voice, tone, text, name hint) -> 
 _TTS_CACHE_MAX = 48
 
 app = Flask(__name__, static_folder="web", static_url_path="/static")
+app.secret_key = os.environ.get("SECRET_KEY", "dev-only-secret-change-in-prod")
 app.config["MAX_CONTENT_LENGTH"] = 12 * 1024 * 1024     # microphone clips are small; refuse anything huge
 SESSIONS = {}
 
@@ -199,27 +201,88 @@ def start():
 
 @app.post("/api/register")
 def create_user():
-    """Registration to create a user_name and id"""
-    data = request.get_json()
-    user_name = data.get("user_name")
-    password = data.get("password")
+    """Registration to create a user_name and id, then auto-login"""
+    data = request.get_json() or {}
+    user_name = (data.get("user_name") or "").strip().lower()
+    password = data.get("password") or ""
+    confirm_password = data.get("confirm_password") or ""
+
+    # Blank / whitespace checks
+    if not user_name:
+        return jsonify(error="Username cannot be blank"), 400
+    if any(c.isspace() for c in user_name):
+        return jsonify(error="Username cannot contain spaces"), 400
+    if not password or not password.strip():
+        return jsonify(error="Password cannot be blank"), 400
+
+    # Length checks
+    if len(user_name) < 3 or len(user_name) > 20:
+        return jsonify(error="Username must be between 3 and 20 characters"), 400
+    if len(password) < 6:
+        return jsonify(error="Password must be at least 6 characters"), 400
+    if len(password) > 40:
+        return jsonify(error="Password cannot exceed 40 characters"), 400
+
+    # Confirm password check
+    if password != confirm_password:
+        return jsonify(error="Passwords do not match"), 400
+
+    # Create user (catch duplicate username)
     hashed_password = generate_password_hash(password)
-    user_id = db.create_user(user_name, hashed_password)
-    return jsonify(user_id=user_id, message="User Created")
-    # should there be a password check to see if it's at least 8 characters and includes symbols?
+    try:
+        user_id = db.create_user(user_name, hashed_password)
+    except sqlite3.IntegrityError:
+        return jsonify(error="Username is already taken"), 409
+
+    # Auto-login (match whatever your /api/login uses!)
+    session["user_id"] = user_id
+    session["user_name"] = user_name
+
+    return jsonify(user_id=user_id, user_name=user_name, message="User Created"), 201
+
+
+@app.get("/api/me")
+def get_current_user():
+    """Check if a user is currently logged in"""
+    if "user_id" in session:
+        return jsonify(
+            logged_in=True,
+            user_id=session["user_id"],
+            user_name=session["user_name"]
+        ), 200
+    return jsonify(logged_in=False), 200
 
 
 @app.post("/api/login")
 def login():
     """Log in as user"""
-    data = request.get_json()
-    user_name = data.get("user_name")
-    password = data.get("password")
+    data = request.get_json() or {}
+    user_name = (data.get("user_name") or "").strip().lower()
+    password = data.get("password") or ""
+
+    if not user_name or not password:
+        return jsonify(error="Username and password are required"), 400
+
     user_data = db.retrieve_user(user_name, password)
-    print(user_data)
     if user_data is None:
-        return jsonify(message="Username or password does not exist")
-    return jsonify(user_data=user_data, message="User Logged In")
+        return jsonify(error="Invalid username or password"), 401
+
+    user_id = user_data.get("id") or user_data.get("user_id")
+    session["user_id"] = user_id
+    session["user_name"] = user_data["user_name"]
+
+    return jsonify(
+        user_id=user_id,
+        user_name=user_data["user_name"],
+        message="User Logged In"
+    ), 200
+
+
+@app.post("/api/logout")
+def logout():
+    """Log out the current user"""
+    session.clear()
+    return jsonify(message="User Logged Out"), 200
 
 
 def _name_reply(s, name, candidates=None, **extra):

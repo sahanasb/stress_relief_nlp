@@ -26,6 +26,7 @@ header .sub{color:var(--muted);font-size:.8rem}
 .sp{flex:1}
 .ghost{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:7px 13px;font:inherit;font-size:.82rem;cursor:pointer}
 .ghost:hover{border-color:var(--indigo)}
+.welcome{color:var(--muted);font-size:.8rem;margin-top:0px;margin-bottom:10px}
 
 /*auth popup*/
 .auth-bg{position:fixed;inset:0;background:rgba(6,9,20,.78);backdrop-filter:blur(6px);display:none;place-items:center;z-index:20;padding:16px}
@@ -34,6 +35,9 @@ header .sub{color:var(--muted);font-size:.8rem}
 .auth-card input{width:100%;background:#070b1c;border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:11px 14px;font:inherit;font-size:.86rem;outline:none}
 .auth-card input:focus{border-color:var(--indigo)}
 .auth-err{color:var(--red);font-size:.78rem;min-height:1em}
+.pass-wrap {position: relative;display: flex;align-items: center;}
+.pass-wrap input {width: 100%;padding-right: 55px;} /* leaves room for the Show/Hide button */
+.toggle-pass {position: absolute;right: 10px;background: none;border: none;cursor: pointer;font-size: 0.85rem;color: #666;}
 
 .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr;
   grid-template-areas:"voice nlp" "sims transcript" "topic transcript" "rag rag" "stats stats"}
@@ -219,12 +223,14 @@ form button:disabled,form input:disabled{opacity:.5}
 <div class="wrap">
 <header>
   <div class="logo"><svg class="i" style="width:20px;height:20px"><use href="#i-wave"/></svg></div>
-  <div><h1>WE</h1><div class="sub">Voice stress-support companion</div></div>
+  <div><h1>WE</h1><div class="sub">Voice stress-support companion.</div></div>
   <div class="sp"></div>
   <button class="ghost" id="newBtn">New session</button>
   <button class="ghost" id="loginBtn">Log in</button>
   <button class="ghost" id="logoutBtn" style="display: none;">Log Out</button>
 </header>
+
+<div id="welcomeMsg" class="welcome" style="display: none;"></div>
 
 <!--- Login and Register Box -->
 <div id="authModal" class="auth-bg">
@@ -234,8 +240,18 @@ form button:disabled,form input:disabled{opacity:.5}
       <button type="button" class="ghost" style="margin-left:auto" onclick="closeAuth()">✕</button>
     </div>
 
-    <input id="authUser" type="text" placeholder="Username" autocomplete="username">
-    <input id="authPass" type="password" placeholder="Password" autocomplete="current-password">
+    <input id="authUser" type="text" placeholder="Username" autocomplete="username" maxlength="20">
+
+    <div class="pass-wrap">
+      <input id="authPass" type="password" placeholder="Password" autocomplete="current-password" maxlength="40">
+      <button type="button" class="toggle-pass" onclick="togglePass('authPass', this)">Show</button>
+    </div>
+
+    <div class="pass-wrap" id="confirmPassWrap" style="display:none">
+      <input id="authConfirmPass" type="password" placeholder="Confirm Password" autocomplete="new-password" maxlength="40">
+      <button type="button" class="toggle-pass" onclick="togglePass('authConfirmPass', this)">Show</button>
+    </div>
+    
     <div id="authErr" class="auth-err"></div>
 
     <button id="authSubmit" type="button" class="primary" style="justify-content:center" onclick="submitAuth()">Sign In</button>
@@ -326,6 +342,8 @@ form button:disabled,form input:disabled{opacity:.5}
   <div class="stat"><b style="color:var(--teal)">3 Models</b><span>Emotion · Stress · Topic classifiers</span></div>
   <div class="stat"><b id="stSafe" style="color:var(--amber)">0</b><span>Messages Safety-Screened</span></div>
 </section>
+
+<section class="card"></section>
 
 </div></div>
 <div id="toast"></div>
@@ -645,13 +663,27 @@ async function start(){
 
 /* ---------- login box ---------- */
 function openAuth() {
+  // If it was left on "Create Account", flip it back to "Sign In"
+  if (isSignUp) {
+    toggleAuthMode();
+  }
+
   document.getElementById("authErr").textContent = "";
+  document.getElementById("authPass").value = "";
+  document.getElementById("authConfirmPass").value = "";
+
+  // Reset both password boxes back to hidden ("••••")
+  document.getElementById("authPass").type = "password";
+  document.getElementById("authConfirmPass").type = "password";
+  document.querySelectorAll(".toggle-pass").forEach(btn => btn.textContent = "Show");
+
   document.getElementById("authModal").classList.add("open");
 }
+
 function closeAuth() {
   document.getElementById("authModal").classList.remove("open");
 }
-//toggles between log in and register
+
 function toggleAuthMode() {
   isSignUp = !isSignUp;
   document.getElementById("authTitle").textContent = isSignUp ? "Create Account" : "Sign In";
@@ -659,27 +691,107 @@ function toggleAuthMode() {
   document.getElementById("authToggle").textContent = isSignUp
     ? "Already have an account? Sign In"
     : "Need an account? Create one";
+
+  const passInput = document.getElementById("authPass");
+  const confirmInput = document.getElementById("authConfirmPass");
+  passInput.autocomplete = isSignUp ? "new-password" : "current-password";
+
+  // Hide/show the wrapper div so the "Show" button hides along with the input
+  document.getElementById("confirmPassWrap").style.display = isSignUp ? "flex" : "none";
+  confirmInput.value = "";
+
   document.getElementById("authErr").textContent = "";
 }
-//updates button after log in
-function updateAuthUI(isLoggedIn) {
+
+// toggles between log in and register
+function togglePass(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (input.type === "password") {
+    input.type = "text";
+    btn.textContent = "Hide";
+  } else {
+    input.type = "password";
+    btn.textContent = "Show";
+  }
+}
+
+// updates button after log in
+function updateAuthUI(isLoggedIn, userName = "") {
+  const welcome = document.getElementById("welcomeMsg");
   if (isLoggedIn) {
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("logoutBtn").style.display = "block";
+    welcome.textContent = `Welcome ${userName}!`;
+    welcome.style.display = "block";
   } else {
     document.getElementById("loginBtn").style.display = "block";
     document.getElementById("logoutBtn").style.display = "none";
+    welcome.textContent = "";
+    welcome.style.display = "none";
   }
 }
+
+async function checkAuth() {
+  const res = await fetch("/api/me");
+  if (!res.ok) return;
+  const data = await res.json();
+  if (data.logged_in) {
+    updateAuthUI(true, data.user_name);
+  } else {
+    updateAuthUI(false);
+  }
+}
+
+// Run automatically when the page loads
+checkAuth();
+
 async function submitAuth() {
   const user_name = document.getElementById("authUser").value.trim();
   const password = document.getElementById("authPass").value;
+  const confirm_password = document.getElementById("authConfirmPass").value;
   const err = document.getElementById("authErr");
+  err.textContent = "";
+
+  // Quick client-side validation for sign up
+  if (isSignUp) {
+    if (!user_name) {
+      err.textContent = "Username cannot be blank";
+      return;
+    }
+    if (/\s/.test(user_name)) {
+      err.textContent = "Username cannot contain spaces";
+      return;
+    }
+    if (user_name.length < 3 || user_name.length > 20) {
+      err.textContent = "Username must be between 3 and 20 characters";
+      return;
+    }
+    if (!password || !password.trim()) {
+      err.textContent = "Password cannot be blank";
+      return;
+    }
+    if (password.length < 6) {
+      err.textContent = "Password must be at least 6 characters";
+      return;
+    }
+    if (password.length > 40) {
+      err.textContent = "Password cannot exceed 40 characters";
+      return;
+    }
+    if (password !== confirm_password) {
+      err.textContent = "Passwords do not match";
+      return;
+    }
+  }
+
+  const payload = isSignUp
+    ? { user_name, password, confirm_password }
+    : { user_name, password };
 
   const res = await fetch(isSignUp ? "/api/register" : "/api/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user_name, password })
+    body: JSON.stringify(payload)
   });
 
   const data = await res.json().catch(() => ({}));
@@ -688,10 +800,10 @@ async function submitAuth() {
     return;
   }
 
-  console.log(data)
   closeAuth();
-  updateAuthUI(true);
+  updateAuthUI(true, data.user_name);
 }
+
 async function logout() {
   await fetch("/api/logout", { method: "POST" });
   updateAuthUI(false);

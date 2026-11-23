@@ -15,7 +15,7 @@ def create_database(database_name=DATABASE_PATH):
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             user_id INTEGER PRIMARY KEY,
-            user_name TEXT NOT NULL,
+            user_name TEXT NOT NULL UNIQUE,
             password TEXT NOT NULL
         )
     ''')
@@ -46,42 +46,47 @@ def create_database(database_name=DATABASE_PATH):
 
 def create_user(user_name, password):
     """Creates a user, taking in their chosen user_name and assigning them an ID"""
+    
+    try:
+        connection = sqlite3.connect(DATABASE_PATH)
+        cursor = connection.cursor()
 
-    connection = sqlite3.connect(DATABASE_PATH)
-    cursor = connection.cursor()
+        cursor.execute('''
+            INSERT INTO users (user_name, password)
+            VALUES (?, ?)
+        ''', (user_name, password))
 
-    cursor.execute('''
-        INSERT INTO users (user_name, password)
-        VALUES (?, ?)
-    ''', (user_name, password))
+        user_id = cursor.lastrowid
 
-    user_id = cursor.lastrowid
+        connection.commit()
+        return user_id
 
-    connection.commit()
-    connection.close()
-
-    return user_id
+    finally:
+        connection.close()
 
 
 def retrieve_user(user_name, password):
     """Based on a user_name and password, a user is retrieved from the database"""
 
-    connection = sqlite3.connect(DATABASE_PATH)
-    connection.row_factory = sqlite3.Row
-    cursor = connection.cursor()
+    try:
+        connection = sqlite3.connect(DATABASE_PATH)
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
 
-    cursor.execute('''
-        SELECT * FROM users WHERE user_name = ?
-    ''', (user_name,))
+        cursor.execute('''
+            SELECT * FROM users WHERE user_name = ?
+        ''', (user_name,))
 
-    user = cursor.fetchone()
+        user = cursor.fetchone()
 
-    if user:
-        hashed_password = user['password']
-        if check_password_hash(hashed_password, password):
-            return dict(user)
+        if user:
+            hashed_password = user['password']
+            if check_password_hash(hashed_password, password):
+                return dict(user)
+        return None
 
-    return None
+    finally:
+        connection.close()
 
 
 def save_conversation(conversation_information, conversation_history):

@@ -1,0 +1,11 @@
+{
+  "n_total_examples": 30,
+  "n_valid_predictions": 30,
+  "n_failed_predictions": 0,
+  "strict_context_recall_accuracy": 1.0,
+  "strict_pass_count": 30,
+  "strict_fail_count": 0,
+  "mean_latency_seconds": 1.6771477514332824,
+  "median_latency_seconds": 1.5970998619986858,
+  "p95_latency_seconds": 2.829154660099357
+}

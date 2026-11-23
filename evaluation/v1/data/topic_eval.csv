@@ -1,0 +1,211 @@
+id,text,topic_true,difficulty,subcategory
+T001,I have a chemistry exam on Friday.,academic,easy,direct_topic
+T002,My professor assigned another research paper.,academic,easy,direct_topic
+T003,I'm trying to finish my homework before class.,academic,medium,direct_topic
+T004,I need to study for my machine learning midterm.,academic,medium,direct_topic
+T005,My group project for class is due next week.,academic,hard,direct_topic
+T006,I'm worried about my grade in statistics.,academic,hard,direct_topic
+T007,I spent all night reviewing lecture notes.,academic,easy,indirect_context
+T008,The syllabus says the final is worth forty percent.,academic,easy,indirect_context
+T009,I keep checking the course portal for my grade.,academic,medium,indirect_context
+T010,My study group is meeting at the library tonight.,academic,medium,indirect_context
+T011,I need to ask the teaching assistant about the assignment.,academic,hard,indirect_context
+T012,I missed a lecture and now I have to catch up.,academic,hard,indirect_context
+T013,"I'm stressed about tuition, but the immediate issue is tomorrow's exam.",academic,easy,multi_topic_primary
+T014,"My job is busy, but what I need help with is keeping up in class.",academic,easy,multi_topic_primary
+T015,"My partner is supportive, yet my main concern is my final project.",academic,medium,multi_topic_primary
+T016,"My family keeps asking questions, but I'm focused on my grades right now.",academic,medium,multi_topic_primary
+T017,"Money is tight, but the biggest problem this week is schoolwork.",academic,hard,multi_topic_primary
+T018,"I've been tired lately, but the main thing on my mind is my coursework.",academic,hard,multi_topic_primary
+T019,I'm preparing a presentation that will be graded by my instructor.,academic,easy,ambiguous_boundary
+T020,I'm meeting a mentor to discuss which classes I should take next semester.,academic,easy,ambiguous_boundary
+T021,I need feedback on a paper before I submit it to my course site.,academic,medium,ambiguous_boundary
+T022,I'm choosing between two electives for my degree.,academic,medium,ambiguous_boundary
+T023,I'm trying to improve my study habits before finals.,academic,hard,ambiguous_boundary
+T024,I need to catch up on readings before tomorrow's seminar.,academic,hard,ambiguous_boundary
+T025,My exam is tomorrow.,academic,easy,short_or_context_light
+T026,The assignment is due tonight.,academic,easy,short_or_context_light
+T027,I got my grade back.,academic,medium,short_or_context_light
+T028,I need to study.,academic,medium,short_or_context_light
+T029,Class has been difficult lately.,academic,hard,short_or_context_light
+T030,Finals are coming up.,academic,hard,short_or_context_light
+T031,My manager scheduled a performance review for Friday.,work or career,easy,direct_topic
+T032,I'm applying for a new job.,work or career,easy,direct_topic
+T033,I have a big presentation at work tomorrow.,work or career,medium,direct_topic
+T034,My internship interview is next week.,work or career,medium,direct_topic
+T035,I'm worried about getting promoted.,work or career,hard,direct_topic
+T036,My coworker keeps missing deadlines.,work or career,hard,direct_topic
+T037,I updated my resume and sent out three applications.,work or career,easy,indirect_context
+T038,My supervisor asked me to take on another client.,work or career,easy,indirect_context
+T039,I have a one-on-one with my boss this afternoon.,work or career,medium,indirect_context
+T040,The hiring manager emailed me about a second interview.,work or career,medium,indirect_context
+T041,Our team is preparing for a major product launch.,work or career,hard,indirect_context
+T042,I'm deciding whether to accept a new position.,work or career,hard,indirect_context
+T043,"School is busy, but my main concern is my job interview.",work or career,easy,multi_topic_primary
+T044,"My partner is encouraging me, yet I'm focused on a problem with my manager.",work or career,easy,multi_topic_primary
+T045,"Money matters, but the immediate issue is whether I'll keep my job.",work or career,medium,multi_topic_primary
+T046,"My family has opinions, but I'm trying to decide on a career move.",work or career,medium,multi_topic_primary
+T047,"I'm tired lately, but the main pressure comes from work.",work or career,hard,multi_topic_primary
+T048,"I have classes too, but what I need help with is my internship search.",work or career,hard,multi_topic_primary
+T049,I'm preparing a presentation for the company where I intern.,work or career,easy,ambiguous_boundary
+T050,I'm meeting a mentor to discuss my next career step.,work or career,easy,ambiguous_boundary
+T051,I need feedback on a portfolio before sending it to employers.,work or career,medium,ambiguous_boundary
+T052,I'm deciding whether graduate school or a full-time role makes more sense for me.,work or career,medium,ambiguous_boundary
+T053,I'm practicing technical questions for an interview.,work or career,hard,ambiguous_boundary
+T054,I'm thinking about asking for more responsibility on my team.,work or career,hard,ambiguous_boundary
+T055,My boss wants to talk.,work or career,easy,short_or_context_light
+T056,I have an interview tomorrow.,work or career,easy,short_or_context_light
+T057,Work has been difficult lately.,work or career,medium,short_or_context_light
+T058,I updated my resume.,work or career,medium,short_or_context_light
+T059,My internship ends soon.,work or career,hard,short_or_context_light
+T060,I'm thinking about changing jobs.,work or career,hard,short_or_context_light
+T061,My partner and I keep arguing.,relationships,easy,direct_topic
+T062,I'm worried my boyfriend is pulling away.,relationships,easy,direct_topic
+T063,My girlfriend and I need to talk about trust.,relationships,medium,direct_topic
+T064,I'm having trouble communicating with the person I'm dating.,relationships,medium,direct_topic
+T065,My partner forgot an important anniversary.,relationships,hard,direct_topic
+T066,I'm unsure whether this relationship is working.,relationships,hard,direct_topic
+T067,They haven't replied to my messages since yesterday.,relationships,easy,indirect_context
+T068,We keep having the same disagreement and never resolve it.,relationships,easy,indirect_context
+T069,I feel like we're spending less meaningful time together.,relationships,medium,indirect_context
+T070,They said they need space and I don't know what that means for us.,relationships,medium,indirect_context
+T071,We disagree about where the relationship is going.,relationships,hard,indirect_context
+T072,I want to talk without turning it into another argument.,relationships,hard,indirect_context
+T073,"Work is busy, but what hurts most is the tension with my partner.",relationships,easy,multi_topic_primary
+T074,"My family has opinions, but the main issue is between me and the person I'm dating.",relationships,easy,multi_topic_primary
+T075,"Money has been tight, yet our communication problems are bothering me more.",relationships,medium,multi_topic_primary
+T076,"School is stressful, but I mostly want help with my relationship.",relationships,medium,multi_topic_primary
+T077,"I've been sleeping poorly, but it's because of conflict with my partner.",relationships,hard,multi_topic_primary
+T078,"Career plans matter, but the immediate problem is whether we should stay together.",relationships,hard,multi_topic_primary
+T079,The person I'm seeing wants to meet my family soon.,relationships,easy,ambiguous_boundary
+T080,My partner and I are discussing whether to move in together.,relationships,easy,ambiguous_boundary
+T081,We're trying to balance our careers with time for each other.,relationships,medium,ambiguous_boundary
+T082,We argued about how much money to spend on a trip together.,relationships,medium,ambiguous_boundary
+T083,I'm trying to set better boundaries with someone I'm dating.,relationships,hard,ambiguous_boundary
+T084,I don't know how to bring up a difficult topic with my partner.,relationships,hard,ambiguous_boundary
+T085,We had another argument.,relationships,easy,short_or_context_light
+T086,They haven't texted back.,relationships,easy,short_or_context_light
+T087,I miss my partner.,relationships,medium,short_or_context_light
+T088,Dating has been confusing.,relationships,medium,short_or_context_light
+T089,We need to talk.,relationships,hard,short_or_context_light
+T090,I'm not sure about us.,relationships,hard,short_or_context_light
+T091,My parents keep arguing with me about my choices.,family,easy,direct_topic
+T092,I'm worried about my younger brother.,family,easy,direct_topic
+T093,My sister and I haven't spoken in a week.,family,medium,direct_topic
+T094,My family expects me to visit every weekend.,family,medium,direct_topic
+T095,I'm having trouble setting boundaries with my parents.,family,hard,direct_topic
+T096,My relatives are putting pressure on me.,family,hard,direct_topic
+T097,My mom keeps calling to check whether I'm coming home.,family,easy,indirect_context
+T098,My dad and I disagree about what I should do next.,family,easy,indirect_context
+T099,My sibling needs help and everyone expects me to handle it.,family,medium,indirect_context
+T100,A family gathering turned into another argument.,family,medium,indirect_context
+T101,I feel responsible for keeping peace between relatives.,family,hard,indirect_context
+T102,My parents keep comparing me with my cousin.,family,hard,indirect_context
+T103,"School is busy, but the main issue is conflict with my parents.",family,easy,multi_topic_primary
+T104,"Work is stressful, yet I'm more concerned about my brother right now.",family,easy,multi_topic_primary
+T105,"Money is tight, but family expectations are what I'm struggling with most.",family,medium,multi_topic_primary
+T106,My relationship is okay; the difficult part is dealing with my relatives.,family,medium,multi_topic_primary
+T107,I've been tired because family responsibilities are taking up my time.,family,hard,multi_topic_primary
+T108,"Career choices matter, but the strongest pressure is coming from my parents.",family,hard,multi_topic_primary
+T109,My parents have strong opinions about the person I'm dating.,family,easy,ambiguous_boundary
+T110,I'm deciding whether to move back home while I look for work.,family,easy,ambiguous_boundary
+T111,My sibling and I disagree about how to help our parents financially.,family,medium,ambiguous_boundary
+T112,My family keeps asking about my grades and future plans.,family,medium,ambiguous_boundary
+T113,I'm trying to divide holiday time between my family and my partner's family.,family,hard,ambiguous_boundary
+T114,I need to tell my parents about a decision they probably won't like.,family,hard,ambiguous_boundary
+T115,My mom is upset with me.,family,easy,short_or_context_light
+T116,My brother needs help.,family,easy,short_or_context_light
+T117,Family dinner was tense.,family,medium,short_or_context_light
+T118,My parents keep calling.,family,medium,short_or_context_light
+T119,My sister won't talk to me.,family,hard,short_or_context_light
+T120,Home feels stressful lately.,family,hard,short_or_context_light
+T121,I'm worried about paying my rent this month.,financial,easy,direct_topic
+T122,My credit card balance keeps growing.,financial,easy,direct_topic
+T123,I need to figure out how to cover tuition.,financial,medium,direct_topic
+T124,I'm stressed about an unexpected bill.,financial,medium,direct_topic
+T125,I don't have enough saved for an emergency.,financial,hard,direct_topic
+T126,I'm trying to pay down debt.,financial,hard,direct_topic
+T127,I keep checking my bank balance before buying anything.,financial,easy,indirect_context
+T128,My paycheck is smaller this month because my hours were cut.,financial,easy,indirect_context
+T129,I had to move money from savings to cover basic expenses.,financial,medium,indirect_context
+T130,I'm comparing payment plans because I can't pay the full amount at once.,financial,medium,indirect_context
+T131,I canceled plans because I need to save money.,financial,hard,indirect_context
+T132,I'm trying to decide which bill to pay first.,financial,hard,indirect_context
+T133,"School is hard, but the biggest issue is how I'll pay tuition.",financial,easy,multi_topic_primary
+T134,"Work is frustrating, yet what worries me most is losing income.",financial,easy,multi_topic_primary
+T135,"My partner is supportive, but money is the main source of pressure.",financial,medium,multi_topic_primary
+T136,"My family is helping emotionally, though I still need to solve the rent problem.",financial,medium,multi_topic_primary
+T137,"I've been tired, but financial uncertainty is what keeps coming back to mind.",financial,hard,multi_topic_primary
+T138,Career decisions matter because I urgently need more stable income.,financial,hard,multi_topic_primary
+T139,I'm deciding whether I can afford to move for a new job.,financial,easy,ambiguous_boundary
+T140,My partner and I disagree about how to split shared expenses.,financial,easy,ambiguous_boundary
+T141,I'm considering taking fewer classes because tuition is expensive.,financial,medium,ambiguous_boundary
+T142,My family asked me to contribute more money at home.,financial,medium,ambiguous_boundary
+T143,I'm choosing between a cheaper insurance plan and better coverage.,financial,hard,ambiguous_boundary
+T144,I'm trying to build a budget before making a major purchase.,financial,hard,ambiguous_boundary
+T145,Rent is due soon.,financial,easy,short_or_context_light
+T146,My card was declined.,financial,easy,short_or_context_light
+T147,Money is tight.,financial,medium,short_or_context_light
+T148,I got another bill.,financial,medium,short_or_context_light
+T149,I need to save more.,financial,hard,short_or_context_light
+T150,My paycheck was smaller.,financial,hard,short_or_context_light
+T151,I've been having trouble sleeping lately.,health or wellness,easy,direct_topic
+T152,I want to improve my exercise routine.,health or wellness,easy,direct_topic
+T153,I've had headaches for several days.,health or wellness,medium,direct_topic
+T154,I'm trying to eat more consistently.,health or wellness,medium,direct_topic
+T155,I feel exhausted even after a full night's sleep.,health or wellness,hard,direct_topic
+T156,I need to make time for basic self-care.,health or wellness,hard,direct_topic
+T157,I've been waking up several times during the night.,health or wellness,easy,indirect_context
+T158,I skipped meals twice this week because my schedule was chaotic.,health or wellness,easy,indirect_context
+T159,My energy drops every afternoon even when I sleep enough.,health or wellness,medium,indirect_context
+T160,I haven't exercised in weeks and I can feel the difference.,health or wellness,medium,indirect_context
+T161,I've been trying breathing exercises before bed.,health or wellness,hard,indirect_context
+T162,I keep putting off the doctor's appointment I meant to schedule.,health or wellness,hard,indirect_context
+T163,"School is busy, but my main concern is that I'm not sleeping well.",health or wellness,easy,multi_topic_primary
+T164,"Work is stressful, yet I mostly want to improve my energy and routine.",health or wellness,easy,multi_topic_primary
+T165,"Money matters, but right now I'm focused on taking better care of myself.",health or wellness,medium,multi_topic_primary
+T166,My relationship is okay; I'm more concerned about how exhausted I feel.,health or wellness,medium,multi_topic_primary
+T167,"Family responsibilities are heavy, but my sleep is the issue I need help with.",health or wellness,hard,multi_topic_primary
+T168,Career plans can wait; I need to get my daily routine back on track.,health or wellness,hard,multi_topic_primary
+T169,I'm trying to decide whether my fatigue is from my schedule or my sleep habits.,health or wellness,easy,ambiguous_boundary
+T170,I want a routine that balances exercise with schoolwork.,health or wellness,easy,ambiguous_boundary
+T171,My partner says I should rest more because I've been running myself down.,health or wellness,medium,ambiguous_boundary
+T172,I'm adjusting my meals because my work schedule keeps changing.,health or wellness,medium,ambiguous_boundary
+T173,I'm thinking about taking a day off to recover from a very busy week.,health or wellness,hard,ambiguous_boundary
+T174,I need better boundaries so I can protect my sleep and downtime.,health or wellness,hard,ambiguous_boundary
+T175,I haven't been sleeping well.,health or wellness,easy,short_or_context_light
+T176,I'm exhausted lately.,health or wellness,easy,short_or_context_light
+T177,I need to exercise again.,health or wellness,medium,short_or_context_light
+T178,My appetite has been off.,health or wellness,medium,short_or_context_light
+T179,I need more rest.,health or wellness,hard,short_or_context_light
+T180,My routine feels unhealthy.,health or wellness,hard,short_or_context_light
+T181,I just feel overwhelmed and don't know where to start.,general,easy,direct_topic
+T182,Everything feels like a lot lately.,general,easy,direct_topic
+T183,I'm having a difficult week in general.,general,medium,direct_topic
+T184,I feel off and can't point to one specific reason.,general,medium,direct_topic
+T185,I have several things on my mind at once.,general,hard,direct_topic
+T186,I just need some help sorting out how I'm feeling.,general,hard,direct_topic
+T187,"Nothing specific happened, but I haven't felt like myself today.",general,easy,indirect_context
+T188,There are a lot of little things adding up.,general,easy,indirect_context
+T189,I keep feeling tense even though there isn't one clear problem.,general,medium,indirect_context
+T190,My day has felt heavy from start to finish.,general,medium,indirect_context
+T191,I can't identify one cause; I just feel mentally cluttered.,general,hard,indirect_context
+T192,Several small frustrations are making everything feel harder.,general,hard,indirect_context
+T193,"School, work, and family are all on my mind, but none is the single main issue.",general,easy,multi_topic_primary
+T194,"Money and relationships are both bothering me, along with a few other things.",general,easy,multi_topic_primary
+T195,"I'm tired, busy, and distracted; it's more of an overall problem than one topic.",general,medium,multi_topic_primary
+T196,"Work and school are fine individually, but together everything feels like too much.",general,medium,multi_topic_primary
+T197,"There are family and financial concerns, but the main issue is just feeling generally overwhelmed.",general,hard,multi_topic_primary
+T198,"A few areas of my life are messy at once, and I need help sorting through them.",general,hard,multi_topic_primary
+T199,"I don't know whether this is about work, school, or just being tired.",general,easy,ambiguous_boundary
+T200,A bunch of unrelated things have been getting under my skin.,general,easy,ambiguous_boundary
+T201,I'm not sure what category this problem even belongs in.,general,medium,ambiguous_boundary
+T202,I want to talk through what's been bothering me before deciding what the real issue is.,general,medium,ambiguous_boundary
+T203,There isn't one clear event; it's more like a general buildup.,general,hard,ambiguous_boundary
+T204,"I feel unsettled, but I can't connect it to one part of my life.",general,hard,ambiguous_boundary
+T205,It's just been a lot.,general,easy,short_or_context_light
+T206,I'm having a rough day.,general,easy,short_or_context_light
+T207,I feel overwhelmed.,general,medium,short_or_context_light
+T208,I don't know where to start.,general,medium,short_or_context_light
+T209,Everything feels messy.,general,hard,short_or_context_light
+T210,I just need to talk.,general,hard,short_or_context_light

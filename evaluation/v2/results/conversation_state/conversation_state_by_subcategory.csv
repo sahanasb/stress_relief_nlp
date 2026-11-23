@@ -1,0 +1,6 @@
+subcategory,n_examples,accuracy
+explicit_signal,18,1.0
+indirect_signal,18,1.0
+short_contextual,18,1.0
+history_dependent,18,1.0
+ambiguous_boundary,18,0.9444444444444444

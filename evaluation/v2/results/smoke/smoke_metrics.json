@@ -1,0 +1,8 @@
+{
+  "n_scenarios": 10,
+  "passed": 10,
+  "failed": 0,
+  "pass_rate": 1.0,
+  "mean_latency_seconds": 5.263429259590339,
+  "n_errors": 0
+}

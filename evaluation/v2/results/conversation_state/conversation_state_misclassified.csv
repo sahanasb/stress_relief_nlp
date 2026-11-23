@@ -1,0 +1,2 @@
+id,history,current_message,state_true,difficulty,subcategory,state_pred,latency_seconds,error,correct
+C055,"[{""role"": ""user"", ""content"": ""I was very stressed about tomorrow.""}, {""role"": ""assistant"", ""content"": ""We made a simple plan.""}]",I feel better now.,offer_to_close,easy,ambiguous_boundary,close,0.9430215299944393,,False

@@ -1,0 +1,6 @@
+subcategory,n_examples,strict_accuracy
+direct_fact_recall,6,1.0
+pronoun_resolution,6,1.0
+ordinal_reference,6,1.0
+distractor_resistance,6,1.0
+update_consistency,6,1.0

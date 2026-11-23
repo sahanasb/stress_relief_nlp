@@ -1,0 +1,14 @@
+{
+  "judge_model": "gpt-5.6-luna",
+  "n_examples": 26,
+  "expected_source_retrieval_rate": 0.9230769230769231,
+  "mean_groundedness_score": 3.8076923076923075,
+  "mean_relevance_score": 4.8076923076923075,
+  "mean_source_use_score": 4.076923076923077,
+  "hallucination_rate": 0.8461538461538461,
+  "mean_unsupported_claim_count": 2.769230769230769,
+  "faithfulness_pass_rate": 0.07692307692307693,
+  "mean_pipeline_latency_seconds": 7.147824322271985,
+  "mean_judge_latency_seconds": 5.002559483116224,
+  "n_errors": 0
+}

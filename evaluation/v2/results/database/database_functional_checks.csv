@@ -1,0 +1,13 @@
+check,status,details
+create_database,PASS,
+create_user,PASS,user_id=1
+login_correct_password,PASS,
+reject_wrong_password,PASS,
+save_conversation_function,PASS,
+conversation_persisted,PASS,
+conversation_owner_link,PASS,
+messages_persisted,PASS,message_count=2
+app_register_route_wired,PASS,
+app_login_route_wired,PASS,
+app_calls_save_conversation,NOT_IMPLEMENTED,app.py does not currently call db.save_conversation
+conversation_retrieval_function,NOT_IMPLEMENTED,No conversation retrieval function found in database/db_manager.py

@@ -1,0 +1,4 @@
+difficulty,n_examples,strict_accuracy
+easy,10,1.0
+medium,10,1.0
+hard,10,1.0

@@ -1,0 +1,45 @@
+id,text,topic_true,difficulty,subcategory,topic_pred,topic_confidence,latency_seconds,error,correct
+T011,I need to ask the teaching assistant about the assignment.,academic,hard,indirect_context,work or career,0.4195154011249542,0.9527228039805777,,False
+T015,"My partner is supportive, yet my main concern is my final project.",academic,medium,multi_topic_primary,work or career,0.575143039226532,1.090972694044467,,False
+T027,I got my grade back.,academic,medium,short_or_context_light,work or career,0.3968234658241272,0.8781052580452524,,False
+T045,"Money matters, but the immediate issue is whether I'll keep my job.",work or career,medium,multi_topic_primary,financial,0.6669697165489197,0.9860471310093999,,False
+T046,"My family has opinions, but I'm trying to decide on a career move.",work or career,medium,multi_topic_primary,family,0.5312706828117371,0.9563866690150462,,False
+T072,I want to talk without turning it into another argument.,relationships,hard,indirect_context,general,0.41212111711502075,0.9726918590022251,,False
+T073,"Work is busy, but what hurts most is the tension with my partner.",relationships,easy,multi_topic_primary,work or career,0.6804797649383545,0.9569424330256879,,False
+T075,"Money has been tight, yet our communication problems are bothering me more.",relationships,medium,multi_topic_primary,financial,0.6526284217834473,0.948529401968699,,False
+T078,"Career plans matter, but the immediate problem is whether we should stay together.",relationships,hard,multi_topic_primary,work or career,0.6187161207199097,0.9631319820182398,,False
+T079,The person I'm seeing wants to meet my family soon.,relationships,easy,ambiguous_boundary,family,0.7005815505981445,0.9563669070485048,,False
+T081,We're trying to balance our careers with time for each other.,relationships,medium,ambiguous_boundary,work or career,0.9216158986091614,0.9427067619981244,,False
+T082,We argued about how much money to spend on a trip together.,relationships,medium,ambiguous_boundary,financial,0.7878538966178894,0.9528002489823848,,False
+T085,We had another argument.,relationships,easy,short_or_context_light,general,0.43086159229278564,0.88513921800768,,False
+T089,We need to talk.,relationships,hard,short_or_context_light,general,0.27180010080337524,0.8647815749864094,,False
+T090,I'm not sure about us.,relationships,hard,short_or_context_light,general,0.5755179524421692,0.9422183799906634,,False
+T101,I feel responsible for keeping peace between relatives.,family,hard,indirect_context,relationships,0.5201169848442078,1.0701489470084198,,False
+T108,"Career choices matter, but the strongest pressure is coming from my parents.",family,hard,multi_topic_primary,work or career,0.6028589010238647,1.0057215340202674,,False
+T110,I'm deciding whether to move back home while I look for work.,family,easy,ambiguous_boundary,work or career,0.8271455764770508,0.9622540600248612,,False
+T134,"Work is frustrating, yet what worries me most is losing income.",financial,easy,multi_topic_primary,work or career,0.8167392611503601,1.0008966960012913,,False
+T136,"My family is helping emotionally, though I still need to solve the rent problem.",financial,medium,multi_topic_primary,family,0.711580216884613,1.0200589309679344,,False
+T140,My partner and I disagree about how to split shared expenses.,financial,easy,ambiguous_boundary,relationships,0.42952287197113037,0.9978608320234343,,False
+T142,My family asked me to contribute more money at home.,financial,medium,ambiguous_boundary,family,0.591885507106781,0.9716683329897933,,False
+T155,I feel exhausted even after a full night's sleep.,health or wellness,hard,direct_topic,general,0.2539808750152588,0.9861959459958598,,False
+T163,"School is busy, but my main concern is that I'm not sleeping well.",health or wellness,easy,multi_topic_primary,work or career,0.6138158440589905,1.0824911160161719,,False
+T164,"Work is stressful, yet I mostly want to improve my energy and routine.",health or wellness,easy,multi_topic_primary,work or career,0.741934597492218,1.0883305610041134,,False
+T165,"Money matters, but right now I'm focused on taking better care of myself.",health or wellness,medium,multi_topic_primary,financial,0.9131889343261719,1.0834384789923206,,False
+T166,My relationship is okay; I'm more concerned about how exhausted I feel.,health or wellness,medium,multi_topic_primary,relationships,0.8731712698936462,1.1024669380276464,,False
+T167,"Family responsibilities are heavy, but my sleep is the issue I need help with.",health or wellness,hard,multi_topic_primary,family,0.8545525670051575,1.0791319640120491,,False
+T168,Career plans can wait; I need to get my daily routine back on track.,health or wellness,hard,multi_topic_primary,work or career,0.912274181842804,1.095836409018375,,False
+T170,I want a routine that balances exercise with schoolwork.,health or wellness,easy,ambiguous_boundary,academic,0.48728621006011963,1.1039810799993575,,False
+T171,My partner says I should rest more because I've been running myself down.,health or wellness,medium,ambiguous_boundary,family,0.3483666777610779,1.1379828689969145,,False
+T172,I'm adjusting my meals because my work schedule keeps changing.,health or wellness,medium,ambiguous_boundary,work or career,0.8253510594367981,1.126041162002366,,False
+T173,I'm thinking about taking a day off to recover from a very busy week.,health or wellness,hard,ambiguous_boundary,work or career,0.6263811588287354,1.1592429770389572,,False
+T176,I'm exhausted lately.,health or wellness,easy,short_or_context_light,work or career,0.46069100499153137,1.0750543010071851,,False
+T180,My routine feels unhealthy.,health or wellness,hard,short_or_context_light,work or career,0.40412652492523193,1.0741061070002615,,False
+T186,I just need some help sorting out how I'm feeling.,general,hard,direct_topic,health or wellness,0.34185564517974854,1.1711574489600025,,False
+T188,There are a lot of little things adding up.,general,easy,indirect_context,financial,0.2729024291038513,1.1658472510171123,,False
+T190,My day has felt heavy from start to finish.,general,medium,indirect_context,work or career,0.5281586050987244,1.16539139195811,,False
+T192,Several small frustrations are making everything feel harder.,general,hard,indirect_context,work or career,0.45692768692970276,1.162639293994289,,False
+T194,"Money and relationships are both bothering me, along with a few other things.",general,easy,multi_topic_primary,financial,0.7015019059181213,1.1670969020342454,,False
+T196,"Work and school are fine individually, but together everything feels like too much.",general,medium,multi_topic_primary,work or career,0.6720098853111267,1.166601462988183,,False
+T198,"A few areas of my life are messy at once, and I need help sorting through them.",general,hard,multi_topic_primary,work or career,0.26488757133483887,1.1711772690177895,,False
+T199,"I don't know whether this is about work, school, or just being tired.",general,easy,ambiguous_boundary,work or career,0.5379977822303772,1.1656008680001833,,False
+T206,I'm having a rough day.,general,easy,short_or_context_light,work or career,0.27945756912231445,1.1808173099998385,,False

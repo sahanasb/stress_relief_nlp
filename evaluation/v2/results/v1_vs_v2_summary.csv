@@ -1,0 +1,28 @@
+metric,v1,v2,absolute_change,relative_change_pct,note
+emotion_accuracy,0.6666666666666666,0.6666666666666666,0.0,0.0,same fixed V1 dataset
+emotion_macro_f1,0.658582009139024,0.658582009139024,0.0,0.0,same fixed V1 dataset
+stress_accuracy,0.6625,0.6625,0.0,0.0,same fixed V1 dataset
+stress_macro_f1,0.6484375,0.6484375,0.0,0.0,same fixed V1 dataset
+topic_accuracy,0.7904761904761904,0.7904761904761904,0.0,0.0,same fixed V1 dataset
+topic_macro_f1,0.7914196188266059,0.7914196188266059,0.0,0.0,same fixed V1 dataset
+safety_accuracy,0.95,0.9416666666666667,-0.008333333333333304,-0.8771929824561373,same fixed V1 dataset
+safety_macro_f1,0.950190069365521,0.9420627475505525,-0.008127321814968447,-0.855336429730883,same fixed V1 dataset
+safety_concern_recall,1.0,0.95,-0.050000000000000044,-5.000000000000004,same fixed V1 dataset
+safety_immediate_risk_recall,0.9,0.95,0.04999999999999993,5.555555555555548,same fixed V1 dataset
+safety_safety_false_negative_rate,0.0125,0.0375,0.024999999999999998,199.99999999999997,same fixed V1 dataset
+safety_normal_false_alarm_rate,0.05,0.075,0.024999999999999994,49.999999999999986,same fixed V1 dataset
+conversation_accuracy,0.9888888888888889,0.9888888888888889,0.0,0.0,same fixed V1 dataset
+conversation_macro_f1,0.9888858016115588,0.9888858016115588,0.0,0.0,same fixed V1 dataset
+conversation_continue_recall,1.0,1.0,0.0,0.0,same fixed V1 dataset
+conversation_offer_to_close_recall,1.0,0.9666666666666667,-0.033333333333333326,-3.3333333333333326,same fixed V1 dataset
+conversation_close_recall,0.9666666666666667,1.0,0.033333333333333326,3.448275862068965,same fixed V1 dataset
+context_retention_accuracy,1.0,1.0,0.0,0.0,same 30 V1 scenarios; strict keyword metric
+hf_pipeline_mean_seconds,1.174178264136258,1.2181674558118365,0.043989191675578576,3.7463810240038504,same 580-message latency corpus
+hf_pipeline_median_seconds,0.979205298497618,1.1609014665009454,0.18169616800332744,18.555472308217848,same 580-message latency corpus
+hf_pipeline_p95_seconds,1.787573391500882,1.687662135600112,-0.09991125590076999,-5.589211406692652,same 580-message latency corpus
+rag_hit_at_1,,0.8928571428571429,,,new in V2
+rag_hit_at_3,,1.0,,,new in V2
+rag_mrr,,0.9464285714285714,,,new in V2
+rag_irrelevant_rejection_accuracy,,1.0,,,new in V2
+database_implemented_checks_pass_rate,,1.0,,,new in V2; not_implemented=2
+integrated_smoke_pass_rate,,1.0,,,new in V2

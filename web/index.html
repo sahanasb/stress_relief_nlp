@@ -51,6 +51,22 @@ header .sub{color:var(--muted);font-size:.84rem;margin-top:2px}
 .badge.warn{color:var(--sand);border-color:rgba(232,195,122,.4);background:rgba(232,195,122,.10)}
 .badge.bad{color:var(--rose);border-color:rgba(240,138,138,.5);background:rgba(240,138,138,.12)}
 
+/* conversation history */
+.history-panel {
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 190px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
 /* voice panel: the orb is the one expressive element */
 .voice{overflow:hidden;min-height:380px;display:flex;flex-direction:column;align-items:center;background:radial-gradient(380px 260px at 50% 42%,rgba(142,197,255,.13),transparent 70%),var(--panel)}
 #fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -333,6 +349,16 @@ form button:disabled,form input:disabled{opacity:.5}
   </form>
 </section>
 
+<!-- conversation history widget -->
+<section class="card history-panel" id="historyCard" hidden>
+  <div class="thead">
+    <div class="title">Conversation history</div>
+  </div>
+  <div class="body">
+    <div id="historyList">Loading...</div>
+  </div>
+</section>
+
 <section class="card stats">
   <div class="stat"><b id="stLat" style="color:var(--dusk)">—</b><span>Last pipeline time</span></div>
   <div class="stat"><b style="color:var(--accent)">3 models</b><span>Emotion, stress and topic classifiers</span></div>
@@ -410,6 +436,30 @@ function addMsg(role,text,cls=''){
 function addErr(t){const b=document.createElement('div');b.className='msg err';b.textContent=t;log.append(b);log.scrollTop=log.scrollHeight}
 function typing(on){let t=$('#typing');if(on&&!t){t=document.createElement('div');t.id='typing';t.className='msg bot typing';t.innerHTML='<i></i><i></i><i></i>';log.append(t);log.scrollTop=log.scrollHeight}if(!on&&t)t.remove()}
 function fmtMs(ms){return ms<1000?ms+' ms':(ms/1000).toFixed(1)+' s'}
+function formatConvDate(raw) {
+  if (!raw) return '';
+  let s = String(raw).trim();
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/.test(s)) {
+    s = s.replace(' ', 'T') + 'Z';
+  }
+  const d = new Date(s);
+  if (isNaN(d.getTime())) return '';
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+function resetChatForUserSwitch() {
+  // 1. Clear the stored session ID (match your variable name, e.g. sid / sessionId)
+  sessionId = null;
+
+  // 2. Clear the chat bubbles (match your chat container's ID)
+  const chatBox = document.getElementById('chat'); // <-- check your chat container ID
+  if (chatBox) chatBox.innerHTML = '';
+
+  // 3. Clear and hide the conversation history widget
+  const historyList = document.getElementById('historyList');
+  const historyCard = document.getElementById('historyCard');
+  if (historyList) historyList.innerHTML = '';
+  if (historyCard) historyCard.hidden = true;
+}
 
 /* ---------- state / status ---------- */
 const STATUS={idle:['Ready to listen','#8ec5ff'],listening:['Listening…','#f08a8a'],processing:['Thinking…','#e8c37a'],speaking:['Speaking…','#6fb1ff']};
@@ -599,6 +649,7 @@ async function send(text,alts=[]){
   if(out.status===410){addErr('This session expired. Starting a new one…');setTimeout(start,1200);return}
   if(!out.ok){addErr('Something went wrong: '+(out.j.error||out.status));return after(null)}
   const r=out.j,wasName=!named;named=true;
+  if(authUser) loadConversations();
   if(wasName){showName(r.name||null);input.placeholder='Or type your feelings here if you prefer not to speak…';addMsg('bot',r.response);return after(r.response)}
   screened++;$('#stSafe').textContent=screened;
   if(r.elapsed_ms!=null){$('#latBadge').textContent='Last run '+fmtMs(r.elapsed_ms);$('#stLat').textContent=fmtMs(r.elapsed_ms)}
@@ -705,6 +756,13 @@ function renderAuth(){
   const b=$('#authBtn');
   b.textContent=authUser?('Log out ('+authUser+')'):'Log in / Sign up';
   b.title=authUser?'Signed in as '+authUser+'. Click to log out.':'';
+
+  const card=$('#historyCard');
+  if(card){
+    card.hidden=!authUser;
+    if(authUser) loadConversations();
+    else $('#historyList').innerHTML='';
+  }
 }
 function setAuthMode(m){
   authMode=m;const su=m==='signup';
@@ -726,15 +784,21 @@ async function submitAuth(e){
       body:JSON.stringify(su?{user_name,password,confirm_password}:{user_name,password})});
     const j=await res.json().catch(()=>({}));
     if(!res.ok){authMsg(j.error||'Something went wrong. Please try again.');return}
-    authUser=j.user_name;renderAuth();closeAuth();$('#auUser').value='';
+    authUser=j.user_name;
+    await start();
+    renderAuth();closeAuth();$('#auUser').value='';
     toast(su?'Account created. Welcome, '+authUser+'!':'Welcome back, '+authUser+'.');
   }catch(err){authMsg("Can't reach the server. Is it running?")}
   finally{btn.disabled=false}
 }
 async function logoutAuth(){
   try{await fetch('/api/logout',{method:'POST'})}catch(e){}
-  authUser=null;renderAuth();toast('Logged out.');
+  authUser=null;
+  await start();
+  renderAuth();
+  toast('Logged out.');
 }
+
 $('#authBtn').onclick=()=>authUser?logoutAuth():openAuth('login');
 $('#tabLogin').onclick=()=>setAuthMode('login');
 $('#tabSignup').onclick=()=>setAuthMode('signup');
@@ -743,6 +807,79 @@ $('#authClose').onclick=closeAuth;
 $('#authModal').addEventListener('click',e=>{if(e.target.id==='authModal')closeAuth()});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeAuth()});
 fetch('/api/me').then(r=>r.json()).then(j=>{if(j.logged_in){authUser=j.user_name;renderAuth()}}).catch(()=>{});
+
+/* ---------- conversation history script ---------- */
+async function loadConversations() {
+  const listEl = $('#historyList');
+  if (!listEl) return;
+  try {
+    const res = await fetch('/api/conversations');
+    if (res.status === 401) {
+      listEl.innerHTML = '<div class="hint">Log in to view saved chats.</div>';
+      return;
+    }
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    const convos = data.conversations || [];
+
+    if (!convos.length) {
+      listEl.innerHTML = '<div class="hint">No past conversations yet.</div>';
+      return;
+    }
+
+    listEl.innerHTML = '';
+    convos.forEach((c) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ghost';
+      btn.style.display = 'block';
+      btn.style.width = '100%';
+      btn.style.textAlign = 'left';
+      btn.style.marginBottom = '6px';
+      const preview = c.preview || 'Conversation';
+      const date = formatConvDate(c.end_time || c.start_time);
+      btn.textContent = date ? `${preview} — ${date}` : preview;
+      btn.onclick = () => resumeConversation(c.conversation_id);
+      listEl.appendChild(btn);
+    });
+  } catch (e) {
+    listEl.innerHTML = '<div class="hint">Could not load history.</div>';
+  }
+}
+
+async function resumeConversation(conversationId) {
+  if (busy && !closed) return;
+  try {
+    const res = await fetch(`/api/conversations/${conversationId}/resume`, { method: 'POST' });
+    if (!res.ok) return addErr('Could not load that conversation.');
+    const data = await res.json();
+
+    // Switch the active chat widget to this resumed session
+    sid = data.session_id;
+    closed = false;
+    named = true;
+    input.disabled = false;
+    screened = 0;
+    closeSummary();
+    sumData = null;
+    lastSignals = null;
+    stopVoice();
+    setBusy(false);
+    log.innerHTML = '';
+    renderSafety('normal');
+    renderSig();
+    input.placeholder = 'Or type your feelings here if you prefer not to speak…';
+    setMode('idle');
+
+    // Render all saved messages into #log
+    (data.messages || []).forEach((m) => {
+      addMsg(m.role === 'user' ? 'user' : 'bot', m.content);
+    });
+    input.focus();
+  } catch (e) {
+    addErr('Could not load that conversation.');
+  }
+}
 
 /* ---------- relaxing music (generated in the browser, no audio files) ---------- */
 const Music=(()=>{

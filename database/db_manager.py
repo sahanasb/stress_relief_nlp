@@ -98,7 +98,7 @@ def retrieve_user(user_name, password):
 
     finally:
         connection.close()
-        
+
 
 def create_conversation(user_id):
     """Creates a new conversation row and returns its conversation_id."""
@@ -153,7 +153,7 @@ def get_user_conversations(user_id):
                     SELECT m.content 
                     FROM messages m 
                     WHERE m.conversation_id = c.conversation_id AND m.role = 'user'
-                    ORDER BY m.message_id ASC 
+                    ORDER BY m.message_id DESC 
                     LIMIT 1
                 ) AS preview
             FROM conversations c

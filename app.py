@@ -198,7 +198,7 @@ def start():
     sid = uuid.uuid4().hex
     # stage: ask_name -> confirm_name -> chat
     SESSIONS[sid] = {"name": None, "say_as": None, "history": [], "named": False,
-                     "stage": "ask_name", "pending": None, "tries": 0}
+                     "stage": "ask_name", "pending": None, "tries": 0, "conversation_id": None,}
     return jsonify(session_id=sid, intro=INTRO)
 
 
@@ -286,6 +286,39 @@ def logout():
     """Log out the current user"""
     session.clear()
     return jsonify(message="User Logged Out"), 200
+
+
+@app.get("/api/conversations")
+def list_conversations():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify(error="unauthorized"), 401
+    conversations = db.get_user_conversations(user_id)
+    return jsonify(conversations=conversations)
+
+
+@app.post("/api/conversations/<int:conversation_id>/resume")
+def resume_conversation(conversation_id):
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify(error="unauthorized"), 401
+
+    messages = db.get_conversation_messages(conversation_id, user_id)
+    if not messages:
+        return jsonify(error="conversation_not_found"), 404
+
+    sid = uuid.uuid4().hex
+    SESSIONS[sid] = {
+        "name": session.get("user_name"),
+        "say_as": None,
+        "history": [{"role": m["role"], "content": m["content"]} for m in messages],
+        "named": True,
+        "stage": "chat",
+        "pending": None,
+        "tries": 0,
+        "conversation_id": conversation_id,
+    }
+    return jsonify(session_id=sid, conversation_id=conversation_id, messages=messages)
 
 
 def _name_reply(s, name, candidates=None, **extra):
@@ -378,6 +411,14 @@ def chat():
         return jsonify(error=f"{type(e).__name__}: {e}"), 500
     elapsed_ms = int((time.perf_counter() - t0) * 1000)
 
+    user_id = session.get("user_id")
+    if user_id:
+        if s.get("conversation_id") is None:
+            s["conversation_id"] = db.create_conversation(user_id)
+            db.add_message(s["conversation_id"], "assistant", INTRO)
+        db.add_message(s["conversation_id"], "user", text)
+        db.add_message(s["conversation_id"], "assistant", r["response"])
+
     analysis = None
     if r.get("emotion") is not None:
         analysis = {
@@ -403,7 +444,7 @@ def chat():
                 "snippet": k["text"].split(". ", 1)[-1][:190]} for k in (r["rag_sources"] or [])]
     return jsonify(response=r["response"], analysis=analysis, signals=signals, rag=rag, name_step=False,
                    safety_state=r["safety_state"], conversation_state=r["conversation_state"],
-                   should_close=r["should_close"], elapsed_ms=elapsed_ms)
+                   should_close=r["should_close"], elapsed_ms=elapsed_ms, conversation_id=s.get("conversation_id"))
 
 
 @app.post("/api/name")
